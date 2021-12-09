@@ -1,0 +1,214 @@
+body {
+  background-color: #fbbc05;
+}
+header {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 34px;
+  color: White;
+  text-align: center;
+  margin-top: 3vh;
+}
+header a {
+  text-decoration: none;
+  color: white;
+}
+header a:hover {
+  color: #003594;
+}
+
+nav {
+  display: flex;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  margin-left: 2.5vw;
+  margin-right: 2.5vw;
+  background-color: #003594;
+  height: 2.5em;
+  width: 90w;
+  border-radius: 1em;
+  justify-content: center;
+  align-items: center;
+}
+nav ul {
+  display: flex;
+  font-family: helvetica;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  list-style: inside;
+}
+
+nav li {
+  width: 20vw;
+}
+nav ul li:hover {
+  color: #fbbc05;
+}
+nav ul li a {
+  color: white;
+  font-size: 22px;
+  text-decoration: none;
+}
+nav ul li a:hover {
+  color: #fbbc05;
+}
+
+.gridContainer {
+  width: 90vw;
+  margin-left: 2.5vw;
+
+  background-color: #fbbc05;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-gap: 2em;
+  color: rgb(255, 255, 255);
+}
+
+.gridContainer div {
+  display: flex;
+  padding: 1vw;
+  align-items: center; /*put the content in the middle of vertical axis*/
+  justify-content: center; /*put the content in the middle of row axis*/
+}
+
+.div img,
+.div p {
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 24px;
+}
+
+article {
+  width: 50vw;
+  margin-left: 25vw;
+}
+
+iframe#fridge {
+  width: 70vw;
+  height: 40vw;
+  margin-left: 15vw;
+}
+
+iframe#fridgeApp {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  /* align:"middle" */
+}
+
+iframe#gondola {
+  width: 70vw;
+  height: 40vw;
+  margin-left: 15vw;
+}
+
+section.portfolio h2 {
+  color: #003594;
+  margin-left: 15vw;
+}
+
+table#links {
+  margin-left: 10vw;
+  width: 80vw;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #003594;
+  text-align: center;
+  padding: 1em;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+tr:nth-child(6) td:nth-child(1) {
+  background-color: #fbbc05;
+}
+
+p.moreText {
+  display: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 22px;
+  color: #003594;
+  width: 60vw;
+  margin-left: 10vw;
+  text-align: justify;
+}
+
+div.more {
+  margin-left: 10vw;
+  width: 80vw;
+}
+
+p.text {
+  display: none;
+}
+
+div.likeButton {
+  margin-left: 15vw;
+  margin-top: 0.5vw;
+  margin-bottom: 1vw;
+}
+input.likeButton {
+  width: 25px;
+  margin-right: 0.5vw;
+}
+button.readmoreButton {
+  border: none;
+  padding: 0;
+  background: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #003594;
+  font-size: 20px;
+  margin-left: 5vw;
+}
+
+button.readmoreButton:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+span#span1 {
+  display: none;
+}
+span#span2 {
+  display: none;
+}
+
+footer {
+  width: 95%;
+  margin-left: 2.5vw;
+  margin-top: 2vh;
+  border-top: #003594 0.5vh solid;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+footer div {
+  margin: 0.54em;
+  margin-left: 85vw;
+}
+
+button.backToTop {
+  border: none;
+  padding: 0;
+  background: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 20px;
+}
+button.backToTop:hover {
+  color: #003594;
+}
