@@ -31,7 +31,11 @@ app.get('/blog', (req, res) => {
 app.get('/resume-download', (req, res) => {
     res.sendFile('/website/Resume_Ruipeng.pdf', { root: __dirname })
   })
-  
-app.listen(port, () => {
-  console.log(`Ruipeng's web server is listening at http://localhost:${port}`)
-})
+
+// start the server listening for requests
+app.listen(process.env.PORT || 3000, 
+	() => console.log("Ruipeng's web server is running..."));
+
+//app.listen(port, () => {
+//  console.log(`Ruipeng's web server is listening at http://localhost:${port}`)
+//})
