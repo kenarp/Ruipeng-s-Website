@@ -71,6 +71,12 @@ iframe#fridge{
                 width: 70vw;
                 height: 40vw;
                 margin-left: 15vw;}
+                
+iframe#fridgeApp{
+                  margin-left: auto;   
+                  margin-right: auto; 
+                  display: block;
+                }                
 
 iframe#gondola{
                         width: 70vw;
