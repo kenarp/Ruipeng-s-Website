@@ -103,7 +103,10 @@ tr:nth-child(6) td:nth-child(1) {background-color:#FBBC05 }
 p.moreText{ display: none;
                   font-family: Georgia, 'Times New Roman', Times, serif;
                   font-size: 22px;
-                  color: #003594;}
+                  color: #003594;
+                  width: 60vw;
+                  margin-left: 10vw;
+                  text-align: justify;}
 
 div.more{margin-left: 10vw;
           width: 80vw;}

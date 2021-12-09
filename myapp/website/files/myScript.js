@@ -3,10 +3,10 @@ function readMore(x) {
   let moreButton = document.getElementsByClassName("readmoreButton")[x];
     if (getComputedStyle(moreText).display === "none") {
       moreText.style.display = "block";
-      moreButton.innerHTML = "Read less"; 
+      moreButton.innerHTML = "<< Read less"; 
     } else {
       moreText.style.display = "none";
-      moreButton.innerHTML = "Read more"; 
+      moreButton.innerHTML = "Read more >>"; 
     }
   }
 
