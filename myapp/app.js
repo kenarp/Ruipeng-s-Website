@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-//const path = require("path");
 
 app.use("/files", express.static("website/files"));
 
@@ -34,10 +33,8 @@ app.get("/resume-download", (req, res) => {
 });
 
 // start the server listening for requests
-app.listen(process.env.PORT || 3000, () =>
-  console.log("Ruipeng's web server is running...")
+app.listen(process.env.PORT || port, () =>
+  console.log(
+    `Ruipeng's web server is running on port ${process.env.PORT || port}...`
+  )
 );
-
-//app.listen(port, () => {
-//  console.log(`Ruipeng's web server is listening at http://localhost:${port}`)
-//})

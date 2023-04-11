@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Ruipeng's Portfolio</title>
     <link rel="stylesheet" href=".\files\style.css" />
@@ -20,6 +20,39 @@
     </nav>
 
     <section class="portfolio">
+      <h2>Lost & Found</h2>
+      <div class="likeButton">
+        <input
+          type="image"
+          class="likeButton"
+          id="likeButton0"
+          src=".\files\likeButton.png"
+          src=".\files\likeButton.png"
+          alt="like"
+          onclick="likeButtonClicked('returnliked0','a00','span0','likeButton0')"
+        />
+        <span id="returnliked0"></span>
+        <span id="span0"> people liked this project</span>
+      </div>
+      <div>
+        <iframe
+          title="figma"
+          id="lostfoundApp"
+          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FYGfoZPf1ic38skcs2x1jQh%2Flost-%2526-found-(Copy)%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D2-2%26viewport%3D511%252C187%252C0.22%26t%3D4AD8iuUScK9PneKS-1%26scaling%3Dscale-down%26starting-point-node-id%3D2%253A3%26mode%3Ddesign"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <p class="intro">
+        The lost & found project is designed and proposed to be a potential new
+        feature for Waze, an app providing real-time driving directions with
+        live traffic updates. This feature allows Waze users to report their
+        lost and/or found personal items and then mark them on the in-app
+        real-time interactive map, which dramatically improves efficiency and
+        accuracy compared to the current situation.
+      </p>
+    </section>
+
+    <section class="portfolio">
       <h2>Futurator - a Redesign of refrigerator</h2>
       <div class="likeButton">
         <input
@@ -27,6 +60,7 @@
           class="likeButton"
           id="likeButton1"
           src=".\files\likeButton.png"
+          alt="like"
           onclick="likeButtonClicked('returnliked1','a01','span1','likeButton1')"
         />
         <span id="returnliked1"></span>
@@ -104,8 +138,8 @@
 
       <iframe
         id="gondola"
-        src="/files/gondola.html"
-        allowfullscreen="no"
+        src=".\files\gondola.html"
+        allowfullscreen="yes"
         frameborder="0"
         scrolling="no"
       >
@@ -141,7 +175,9 @@
     <footer>
       <div>
         <p>rua9@pitt.edu</p>
-        <button class="backToTop" onclick="backToTop()">Back To Top</button>
+        <button type="button" class="backToTop" onclick="backToTop()">
+          Back To Top
+        </button>
       </div>
     </footer>
 

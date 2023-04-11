@@ -1,35 +1,42 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Ruipeng's Resume</title>
-        <link rel="stylesheet" href=".\files\style.css" />
-    </head>
-    
-    <body>
-        <header> <a href="/home"> Ruipeng An's site</a></header>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ruipeng's Resume</title>
+    <link rel="stylesheet" href=".\files\style.css" />
+  </head>
 
-        <nav>
-            <ul>
-                <li><a href="/resume">Resume</a></li>    
-                <li><a href="/portfolio">Portfolio</a></li>
-                <li><a href="/blog"> Blog</a></li>
-                <li><a href="/links">Links</a></li>
-            </ul>
-        </nav>
+  <body>
+    <header><a href="/home"> Ruipeng An's site</a></header>
 
-        <article id="resume">
-            <iframe id="resume" src=".\files\Resume_Ruipeng.pdf" width="100%" height="1100em"></iframe>
-        </article>
+    <nav>
+      <ul>
+        <li><a href="/resume">Resume</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/blog"> Blog</a></li>
+        <li><a href="/links">Links</a></li>
+      </ul>
+    </nav>
 
-        <footer>
-            <div>
-                <p> rua9@pitt.edu </p>
-                <button class="backToTop" onclick="backToTop()">Back To Top</button>
-            </div>
-        </footer>
+    <div>
+      <iframe
+        title="resume"
+        id="resume"
+        src=".\files\Resume_Ruipeng.pdf"
+        class="resume"
+      ></iframe>
+    </div>
 
-        <script src=".\files\myScript.js"></script>
-    </body>
+    <footer>
+      <div>
+        <p>rua9@pitt.edu</p>
+        <button type="button" class="backToTop" onclick="backToTop()">
+          Back To Top
+        </button>
+      </div>
+    </footer>
 
-
+    <script src=".\files\myScript.js"></script>
+  </body>
 </html>

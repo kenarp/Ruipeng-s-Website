@@ -92,11 +92,14 @@ iframe#fridge {
   margin-left: 15vw;
 }
 
-iframe#fridgeApp {
+iframe#fridgeApp,
+iframe#lostfoundApp {
   margin-left: auto;
   margin-right: auto;
   display: block;
-  /* align:"middle" */
+  width: 50vw;
+  height: 80vh;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 iframe#gondola {
@@ -146,6 +149,16 @@ p.moreText {
   text-align: justify;
 }
 
+.intro {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 22px;
+  color: #003594;
+  width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify;
+}
+
 div.more {
   margin-left: 10vw;
   width: 80vw;
@@ -179,9 +192,8 @@ button.readmoreButton:hover {
   cursor: pointer;
 }
 
-span#span1 {
-  display: none;
-}
+span#span0,
+span#span1,
 span#span2 {
   display: none;
 }
@@ -197,18 +209,36 @@ footer {
 }
 
 footer div {
-  margin: 0.54em;
-  margin-left: 85vw;
+  position: relative;
+  margin: 0.5% 0;
+  height: 10vh;
 }
 
-button.backToTop {
+footer p {
+  position: absolute;
+  right: 3%;
+  top: 20%;
+}
+
+.backToTop {
   border: none;
   padding: 0;
   background: none;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
   font-size: 20px;
+  position: absolute;
+  right: 3%;
 }
 button.backToTop:hover {
   color: #003594;
+  cursor: pointer;
+}
+
+.resume {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 80vh;
 }
