@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Ruipeng's Portfolio</title>
     <link rel="stylesheet" href=".\files\style.css" />
+    <link rel="icon" type="image/svg+xml" href="/files/logo.svg" />
   </head>
 
   <body>
@@ -66,15 +67,7 @@
         <span id="returnliked1"></span>
         <span id="span1"> people liked this project</span>
       </div>
-      <iframe
-        id="fridge"
-        src="//player.bilibili.com/player.html?aid=83319736&bvid=BV1GJ411H75L&cid=142541754&page=1&high_quality=1"
-        scrolling="no"
-        frameborder="no"
-        framespacing="0"
-        allowfullscreen="true"
-      >
-      </iframe>
+      <video id="videoEl1" controls></video>
       <div>
         <iframe
           id="fridgeApp"
@@ -106,8 +99,8 @@
           been wasted simultaneously. Extant refrigerator products are very
           similar to each other: They are visually closed; They are always boxy
           so not easy to check and get food in the dark and deep corners; Their
-          rooms and shelves are preset, even though some of them have ‘flex
-          zone’ as advertised, users can not freely adjust it based on their own
+          rooms and shelves are preset, even though some of them have 'flex
+          zone' as advertised, users can not freely adjust it based on their own
           needs. What if we make a new refrigerator with transparent doors so
           users can clearly see what they have inside? What if a refrigerator is
           in cylinder, not boxy anymore, so the user can put in and retrieve
@@ -181,7 +174,8 @@
       </div>
     </footer>
 
-    <script src=".\files\myScript.js"></script>
-    <script src=".\files\countApi.js"></script>
+    <script src="/files/myScript.js"></script>
+    <script src="/files/countApi.js"></script>
+    <script type="module" src="/files/hls-player.js"></script>
   </body>
 </html>
