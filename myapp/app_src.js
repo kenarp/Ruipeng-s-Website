@@ -19,8 +19,16 @@ app.get("/home", (req, res) => {
   res.sendFile("/website/index.html", { root: __dirname });
 });
 
-app.get("/portfolio", (req, res) => {
-  res.sendFile("/website/portfolio.html", { root: __dirname });
+app.get("/portfolio/otherProjects", (req, res) => {
+  res.sendFile("/website/otherProjects.html", { root: __dirname });
+});
+
+app.get("/portfolio/threeJS", (req, res) => {
+  res.sendFile("/website/threeJS.html", { root: __dirname });
+});
+
+app.get("/portfolio/echarts", (req, res) => {
+  res.sendFile("/website/echarts.html", { root: __dirname });
 });
 
 app.get("/links", (req, res) => {
@@ -92,7 +100,7 @@ function addCors(req, res, next) {
 
 httpAttach(server, addCors);
 // start the server listening for requests
-server.listen(process.env.PORT || port, () =>
+server.listen(process.env.PORT || port, "127.0.0.1", () =>
   console.log(
     `Ruipeng's web server is running on port ${process.env.PORT || port}...`
   )

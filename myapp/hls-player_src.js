@@ -2,7 +2,7 @@ import Hls from "hls.js";
 
 const video = document.getElementById("video");
 // const videoSrc = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8";
-const videoSrc = "http://www.ruipeng.cloud/videos/index.m3u8";
+const videoSrc = "http://www.ruipeng.xyz/videos/index.m3u8";
 //
 // First check for native browser HLS support
 //

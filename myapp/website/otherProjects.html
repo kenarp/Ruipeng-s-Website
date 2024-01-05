@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ruipeng's Portfolio</title>
+    <link rel="stylesheet" href="/files/style.css" />
+    <link rel="icon" type="image/svg+xml" href="/files/logo.svg" />
+  </head>
+
+  <body>
+    <header><a href="/home"> Ruipeng An's site</a></header>
+
+    <nav>
+      <ul>
+        <li><a href="/resume">Resume</a></li>
+        <li class="nav-dropdown">
+          <a href="#" onclick="return false;">Portfolio</a>
+          <ul class="nav-portfolio">
+            <li><a href="/portfolio/echarts"> Data Visualization </a></li>
+            <li><a href="/portfolio/threeJS"> ThreeJS Project </a></li>
+            <li><a href="/portfolio/otherProjects"> Other Projects </a></li>
+          </ul>
+        </li>
+        <li><a href="/blog"> Blog</a></li>
+        <li><a href="/links">Links</a></li>
+      </ul>
+    </nav>
+
+    <section class="portfolio">
+      <h2>Lost & Found</h2>
+      <div class="likeButton">
+        <input
+          type="image"
+          class="likeButton"
+          id="likeButton0"
+          src="/files/likeButton.png"
+          alt="like"
+          onclick="likeButtonClicked('returnliked0','a00','span0','likeButton0')"
+        />
+        <span id="returnliked0"></span>
+        <span id="span0"> people liked this project</span>
+      </div>
+      <div>
+        <iframe
+          title="figma"
+          id="lostfoundApp"
+          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FYGfoZPf1ic38skcs2x1jQh%2Flost-%2526-found-(Copy)%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D2-2%26viewport%3D511%252C187%252C0.22%26t%3D4AD8iuUScK9PneKS-1%26scaling%3Dscale-down%26starting-point-node-id%3D2%253A3%26mode%3Ddesign"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <p class="intro">
+        The lost & found project is designed and proposed to be a potential new
+        feature for Waze, an app providing real-time driving directions with
+        live traffic updates. This feature allows Waze users to report their
+        lost and/or found personal items and then mark them on the in-app
+        real-time interactive map, which dramatically improves efficiency and
+        accuracy compared to the current situation.
+      </p>
+    </section>
+
+    <section class="portfolio">
+      <h2>Futurator - a Redesign of refrigerator</h2>
+      <div class="likeButton">
+        <input
+          type="image"
+          class="likeButton"
+          id="likeButton1"
+          src="/files/likeButton.png"
+          alt="like"
+          onclick="likeButtonClicked('returnliked1','a01','span1','likeButton1')"
+        />
+        <span id="returnliked1"></span>
+        <span id="span1"> people liked this project</span>
+      </div>
+      <video id="videoEl1" controls></video>
+      <div>
+        <iframe
+          id="fridgeApp"
+          width="480"
+          height="720"
+          src="https://xd.adobe.com/embed/daf1765c-4d5c-403b-9987-2930da21b593-8fa2/?fullscreen"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="more" id="moreFridge">
+        <button class="readmoreButton" type="button" onclick="readMore(0)">
+          Read more >>
+        </button>
+        <p class="moreText" id="moreFridgeText">
+          Food waste is a widespread and increasingly urgent global problem.
+          According to research in 2011, the Food and Agriculture Organization
+          estimates approximately one third of food produced for human
+          consumption, is lost or wasted annually. The threat of food waste for
+          our sustainable future is increasingly being recognized by many
+          countries and organizations. UN targets a 50% reduction in consumer
+          food waste and the EU recycling of 60% of all household waste, both by
+          2030. In 2015, the U.S. 2030 Food Loss and Waste Reduction goal has
+          also been announced. Led by the EPA, USDA and FDA, this is the
+          first-ever domestic goal to reduce food loss and waste, which seeks to
+          cut food loss and waste in half by the year 2030. We know that
+          refrigerator is the major place for food storage at consumers' home.
+          However, as a designer, I found it is the place where many foods have
+          been wasted simultaneously. Extant refrigerator products are very
+          similar to each other: They are visually closed; They are always boxy
+          so not easy to check and get food in the dark and deep corners; Their
+          rooms and shelves are preset, even though some of them have 'flex
+          zone' as advertised, users can not freely adjust it based on their own
+          needs. What if we make a new refrigerator with transparent doors so
+          users can clearly see what they have inside? What if a refrigerator is
+          in cylinder, not boxy anymore, so the user can put in and retrieve
+          food easier? What if the whole storage room can be adjusted, not only
+          the size but also the temperature for different foods, freely by the
+          consumers? Even from a phone? In this project, I'm going to discover
+          these possible design opportunities, to better preserve our food for
+          tomorrow.
+        </p>
+      </div>
+    </section>
+
+    <section class="portfolio">
+      <h2>A decor design inspired by gondola in Venice</h2>
+
+      <div class="likeButton">
+        <input
+          type="image"
+          class="likeButton"
+          id="likeButton2"
+          alt="Like"
+          src="/files/likeButton.png"
+          onclick="likeButtonClicked('returnliked2','a02','span2','likeButton2')"
+        />
+        <span id="returnliked2"></span>
+        <span id="span2"> people liked this gondola</span>
+      </div>
+
+      <iframe
+        id="gondola"
+        src="/files/gondola.html"
+        allowfullscreen="yes"
+        frameborder="0"
+        scrolling="no"
+      >
+      </iframe>
+      <div class="more" id="moreGondola">
+        <button class="readmoreButton" type="button" onclick="readMore(1)">
+          Read more >>
+        </button>
+        <p class="moreText" id="moreGondolaText">
+          These photos I took at Venice perfectly reflect where I got
+          inspirations for this artwork design. Both the elegant shape of
+          Gondola, as well as the classical structure of roof beams in
+          traditional buildings, left a strong impression of this famous Italian
+          city and its culture. I then realized that these two elements can be
+          somehow fused in a way, to be used as an aesthetic reference for
+          artwork design. With the help of 3D CAD software, SolidWorks, together
+          with my modeling experiences, I finally found a solution to have these
+          two elements harmoniously presented in one piece, although the process
+          was pretty challenging and time consuming. You can see my effort and
+          result from the photos of 3D printed parts below. During this project,
+          my skill of 3D modeling has been trained, my understanding of
+          aesthetics become deeper, my craftsmanship of sanding and gluing 3D
+          printed parts has been improved, and most importantly, as I described
+          in the statement of purpose, at the first time I realized that the
+          latent power of introducing information technology into traditional
+          product design field. From that time I started to think about moving
+          into the technology world of Information Science and Human- Computer
+          Interaction.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <p>rua9@pitt.edu</p>
+        <button type="button" class="backToTop" onclick="backToTop()">
+          Back To Top
+        </button>
+      </div>
+    </footer>
+
+    <script src="/files/myScript.js"></script>
+    <script src="/files/countApi.js"></script>
+    <script type="module" src="/files/hls-player.js"></script>
+  </body>
+</html>

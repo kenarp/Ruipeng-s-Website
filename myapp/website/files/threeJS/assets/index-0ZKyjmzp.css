@@ -1,0 +1,56 @@
+._loader_x92wy_1 {
+  position: absolute;
+  z-index: 1;
+  font-size: x-large;
+  color: #aaa;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 1%;
+  width: 10%;
+  margin: auto;
+  text-align: center;
+}
+._three_x92wy_31 img {
+  position: absolute;
+  z-index: 1;
+  width: 2%;
+  right: 7%;
+  top: 10%;
+}
+._three_x92wy_31 canvas {
+  z-index: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+}
+._three_x92wy_31 button {
+  position: absolute;
+  top: 16%;
+  right: 4%;
+  z-index: 1;
+  color: #02add1;
+  background-color: #fff;
+  padding: 1;
+  border: 0;
+  font-size: 1vw;
+}
+._three_x92wy_31:fullscreen button {
+  top: 5%;
+  right: 2%;
+}
+._three_x92wy_31 button:hover {
+  background-color: #02add1;
+  color: #fff;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+}

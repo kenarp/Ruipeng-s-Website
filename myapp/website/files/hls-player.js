@@ -19412,7 +19412,7 @@ class Dt {
 }
 Dt.defaultConfig = void 0;
 const Ne = document.getElementById("videoEl1"),
-  ri = "https://www.ruipeng.cloud/index.m3u8";
+  ri = "https://ruipeng.xyz/index.m3u8";
 if (Ne.canPlayType("application/vnd.apple.mpegurl")) Ne.src = ri;
 else if (Dt.isSupported()) {
   const a = new Dt();

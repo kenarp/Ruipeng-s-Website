@@ -1,12 +1,15 @@
 body {
   background-color: #fbbc05;
+  margin: 0;
+  min-height: 100vh;
 }
 header {
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 34px;
+  /* font-size: 34px; */
+  font-size: 2vw;
   color: White;
   text-align: center;
-  margin-top: 3vh;
+  margin-top: 2vw;
 }
 header a {
   text-decoration: none;
@@ -18,13 +21,13 @@ header a:hover {
 
 nav {
   display: flex;
-  margin-top: 3vh;
-  margin-bottom: 3vh;
-  margin-left: 2.5vw;
-  margin-right: 2.5vw;
+  margin-top: 1.3vw;
+  margin-bottom: 1.3vw;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #003594;
-  height: 2.5em;
-  width: 90w;
+  height: 2.5vw;
+  width: 90vw;
   border-radius: 1em;
   justify-content: center;
   align-items: center;
@@ -32,7 +35,7 @@ nav {
 nav ul {
   display: flex;
   font-family: helvetica;
-  font-size: 22px;
+  font-size: 1.6vw;
   color: white;
   text-align: center;
   list-style: inside;
@@ -46,7 +49,7 @@ nav ul li:hover {
 }
 nav ul li a {
   color: white;
-  font-size: 22px;
+  font-size: 1.5vw;
   text-decoration: none;
 }
 nav ul li a:hover {
@@ -78,7 +81,7 @@ nav ul li a:hover {
   align-items: center;
   justify-content: center;
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 24px;
+  font-size: 1.5vw;
 }
 
 article {
@@ -142,7 +145,7 @@ tr:nth-child(6) td:nth-child(1) {
 p.moreText {
   display: none;
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 22px;
+  font-size: 1.5vw;
   color: #003594;
   width: 60vw;
   margin-left: 10vw;
@@ -151,7 +154,7 @@ p.moreText {
 
 .intro {
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 22px;
+  font-size: 1.5vw;
   color: #003594;
   width: 60vw;
   margin-left: auto;
@@ -183,7 +186,7 @@ button.readmoreButton {
   background: none;
   font-family: Arial, Helvetica, sans-serif;
   color: #003594;
-  font-size: 20px;
+  font-size: 1.3vw;
   margin-left: 5vw;
 }
 
@@ -205,7 +208,7 @@ footer {
   border-top: #003594 0.5vh solid;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
-  font-size: 20px;
+  font-size: 1.3vw;
 }
 
 footer div {
@@ -226,7 +229,7 @@ footer p {
   background: none;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
-  font-size: 20px;
+  font-size: 1.3vw;
   position: absolute;
   right: 3%;
 }
@@ -249,4 +252,44 @@ button.backToTop:hover {
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+.nav-dropdown {
+  position: relative;
+  z-index: 1;
+}
+
+.nav-portfolio {
+  display: none;
+  background-color: #003594;
+  position: absolute;
+  text-align: left;
+  width: 11vw;
+  padding-left: 1vw;
+  margin: auto;
+  border-radius: 0 0 2.5vw 0;
+  left: 3.5vw;
+  right: 0;
+}
+
+.nav-portfolio li {
+  margin-top: 1vh;
+  font-size: 1vw;
+}
+
+.nav-portfolio li:last-child {
+  margin-bottom: 1vh;
+}
+.nav-portfolio a {
+  font-size: 1vw;
+  margin-left: 1.5%;
+}
+.nav-dropdown:hover .nav-portfolio {
+  display: block;
+}
+
+.container {
+  position: relative;
+  /* width: 90%; */
+  height: 80vh;
 }

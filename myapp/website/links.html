@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Useful Links</title>
-    <link rel="stylesheet" href=".\files\style.css" />
+    <link rel="stylesheet" href="/files/style.css" />
     <link rel="icon" type="image/svg+xml" href="/files/logo.svg" />
   </head>
 
@@ -14,7 +14,14 @@
     <nav>
       <ul>
         <li><a href="/resume">Resume</a></li>
-        <li><a href="/portfolio">Portfolio</a></li>
+        <li class="nav-dropdown">
+          <a href="#" onclick="return false;">Portfolio</a>
+          <ul class="nav-portfolio">
+            <li><a href="/portfolio/echarts"> Data Visualization </a></li>
+            <li><a href="/portfolio/threeJS"> ThreeJS Project </a></li>
+            <li><a href="/portfolio/otherProjects"> Other Projects </a></li>
+          </ul>
+        </li>
         <li><a href="/blog"> Blog</a></li>
         <li><a href="/links">Links</a></li>
       </ul>
