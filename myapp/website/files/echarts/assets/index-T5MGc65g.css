@@ -1,52 +1,55 @@
-._githubLink_18bvw_1 {
+._githubLink_1p77i_1 {
   position: absolute;
   left: 2%;
-  top: 30%;
+  top: 35%;
   z-index: 1;
   text-decoration: none;
   color: #333;
+  font-size: 1vw;
 }
-._githubLink_18bvw_1:hover {
+._githubLink_1p77i_1:hover {
   text-decoration: underline;
   color: #316bf2;
 }
-._githubLink_18bvw_1 img {
+._githubLink_1p77i_1 img {
   width: 10%;
 }
-._concept_18bvw_35 {
+._concept_1p77i_37 {
   color: #333;
   position: absolute;
   left: 2%;
-  top: 15%;
+  top: 18%;
   max-width: 20%;
   word-wrap: break-word;
 }
-._concept_18bvw_35 h3 {
+._concept_1p77i_37 h3 {
   margin-bottom: 0%;
+  font-size: 1.2vw;
 }
-._conceptLevel_18bvw_63 {
-  font-size: 14px;
+._conceptLevel_1p77i_67 {
+  font-size: 1vw;
   margin-left: 5%;
   margin-right: 0%;
   margin-top: 0%;
   width: 100%;
 }
-._subtitle_18bvw_79 {
+._subtitle_1p77i_83 {
   margin-bottom: 2%;
-  font-size: 14px;
+  font-size: 1vw;
 }
-._conceptDescription_18bvw_87 {
+._conceptDescription_1p77i_91 {
   position: absolute;
   padding-left: 4%;
 }
-._conceptDescription_18bvw_87 p {
+._conceptDescription_1p77i_91 p {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 1vw;
   width: 100%;
-  word-break: break-all;
+  text-align: justify;
+  overflow-wrap: break-word;
 }
-._borderLine_18bvw_111 {
+._borderLine_1p77i_119 {
   position: absolute;
   top: 3%;
   bottom: 0%;
@@ -58,7 +61,7 @@ body {
 }
 .container {
   width: 80%;
-  height: 190vh;
+  height: 200vh;
   margin: auto;
   position: relative;
   background-color: #ffffff;

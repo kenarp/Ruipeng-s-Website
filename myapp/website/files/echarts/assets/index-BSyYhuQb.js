@@ -19587,12 +19587,12 @@ function J8(r) {
 var Od = Math.max,
   zd = Math.min,
   X1 = {};
-function eG(r) {
+function e7(r) {
   return we.extend(r);
 }
-var tG = D8;
-function rG(r, e) {
-  return tG(r, e);
+var t7 = D8;
+function r7(r, e) {
+  return t7(r, e);
 }
 function In(r, e) {
   X1[r] = e;
@@ -19636,7 +19636,7 @@ function vR(r, e) {
 function Dl(r, e) {
   return RE(r, r, { lineWidth: e }), r;
 }
-function nG(r) {
+function n7(r) {
   return NE(r.shape, r.shape, r.style), r;
 }
 var Wv = No;
@@ -19675,7 +19675,7 @@ function qp(r, e, t) {
 function LT(r) {
   return !r.isGroup;
 }
-function aG(r) {
+function a7(r) {
   return r.shape != null;
 }
 function Oc(r, e, t) {
@@ -19691,7 +19691,7 @@ function Oc(r, e, t) {
   }
   function a(o) {
     var s = { x: o.x, y: o.y, rotation: o.rotation };
-    return aG(o) && (s.shape = B({}, o.shape)), s;
+    return a7(o) && (s.shape = B({}, o.shape)), s;
   }
   var i = n(r);
   e.traverse(function (o) {
@@ -19712,7 +19712,7 @@ function dR(r, e) {
     return (a = Od(a, e.y)), (a = zd(a, e.y + e.height)), [n, a];
   });
 }
-function iG(r, e) {
+function i7(r, e) {
   var t = Od(r.x, e.x),
     n = zd(r.x + r.width, e.x + e.width),
     a = Od(r.y, e.y),
@@ -19740,7 +19740,7 @@ function pR(r, e, t, n, a, i, o, s) {
     f = o - a,
     c = s - i,
     h = Py(f, c, l, u);
-  if (oG(h)) return !1;
+  if (o7(h)) return !1;
   var v = r - a,
     d = e - i,
     p = Py(v, d, l, u) / h;
@@ -19751,7 +19751,7 @@ function pR(r, e, t, n, a, i, o, s) {
 function Py(r, e, t, n) {
   return r * n - t * e;
 }
-function oG(r) {
+function o7(r) {
   return r <= 1e-6 && r >= -1e-6;
 }
 function Xl(r) {
@@ -19822,10 +19822,10 @@ const Vc = Object.freeze(
       Text: ke,
       applyTransform: kn,
       clipPointsByRect: dR,
-      clipRectByRect: iG,
+      clipRectByRect: i7,
       createIcon: zc,
-      extendPath: rG,
-      extendShape: eG,
+      extendPath: r7,
+      extendShape: e7,
       getShapeClass: bS,
       getTransform: jo,
       groupTransition: Oc,
@@ -19843,7 +19843,7 @@ const Vc = Object.freeze(
       setTooltipConfig: Xl,
       subPixelOptimize: Wv,
       subPixelOptimizeLine: Dl,
-      subPixelOptimizeRect: nG,
+      subPixelOptimizeRect: n7,
       transformDirection: qp,
       traverseElements: Ui,
       updateProps: De,
@@ -19950,7 +19950,7 @@ function St(r, e) {
 }
 function Be(r, e, t, n, a) {
   var i = {};
-  return sG(i, r, t, n, a), e && B(i, e), i;
+  return s7(i, r, t, n, a), e && B(i, e), i;
 }
 function Vd(r, e, t) {
   e = e || {};
@@ -19971,11 +19971,11 @@ function Vd(r, e, t) {
     n
   );
 }
-function sG(r, e, t, n, a) {
+function s7(r, e, t, n, a) {
   t = t || Qp;
   var i = e.ecModel,
     o = i && i.option.textStyle,
-    s = lG(e),
+    s = l7(e),
     l;
   if (s) {
     l = {};
@@ -19991,7 +19991,7 @@ function sG(r, e, t, n, a) {
   var h = e.get("minMargin");
   h != null && (r.margin = h), NT(r, e, o, t, n, a, !0, !1);
 }
-function lG(r) {
+function l7(r) {
   for (var e; r && r !== r.ecModel; ) {
     var t = (r.option || Qp).rich;
     if (t) {
@@ -20129,7 +20129,7 @@ function _R(r, e, t, n, a) {
   (r.percent = 0),
     (i.prevValue == null ? We : De)(r, { percent: 1 }, n, e, null, u);
 }
-var uG = ["textStyle", "color"],
+var u7 = ["textStyle", "color"],
   Ey = [
     "fontStyle",
     "fontWeight",
@@ -20143,12 +20143,12 @@ var uG = ["textStyle", "color"],
     "overflow",
   ],
   Ry = new ke(),
-  fG = (function () {
+  f7 = (function () {
     function r() {}
     return (
       (r.prototype.getTextColor = function (e) {
         var t = this.ecModel;
-        return this.getShallow("color") || (!e && t ? t.get(uG) : null);
+        return this.getShallow("color") || (!e && t ? t.get(u7) : null);
       }),
       (r.prototype.getFont = function () {
         return yR(
@@ -20178,7 +20178,7 @@ var uG = ["textStyle", "color"],
       r
     );
   })();
-const cG = fG;
+const c7 = f7;
 var wR = [
     ["lineWidth", "width"],
     ["stroke", "color"],
@@ -20193,12 +20193,12 @@ var wR = [
     ["lineJoin", "join"],
     ["miterLimit"],
   ],
-  hG = os(wR),
-  vG = (function () {
+  h7 = os(wR),
+  v7 = (function () {
     function r() {}
     return (
       (r.prototype.getLineStyle = function (e) {
-        return hG(this, e);
+        return h7(this, e);
       }),
       r
     );
@@ -20218,12 +20218,12 @@ var wR = [
     ["lineJoin", "borderJoin"],
     ["miterLimit", "borderMiterLimit"],
   ],
-  dG = os(SR),
-  pG = (function () {
+  d7 = os(SR),
+  p7 = (function () {
     function r() {}
     return (
       (r.prototype.getItemStyle = function (e, t) {
-        return dG(this, e, t);
+        return d7(this, e, t);
       }),
       r
     );
@@ -20307,16 +20307,16 @@ var wR = [
   })();
 cS(ps);
 yF(ps);
-ht(ps, vG);
-ht(ps, pG);
+ht(ps, v7);
+ht(ps, p7);
 ht(ps, xF);
-ht(ps, cG);
+ht(ps, c7);
 const Fe = ps;
-var gG = Math.round(Math.random() * 10);
+var g7 = Math.round(Math.random() * 10);
 function jl(r) {
-  return [r || "", gG++].join("_");
+  return [r || "", g7++].join("_");
 }
-function yG(r) {
+function y7(r) {
   var e = {};
   (r.registerSubTypeDefaulter = function (t, n) {
     var a = Xn(t);
@@ -20331,7 +20331,7 @@ function yG(r) {
       return a;
     });
 }
-function mG(r, e) {
+function m7(r, e) {
   r.topologicalTravel = function (i, o, s, l) {
     if (!i.length) return;
     var u = t(o),
@@ -20397,7 +20397,7 @@ function mG(r, e) {
 function Yi(r, e) {
   return de(de({}, r, !0), e, !0);
 }
-const _G = {
+const _7 = {
     time: {
       month: [
         "January",
@@ -20520,7 +20520,7 @@ const _G = {
       },
     },
   },
-  wG = {
+  w7 = {
     time: {
       month: [
         "一月",
@@ -20657,7 +20657,7 @@ var Bd = "ZH",
 function bR(r, e) {
   (r = r.toUpperCase()), (CS[r] = new Fe(e)), ($v[r] = e);
 }
-function SG(r) {
+function S7(r) {
   if (Y(r)) {
     var e = $v[r.toUpperCase()] || {};
     return r === Bd || r === TS ? ae(e) : de(ae(e), ae($v[ic]), !1);
@@ -20666,11 +20666,11 @@ function SG(r) {
 function j1(r) {
   return CS[r];
 }
-function xG() {
+function x7() {
   return CS[ic];
 }
-bR(TS, _G);
-bR(Bd, wG);
+bR(TS, _7);
+bR(Bd, w7);
 var AS = 1e3,
   kS = AS * 60,
   Tf = kS * 60,
@@ -20730,10 +20730,10 @@ function ml(r) {
       return r;
   }
 }
-function bG(r) {
+function b7(r) {
   return r === ml(r);
 }
-function TG(r) {
+function T7(r) {
   switch (r) {
     case "year":
     case "month":
@@ -20756,7 +20756,7 @@ function Jp(r, e, t, n) {
     h = a[tg(t)](),
     v = a[rg(t)](),
     d = a[ng(t)](),
-    p = n instanceof Fe ? n : j1(n || xR) || xG(),
+    p = n instanceof Fe ? n : j1(n || xR) || x7(),
     g = p.getModel("time"),
     y = g.get("month"),
     m = g.get("monthAbbr"),
@@ -20786,7 +20786,7 @@ function Jp(r, e, t, n) {
     .replace(/{SSS}/g, Ua(d, 3))
     .replace(/{S}/g, d + "");
 }
-function CG(r, e, t, n, a) {
+function C7(r, e, t, n, a) {
   var i = null;
   if (Y(t)) i = t;
   else if (J(t)) i = t(r.value, e, { level: r.level });
@@ -20887,7 +20887,7 @@ function rg(r) {
 function ng(r) {
   return r ? "getUTCMilliseconds" : "getMilliseconds";
 }
-function AG(r) {
+function A7(r) {
   return r ? "setUTCFullYear" : "setFullYear";
 }
 function AR(r) {
@@ -20965,7 +20965,7 @@ function RR(r, e, t) {
     }
   return r;
 }
-function kG(r, e, t) {
+function k7(r, e, t) {
   return (
     k(e, function (n, a) {
       r = r.replace("{" + a + "}", t ? pr(n) : n);
@@ -20973,7 +20973,7 @@ function kG(r, e, t) {
     r
   );
 }
-function MG(r, e) {
+function M7(r, e) {
   var t = Y(r) ? { color: r, extraCssText: e } : r || {},
     n = t.color,
     a = t.type;
@@ -21054,7 +21054,7 @@ function DS(r, e, t, n, a) {
 var Ko = DS;
 se(DS, "vertical");
 se(DS, "horizontal");
-function DG(r, e, t) {
+function D7(r, e, t) {
   var n = e.width,
     a = e.height,
     i = W(r.left, n),
@@ -21144,7 +21144,7 @@ function ag(r, e, t, n, a, i) {
     !0
   );
 }
-function LG(r, e) {
+function L7(r, e) {
   return r[zo[e][0]] != null || (r[zo[e][1]] != null && r[zo[e][2]] != null);
 }
 function sc(r) {
@@ -21209,7 +21209,7 @@ function OR(r, e) {
     r
   );
 }
-var IG = Ce(),
+var I7 = Ce(),
   Ql = (function (r) {
     N(e, r);
     function e(t, n, a) {
@@ -21237,7 +21237,7 @@ var IG = Ce(),
       (e.prototype.getDefaultOption = function () {
         var t = this.constructor;
         if (!dF(t)) return t.defaultOption;
-        var n = IG(this);
+        var n = I7(this);
         if (!n.defaultOption) {
           for (var a = [], i = t; i; ) {
             var o = i.prototype.defaultOption;
@@ -21289,9 +21289,9 @@ var IG = Ce(),
   })(Fe);
 CE(Ql, Fe);
 Hp(Ql);
-yG(Ql);
-mG(Ql, PG);
-function PG(r) {
+y7(Ql);
+m7(Ql, P7);
+function P7(r) {
   var e = [];
   return (
     k(Ql.getClassesByMainType(r), function (t) {
@@ -21308,7 +21308,7 @@ const Ae = Ql;
 var zR = "";
 typeof navigator < "u" && (zR = navigator.platform || "");
 var Ds = "rgba(0, 0, 0, 0.2)";
-const EG = {
+const E7 = {
   darkMode: "auto",
   colorBy: "series",
   color: [
@@ -21416,7 +21416,7 @@ var VR = j([
   Jl = "row",
   Lt = { Must: 1, Might: 2, Not: 3 },
   FR = Ce();
-function RG(r) {
+function R7(r) {
   FR(r).datasetMap = j();
 }
 function GR(r, e, t) {
@@ -21506,7 +21506,7 @@ function IS(r) {
       ft
     ).models[0];
 }
-function NG(r) {
+function N7(r) {
   return !r.get("transform", !0) && !r.get("fromTransformResult", !0)
     ? []
     : Ec(
@@ -21578,17 +21578,17 @@ function WR(r, e, t, n, a, i) {
   return Lt.Not;
 }
 var q1 = j();
-function OG(r, e) {
+function O7(r, e) {
   nr(q1.get(r) == null && e), q1.set(r, e);
 }
-function zG(r, e, t) {
+function z7(r, e, t) {
   var n = q1.get(e);
   if (!n) return t;
   var a = n(r);
   return a ? t.concat(a) : t;
 }
 var FT = Ce(),
-  VG = Ce(),
+  V7 = Ce(),
   PS = (function () {
     function r() {}
     return (
@@ -21598,16 +21598,16 @@ var FT = Ce(),
         return $R(this, FT, a, i, e, t, n);
       }),
       (r.prototype.clearColorPalette = function () {
-        FG(this, FT);
+        F7(this, FT);
       }),
       r
     );
   })();
 function Q1(r, e, t, n) {
   var a = Ne(r.get(["aria", "decal", "decals"]));
-  return $R(r, VG, a, null, e, t, n);
+  return $R(r, V7, a, null, e, t, n);
 }
-function BG(r, e) {
+function B7(r, e) {
   for (var t = r.length, n = 0; n < t; n++) if (r[n].length > e) return r[n];
   return r[t - 1];
 }
@@ -21617,20 +21617,20 @@ function $R(r, e, t, n, a, i, o) {
     l = s.paletteIdx || 0,
     u = (s.paletteNameMap = s.paletteNameMap || {});
   if (u.hasOwnProperty(a)) return u[a];
-  var f = o == null || !n ? t : BG(n, o);
+  var f = o == null || !n ? t : B7(n, o);
   if (((f = f || t), !(!f || !f.length))) {
     var c = f[l];
     return a && (u[a] = c), (s.paletteIdx = (l + 1) % f.length), c;
   }
 }
-function FG(r, e) {
+function F7(r, e) {
   (e(r).paletteIdx = 0), (e(r).paletteNameMap = {});
 }
 var Oh,
   wu,
   GT,
   HT = "\0_ec_inner",
-  GG = 1,
+  G7 = 1,
   ES = (function (r) {
     N(e, r);
     function e() {
@@ -21691,7 +21691,7 @@ var Oh,
           s = [],
           l = j(),
           u = n && n.replaceMergeMainTypeMap;
-        RG(this),
+        R7(this),
           k(t, function (c, h) {
             c != null &&
               (Ae.hasClass(h)
@@ -21704,7 +21704,7 @@ var Oh,
             }),
           Ae.topologicalTravel(s, Ae.getAllClassMainTypes(), f, this);
         function f(c) {
-          var h = zG(this, c, Ne(t[c])),
+          var h = z7(this, c, Ne(t[c])),
             v = i.get(c),
             d = v
               ? u && u.get(c)
@@ -21943,7 +21943,7 @@ var Oh,
         }),
           Ae.topologicalTravel(a, Ae.getAllClassMainTypes(), function (i) {
             k(n.get(i), function (o) {
-              o && (i !== "series" || !HG(o, t)) && o.restoreData();
+              o && (i !== "series" || !H7(o, t)) && o.restoreData();
             });
           });
       }),
@@ -21958,20 +21958,20 @@ var Oh,
           (wu = function (t) {}),
           (GT = function (t, n) {
             (t.option = {}),
-              (t.option[HT] = GG),
+              (t.option[HT] = G7),
               (t._componentsMap = j({ series: [] })),
               (t._componentsCount = j());
             var a = n.aria;
             te(a) && a.enabled == null && (a.enabled = !0),
-              WG(n, t._theme.option),
-              de(n, EG, !1),
+              W7(n, t._theme.option),
+              de(n, E7, !1),
               t._mergeOption(n, null);
           });
       })()),
       e
     );
   })(Fe);
-function HG(r, e) {
+function H7(r, e) {
   if (e) {
     var t = e.seriesIndex,
       n = e.seriesId,
@@ -21983,7 +21983,7 @@ function HG(r, e) {
     );
   }
 }
-function WG(r, e) {
+function W7(r, e) {
   var t = r.color && !r.colorLayer;
   k(e, function (n, a) {
     (a === "colorLayer" && t) ||
@@ -22032,7 +22032,7 @@ function UT(r) {
   );
 }
 ht(ES, PS);
-var $G = [
+var $7 = [
     "getDom",
     "getZr",
     "getWidth",
@@ -22049,10 +22049,10 @@ var $G = [
     "getId",
     "updateLabelLayout",
   ],
-  UG = (function () {
+  U7 = (function () {
     function r(e) {
       k(
-        $G,
+        $7,
         function (t) {
           this[t] = X(e[t], e);
         },
@@ -22061,7 +22061,7 @@ var $G = [
     }
     return r;
   })();
-const UR = UG;
+const UR = U7;
 var zy = {},
   Bc = (function () {
     function r() {
@@ -22093,8 +22093,8 @@ var zy = {},
       r
     );
   })(),
-  YG = /^(min|max)?(.+)$/,
-  XG = (function () {
+  Y7 = /^(min|max)?(.+)$/,
+  X7 = (function () {
     function r(e) {
       (this._timelineOptions = []),
         (this._mediaList = []),
@@ -22112,7 +22112,7 @@ var zy = {},
           })),
           (e = ae(e));
         var a = this._optionBackup,
-          i = ZG(e, t, !a);
+          i = Z7(e, t, !a);
         (this._newBaseOption = i.baseOption),
           a
             ? (i.timelineOptions.length &&
@@ -22149,11 +22149,11 @@ var zy = {},
           s = [];
         if (!a.length && !i) return s;
         for (var l = 0, u = a.length; l < u; l++)
-          jG(a[l].query, t, n) && o.push(l);
+          j7(a[l].query, t, n) && o.push(l);
         return (
           !o.length && i && (o = [-1]),
           o.length &&
-            !qG(o, this._currentMediaIndices) &&
+            !q7(o, this._currentMediaIndices) &&
             (s = G(o, function (f) {
               return ae(f === -1 ? i.option : a[f].option);
             })),
@@ -22164,7 +22164,7 @@ var zy = {},
       r
     );
   })();
-function ZG(r, e, t) {
+function Z7(r, e, t) {
   var n = [],
     a,
     i,
@@ -22201,28 +22201,28 @@ function ZG(r, e, t) {
     mediaList: n,
   };
 }
-function jG(r, e, t) {
+function j7(r, e, t) {
   var n = { width: e, height: t, aspectratio: e / t },
     a = !0;
   return (
     k(r, function (i, o) {
-      var s = o.match(YG);
+      var s = o.match(Y7);
       if (!(!s || !s[1] || !s[2])) {
         var l = s[1],
           u = s[2].toLowerCase();
-        KG(n[u], i, l) || (a = !1);
+        K7(n[u], i, l) || (a = !1);
       }
     }),
     a
   );
 }
-function KG(r, e, t) {
+function K7(r, e, t) {
   return t === "min" ? r >= e : t === "max" ? r <= e : r === e;
 }
-function qG(r, e) {
+function q7(r, e) {
   return r.join(",") === e.join(",");
 }
-const QG = XG;
+const Q7 = X7;
 var hn = k,
   lc = te,
   YT = [
@@ -22286,7 +22286,7 @@ function lt(r, e) {
 function Hr(r) {
   r && (Ju(r), lt(r, "label"), r.emphasis && lt(r.emphasis, "label"));
 }
-function JG(r) {
+function J7(r) {
   if (lc(r)) {
     Vy(r),
       Ju(r),
@@ -22334,9 +22334,9 @@ function ca(r) {
 function XT(r) {
   return (F(r) ? r[0] : r) || {};
 }
-function e7(r, e) {
+function eG(r, e) {
   hn(ca(r.series), function (n) {
-    lc(n) && JG(n);
+    lc(n) && J7(n);
   });
   var t = [
     "xAxis",
@@ -22394,7 +22394,7 @@ function e7(r, e) {
     lt(XT(r.axisPointer), "label"),
     lt(XT(r.tooltip).axisPointer, "label");
 }
-function t7(r, e) {
+function tG(r, e) {
   for (
     var t = e.split(","), n = r, a = 0;
     a < t.length && ((n = n && n[t[a]]), n != null);
@@ -22402,24 +22402,24 @@ function t7(r, e) {
   );
   return n;
 }
-function r7(r, e, t, n) {
+function rG(r, e, t, n) {
   for (var a = e.split(","), i = r, o, s = 0; s < a.length - 1; s++)
     (o = a[s]), i[o] == null && (i[o] = {}), (i = i[o]);
   (n || i[a[s]] == null) && (i[a[s]] = t);
 }
 function ZT(r) {
   r &&
-    k(n7, function (e) {
+    k(nG, function (e) {
       e[0] in r && !(e[1] in r) && (r[e[1]] = r[e[0]]);
     });
 }
-var n7 = [
+var nG = [
     ["x", "left"],
     ["y", "top"],
     ["x2", "right"],
     ["y2", "bottom"],
   ],
-  a7 = [
+  aG = [
     "grid",
     "geo",
     "parallel",
@@ -22454,7 +22454,7 @@ function jT(r) {
 function KT(r) {
   r && r.downplay && !r.blur && (r.blur = r.downplay);
 }
-function i7(r) {
+function iG(r) {
   r &&
     r.focusNodeAdjacency != null &&
     ((r.emphasis = r.emphasis || {}),
@@ -22465,7 +22465,7 @@ function YR(r, e) {
     for (var t = 0; t < r.length; t++) e(r[t]), r[t] && YR(r[t].children, e);
 }
 function XR(r, e) {
-  e7(r, e),
+  eG(r, e),
     (r.series = Ne(r.series)),
     k(r.series, function (t) {
       if (te(t)) {
@@ -22480,8 +22480,8 @@ function XR(r, e) {
             (t.emphasis.scaleSize = null) &&
               (t.emphasis.scaleSize = t.hoverOffset));
         } else if (n === "gauge") {
-          var o = t7(t, "pointer.color");
-          o != null && r7(t, "itemStyle.color", o);
+          var o = tG(t, "pointer.color");
+          o != null && rG(t, "itemStyle.color", o);
         } else if (n === "bar") {
           Su(t), Su(t.backgroundStyle), Su(t.emphasis);
           var a = t.data;
@@ -22497,7 +22497,7 @@ function XR(r, e) {
             YR(t.data, KT);
         } else
           n === "graph" || n === "sankey"
-            ? i7(t)
+            ? iG(t)
             : n === "map" &&
               (t.mapType && !t.map && (t.map = t.mapType),
               t.mapLocation && ee(t, t.mapLocation));
@@ -22510,7 +22510,7 @@ function XR(r, e) {
       }
     }),
     r.dataRange && (r.visualMap = r.dataRange),
-    k(a7, function (t) {
+    k(aG, function (t) {
       var n = r[t];
       n &&
         (F(n) || (n = [n]),
@@ -22519,7 +22519,7 @@ function XR(r, e) {
         }));
     });
 }
-function o7(r) {
+function oG(r) {
   var e = j();
   r.eachSeries(function (t) {
     var n = t.get("stack");
@@ -22542,9 +22542,9 @@ function o7(r) {
         a.push(o);
     }
   }),
-    e.each(s7);
+    e.each(sG);
 }
-function s7(r) {
+function sG(r) {
   k(r, function (e, t) {
     var n = [],
       a = [NaN, NaN],
@@ -22600,7 +22600,7 @@ function RS(r) {
 function J1(r, e, t) {
   t = t || ZR(r);
   var n = e.seriesLayoutBy,
-    a = u7(r, t, n, e.sourceHeader, e.dimensions),
+    a = uG(r, t, n, e.sourceHeader, e.dimensions),
     i = new ig({
       data: r,
       sourceFormat: t,
@@ -22615,7 +22615,7 @@ function J1(r, e, t) {
 function NS(r) {
   return new ig({ data: r, sourceFormat: Pr(r) ? ki : ln });
 }
-function l7(r) {
+function lG(r) {
   return new ig({
     data: r.data,
     sourceFormat: r.sourceFormat,
@@ -22651,7 +22651,7 @@ function ZR(r) {
   }
   return e;
 }
-function u7(r, e, t, n, a) {
+function uG(r, e, t, n, a) {
   var i, o;
   if (!r)
     return {
@@ -22683,7 +22683,7 @@ function u7(r, e, t, n, a) {
           1 / 0
         )),
       (i = a ? a.length : t === Jl ? s.length : s[0] ? s[0].length : null);
-  } else if (e === un) a || (a = f7(r));
+  } else if (e === un) a || (a = fG(r));
   else if (e === sa)
     a ||
       ((a = []),
@@ -22696,7 +22696,7 @@ function u7(r, e, t, n, a) {
   }
   return { startIndex: o, dimensionsDefine: qT(a), dimensionsDetectedCount: i };
 }
-function f7(r) {
+function fG(r) {
   for (var e = 0, t; e < r.length && !(t = r[e++]); );
   if (t) return xe(t);
 }
@@ -22846,7 +22846,7 @@ var uo,
   tC = function (r, e, t, n) {
     return r[n];
   },
-  c7 =
+  cG =
     ((uo = {}),
     (uo[Xt + "_" + ea] = function (r, e, t, n) {
       return r[n + e];
@@ -22871,13 +22871,13 @@ var uo,
     (uo[ln] = tC),
     uo);
 function qR(r, e) {
-  var t = c7[OS(r, e)];
+  var t = cG[OS(r, e)];
   return t;
 }
 var rC = function (r, e, t) {
     return r.length;
   },
-  h7 =
+  hG =
     ((fo = {}),
     (fo[Xt + "_" + ea] = function (r, e, t) {
       return Math.max(0, r.length - e);
@@ -22895,13 +22895,13 @@ var rC = function (r, e, t) {
     (fo[ln] = rC),
     fo);
 function QR(r, e) {
-  var t = h7[OS(r, e)];
+  var t = hG[OS(r, e)];
   return t;
 }
 var Fy = function (r, e, t) {
     return r[e];
   },
-  v7 =
+  vG =
     ((co = {}),
     (co[Xt] = Fy),
     (co[un] = function (r, e, t) {
@@ -22915,7 +22915,7 @@ var Fy = function (r, e, t) {
     (co[ki] = Fy),
     co);
 function JR(r) {
-  var e = v7[r];
+  var e = vG[r];
   return e;
 }
 function OS(r, e) {
@@ -22938,7 +22938,7 @@ function Ll(r, e, t) {
     }
   }
 }
-var d7 = /\{@(.+?)\}/g,
+var dG = /\{@(.+?)\}/g,
   zS = (function () {
     function r() {}
     return (
@@ -22991,7 +22991,7 @@ var d7 = /\{@(.+?)\}/g,
         if (J(i)) return (l.status = t), (l.dimensionIndex = a), i(l);
         if (Y(i)) {
           var f = RR(i, l);
-          return f.replace(d7, function (c, h) {
+          return f.replace(dG, function (c, h) {
             var v = h.length,
               d = h;
             d.charAt(0) === "[" &&
@@ -23018,9 +23018,9 @@ function nC(r) {
   return te(r) ? r.type && (t = r) : (e = r), { text: e, frag: t };
 }
 function Cf(r) {
-  return new p7(r);
+  return new pG(r);
 }
-var p7 = (function () {
+var pG = (function () {
     function r(e) {
       (e = e || {}),
         (this._reset = e.reset),
@@ -23163,7 +23163,7 @@ function Mi(r, e) {
     : (t === "time" && !Me(r) && r != null && r !== "-" && (r = +aa(r)),
       r == null || r === "" ? NaN : +r);
 }
-var g7 = j({
+var gG = j({
   number: function (r) {
     return parseFloat(r);
   },
@@ -23175,7 +23175,7 @@ var g7 = j({
   },
 });
 function e5(r) {
-  return g7.get(r);
+  return gG.get(r);
 }
 var t5 = {
     lt: function (r, e) {
@@ -23191,7 +23191,7 @@ var t5 = {
       return r >= e;
     },
   },
-  y7 = (function () {
+  yG = (function () {
     function r(e, t) {
       if (!Me(t)) {
         var n = "";
@@ -23233,7 +23233,7 @@ var t5 = {
       r
     );
   })(),
-  m7 = (function () {
+  mG = (function () {
     function r(e, t) {
       (this._rval = t),
         (this._isEQ = e),
@@ -23254,14 +23254,14 @@ var t5 = {
       r
     );
   })();
-function _7(r, e) {
+function _G(r, e) {
   return r === "eq" || r === "ne"
-    ? new m7(r === "eq", e)
+    ? new mG(r === "eq", e)
     : Z(t5, r)
-    ? new y7(r, e)
+    ? new yG(r, e)
     : null;
 }
-var w7 = (function () {
+var wG = (function () {
   function r() {}
   return (
     (r.prototype.getRawData = function () {
@@ -23282,8 +23282,8 @@ var w7 = (function () {
     r
   );
 })();
-function S7(r, e) {
-  var t = new w7(),
+function SG(r, e) {
+  var t = new wG(),
     n = r.data,
     a = (t.sourceFormat = r.sourceFormat),
     i = r.startIndex,
@@ -23307,8 +23307,8 @@ function S7(r, e) {
     ((t.getRawDataItem = function (p) {
       return c(n, i, s, p);
     }),
-    (t.getRawData = X(x7, null, r))),
-    (t.cloneRawData = X(b7, null, r));
+    (t.getRawData = X(xG, null, r))),
+    (t.cloneRawData = X(bG, null, r));
   var h = QR(a, ea);
   t.count = X(h, null, n, i, s);
   var v = JR(a);
@@ -23323,12 +23323,12 @@ function S7(r, e) {
     }
   });
   return (
-    (t.getDimensionInfo = X(T7, null, s, l)),
-    (t.cloneAllDimensionInfo = X(C7, null, s)),
+    (t.getDimensionInfo = X(TG, null, s, l)),
+    (t.cloneAllDimensionInfo = X(CG, null, s)),
     t
   );
 }
-function x7(r) {
+function xG(r) {
   var e = r.sourceFormat;
   if (!VS(e)) {
     var t = "";
@@ -23336,7 +23336,7 @@ function x7(r) {
   }
   return r.data;
 }
-function b7(r) {
+function bG(r) {
   var e = r.sourceFormat,
     t = r.data;
   if (!VS(e)) {
@@ -23351,17 +23351,17 @@ function b7(r) {
     return a;
   }
 }
-function T7(r, e, t) {
+function TG(r, e, t) {
   if (t != null) {
     if (Me(t) || (!isNaN(t) && !Z(e, t))) return r[t];
     if (Z(e, t)) return e[t];
   }
 }
-function C7(r) {
+function CG(r) {
   return ae(r);
 }
 var n5 = j();
-function A7(r) {
+function AG(r) {
   r = ae(r);
   var e = r.type,
     t = "";
@@ -23373,25 +23373,25 @@ function A7(r) {
     (r.__isBuiltIn = a),
     n5.set(e, r);
 }
-function k7(r, e, t) {
+function kG(r, e, t) {
   var n = Ne(r),
     a = n.length,
     i = "";
   a || Le(i);
   for (var o = 0, s = a; o < s; o++) {
     var l = n[o];
-    (e = M7(l, e)), o !== s - 1 && (e.length = Math.max(e.length, 1));
+    (e = MG(l, e)), o !== s - 1 && (e.length = Math.max(e.length, 1));
   }
   return e;
 }
-function M7(r, e, t, n) {
+function MG(r, e, t, n) {
   var a = "";
   e.length || Le(a), te(r) || Le(a);
   var i = r.type,
     o = n5.get(i);
   o || Le(a);
   var s = G(e, function (u) {
-      return S7(u, o);
+      return SG(u, o);
     }),
     l = Ne(
       o.transform({ upstream: s[0], upstreamList: s, config: ae(r.config) })
@@ -23419,19 +23419,19 @@ function VS(r) {
   return r === Xt || r === un;
 }
 var og = "undefined",
-  D7 = typeof Uint32Array === og ? Array : Uint32Array,
-  L7 = typeof Uint16Array === og ? Array : Uint16Array,
+  DG = typeof Uint32Array === og ? Array : Uint32Array,
+  LG = typeof Uint16Array === og ? Array : Uint16Array,
   a5 = typeof Int32Array === og ? Array : Int32Array,
   iC = typeof Float64Array === og ? Array : Float64Array,
   i5 = { float: iC, int: a5, ordinal: Array, number: Array, time: iC },
   Gy;
 function xu(r) {
-  return r > 65535 ? D7 : L7;
+  return r > 65535 ? DG : LG;
 }
 function Ls() {
   return [1 / 0, -1 / 0];
 }
-function I7(r) {
+function IG(r) {
   var e = r.constructor;
   return e === Array ? r.slice() : new e(r);
 }
@@ -23971,7 +23971,7 @@ var e_ = (function () {
             );
         if (i)
           for (var o = 0; o < a.length; o++)
-            n._chunks[o] = i[o] ? I7(a[o]) : a[o];
+            n._chunks[o] = i[o] ? IG(a[o]) : a[o];
         else n._chunks = a;
         return (
           this._copyCommonProps(n),
@@ -24121,8 +24121,8 @@ var e_ = (function () {
             a != null && !f && lC(c), s.push(f), l.push(u._getVersionSign());
           }),
           n
-            ? (o = k7(n, s, { datasetIndex: t.componentIndex }))
-            : a != null && (o = [l7(s[0])]),
+            ? (o = kG(n, s, { datasetIndex: t.componentIndex }))
+            : a != null && (o = [lG(s[0])]),
           { sourceList: o, upstreamSignList: l }
         );
       }),
@@ -24172,7 +24172,7 @@ var e_ = (function () {
           var t = IS(e);
           return t ? [t.getSourceManager()] : [];
         } else
-          return G(NG(e), function (n) {
+          return G(N7(e), function (n) {
             return n.getSourceManager();
           });
       }),
@@ -24236,8 +24236,8 @@ function l5(r, e) {
         valueStyle: { fontSize: o, fill: i, fontWeight: s },
       };
 }
-var P7 = [0, 10, 20, 30],
-  E7 = [
+var PG = [0, 10, 20, 30],
+  EG = [
     "",
     `
 `,
@@ -24256,7 +24256,7 @@ function t_(r) {
   return r.type === "section";
 }
 function u5(r) {
-  return t_(r) ? R7 : N7;
+  return t_(r) ? RG : NG;
 }
 function f5(r) {
   if (t_(r)) {
@@ -24273,9 +24273,9 @@ function f5(r) {
   }
   return 0;
 }
-function R7(r, e, t, n) {
+function RG(r, e, t, n) {
   var a = e.noHeader,
-    i = O7(f5(e)),
+    i = OG(f5(e)),
     o = [],
     s = e.blocks || [];
   nr(!s || F(s)), (s = s || []);
@@ -24311,7 +24311,7 @@ function R7(r, e, t, n) {
     ? c5(r, h, v) + i.richText + c
     : r_('<div style="' + v + ";" + s5 + ';">' + pr(h) + "</div>" + c, t);
 }
-function N7(r, e, t, n) {
+function NG(r, e, t, n) {
   var a = r.renderMode,
     i = e.noName,
     o = e.noValue,
@@ -24346,9 +24346,9 @@ function N7(r, e, t, n) {
       m = y.nameStyle,
       _ = y.valueStyle;
     return a === "richText"
-      ? (s ? "" : c) + (i ? "" : c5(r, h, m)) + (o ? "" : B7(r, d, p, g, _))
+      ? (s ? "" : c) + (i ? "" : c5(r, h, m)) + (o ? "" : BG(r, d, p, g, _))
       : r_(
-          (s ? "" : c) + (i ? "" : z7(h, !s, m)) + (o ? "" : V7(d, p, g, _)),
+          (s ? "" : c) + (i ? "" : zG(h, !s, m)) + (o ? "" : VG(d, p, g, _)),
           t
         );
   }
@@ -24366,19 +24366,19 @@ function uC(r, e, t, n, a, i) {
     return o(s, r, 0, i);
   }
 }
-function O7(r) {
-  return { html: P7[r], richText: E7[r] };
+function OG(r) {
+  return { html: PG[r], richText: EG[r] };
 }
 function r_(r, e) {
   var t = '<div style="clear:both"></div>',
     n = "margin: " + e + "px 0 0";
   return '<div style="' + n + ";" + s5 + ';">' + r + t + "</div>";
 }
-function z7(r, e, t) {
+function zG(r, e, t) {
   var n = e ? "margin-left:2px" : "";
   return '<span style="' + t + ";" + n + '">' + pr(r) + "</span>";
 }
-function V7(r, e, t, n) {
+function VG(r, e, t, n) {
   var a = t ? "10px" : "20px",
     i = e ? "float:right;margin-left:" + a : "";
   return (
@@ -24397,7 +24397,7 @@ function V7(r, e, t, n) {
 function c5(r, e, t) {
   return r.markupStyleCreator.wrapRichTextStyle(e, t);
 }
-function B7(r, e, t, n, a) {
+function BG(r, e, t, n, a) {
   var i = [a],
     o = n ? 10 : 20;
   return (
@@ -24424,7 +24424,7 @@ var Hy = (function () {
     }),
     (r.prototype.makeTooltipMarker = function (e, t, n) {
       var a = n === "richText" ? this._generateStyleName() : null,
-        i = MG({ color: t, type: e, renderMode: n, markerId: a });
+        i = M7({ color: t, type: e, renderMode: n, markerId: a });
       return Y(i) ? i : ((this.richTextStyles[a] = i.style), i.content);
     }),
     (r.prototype.wrapRichTextStyle = function (e, t) {
@@ -24455,7 +24455,7 @@ function d5(r) {
     h,
     v;
   if (o > 1 || (l && !o)) {
-    var d = F7(s, e, t, i, u);
+    var d = FG(s, e, t, i, u);
     (f = d.inlineValues),
       (c = d.inlineValueTypes),
       (h = d.blocks),
@@ -24484,7 +24484,7 @@ function d5(r) {
     ].concat(h || []),
   });
 }
-function F7(r, e, t, n, a) {
+function FG(r, e, t, n, a) {
   var i = e.getData(),
     o = ta(
       r,
@@ -24534,7 +24534,7 @@ var Yv = "__universalTransitionEnabled",
     return (
       (e.prototype.init = function (t, n, a) {
         (this.seriesIndex = this.componentIndex),
-          (this.dataTask = Cf({ count: H7, reset: W7 })),
+          (this.dataTask = Cf({ count: HG, reset: WG })),
           (this.dataTask.context = { model: this }),
           this.mergeDefaultAndTheme(t, a);
         var i = (Ya(this).sourceManager = new o5(this));
@@ -24762,9 +24762,9 @@ ht(sg, PS);
 CE(sg, Ae);
 function fC(r) {
   var e = r.name;
-  uS(r) || (r.name = G7(r) || e);
+  uS(r) || (r.name = GG(r) || e);
 }
-function G7(r) {
+function GG(r) {
   var e = r.getRawData(),
     t = e.mapDimensionsAll("seriesName"),
     n = [];
@@ -24776,24 +24776,24 @@ function G7(r) {
     n.join(" ")
   );
 }
-function H7(r) {
+function HG(r) {
   return r.model.getRawData().count();
 }
-function W7(r) {
+function WG(r) {
   var e = r.model;
-  return e.setData(e.getRawData().cloneShallow()), $7;
+  return e.setData(e.getRawData().cloneShallow()), $G;
 }
-function $7(r, e) {
+function $G(r, e) {
   e.outputData &&
     r.end > e.outputData.count() &&
     e.model.getRawData().cloneShallow(e.outputData);
 }
 function cC(r, e) {
   k(Td(r.CHANGABLE_METHODS, r.DOWNSAMPLE_METHODS), function (t) {
-    r.wrapMethod(t, se(U7, e));
+    r.wrapMethod(t, se(UG, e));
   });
 }
-function U7(r, e) {
+function UG(r, e) {
   var t = n_(r);
   return t && t.setOutputEnd((e || this).count()), e;
 }
@@ -24845,12 +24845,12 @@ function eu() {
   };
 }
 var p5 = Ce(),
-  Y7 = eu(),
+  YG = eu(),
   FS = (function () {
     function r() {
       (this.group = new ie()),
         (this.uid = jl("viewChart")),
-        (this.renderTask = Cf({ plan: X7, reset: Z7 })),
+        (this.renderTask = Cf({ plan: XG, reset: ZG })),
         (this.renderTask.context = { view: this });
     }
     return (
@@ -24906,10 +24906,10 @@ function vC(r, e, t) {
 }
 cS(FS);
 Hp(FS);
-function X7(r) {
-  return Y7(r.model);
+function XG(r) {
+  return YG(r.model);
 }
-function Z7(r) {
+function ZG(r) {
   var e = r.model,
     t = r.ecModel,
     n = r.api,
@@ -24918,9 +24918,9 @@ function Z7(r) {
     o = r.view,
     s = a && p5(a).updateMethod,
     l = i ? "incrementalPrepareRender" : s && o[s] ? s : "render";
-  return l !== "render" && o[l](e, t, n, a), j7[l];
+  return l !== "render" && o[l](e, t, n, a), jG[l];
 }
-var j7 = {
+var jG = {
   incrementalPrepareRender: {
     progress: function (r, e) {
       e.view.incrementalRender(r, e.model, e.ecModel, e.api, e.payload);
@@ -24993,16 +24993,16 @@ function uc(r, e) {
 }
 var gC = Ce(),
   yC = { itemStyle: os(SR, !0), lineStyle: os(wR, !0) },
-  K7 = { lineStyle: "stroke", itemStyle: "fill" };
+  KG = { lineStyle: "stroke", itemStyle: "fill" };
 function g5(r, e) {
   var t = r.visualStyleMapper || yC[e];
   return t || (console.warn("Unknown style type '" + e + "'."), yC.itemStyle);
 }
 function y5(r, e) {
-  var t = r.visualDrawType || K7[e];
+  var t = r.visualDrawType || KG[e];
   return t || (console.warn("Unknown style type '" + e + "'."), "fill");
 }
-var q7 = {
+var qG = {
     createOnAllSeries: !0,
     performRawSeries: !0,
     reset: function (r, e) {
@@ -25041,7 +25041,7 @@ var q7 = {
     },
   },
   bu = new Fe(),
-  Q7 = {
+  QG = {
     createOnAllSeries: !0,
     performRawSeries: !0,
     reset: function (r, e) {
@@ -25070,7 +25070,7 @@ var q7 = {
       }
     },
   },
-  J7 = {
+  JG = {
     performRawSeries: !0,
     overallReset: function (r) {
       var e = j();
@@ -26855,7 +26855,7 @@ var Ps,
         (n = ae(n)),
         n && XR(n, !0),
         (i._theme = n),
-        (i._locale = SG(a.locale || xR)),
+        (i._locale = S7(a.locale || xR)),
         (i._coordSysMgr = new Bc());
       var f = (i._api = BC(i));
       function c(h, v) {
@@ -26940,7 +26940,7 @@ var Ps,
             (this[Ht] = !0),
             !this._model || n)
           ) {
-            var l = new QG(this._api),
+            var l = new Q7(this._api),
               u = this._theme,
               f = (this._model = new ES());
             (f.scheduler = this._scheduler),
@@ -28165,15 +28165,15 @@ function vH(r, e, t) {
   var n = U9("registerMap");
   n && n(r, e, t);
 }
-var dH = A7;
-ys($S, q7);
-ys(lg, Q7);
-ys(lg, J7);
+var dH = AG;
+ys($S, qG);
+ys(lg, QG);
+ys(lg, JG);
 ys($S, v9);
 ys(lg, d9);
 ys(R5, H9);
 U5(XR);
-Y5(Z9, o7);
+Y5(Z9, oG);
 X5("default", e9);
 la({ type: Xo, event: Xo, update: Xo }, st);
 la({ type: Gv, event: Gv, update: Gv }, st);
@@ -30199,7 +30199,7 @@ var XH = function (r, e, t, n) {
         var n = this.getSetting("useUTC");
         return Jp(
           t.value,
-          zT[TG(ml(this._minLevelUnit))] || zT.second,
+          zT[T7(ml(this._minLevelUnit))] || zT.second,
           n,
           this.getSetting("locale")
         );
@@ -30207,7 +30207,7 @@ var XH = function (r, e, t, n) {
       (e.prototype.getFormattedLabel = function (t, n, a) {
         var i = this.getSetting("useUTC"),
           o = this.getSetting("locale");
-        return CG(t, n, a, o, i);
+        return C7(t, n, a, o, i);
       }),
       (e.prototype.getTicks = function () {
         var t = this._interval,
@@ -30391,7 +30391,7 @@ function eW(r, e, t, n) {
             case "year":
               (E = Math.max(1, Math.round(e / Kr / 365))),
                 (O = MS(t)),
-                (V = AG(t));
+                (V = A7(t));
               break;
             case "half-year":
             case "quarter":
@@ -30431,7 +30431,7 @@ function eW(r, e, t, n) {
   }
   for (var u = [], f = [], c = 0, h = 0, v = 0; v < i.length && o++ < a; ++v) {
     var d = ml(i[v]);
-    if (bG(i[v])) {
+    if (b7(i[v])) {
       l(i[v], u[u.length - 1] || [], f);
       var p = i[v + 1] ? ml(i[v + 1]) : null;
       if (d !== p) {
@@ -43992,7 +43992,7 @@ var tZ = 8,
           var l = 0,
             u = t.emptyItemWidth,
             f = e.get(["breadcrumb", "height"]),
-            c = DG(t.pos, t.box),
+            c = D7(t.pos, t.box),
             h = t.totalWidth,
             v = t.renderList,
             d = a.getModel("itemStyle").getItemStyle(),
@@ -57653,7 +57653,7 @@ function jM(r, e) {
     n;
   F(t) ? (n = t) : (n = r.cellSize = [t, t]), n.length === 1 && (n[1] = n[0]);
   var a = G([0, 1], function (i) {
-    return LG(e, i) && (n[i] = "auto"), n[i] != null && n[i] !== "auto";
+    return L7(e, i) && (n[i] = "auto"), n[i] != null && n[i] !== "auto";
   });
   Oi(r, e, { type: "box", ignoreSize: a });
 }
@@ -57748,7 +57748,7 @@ var ete = (function (r) {
       return s;
     }),
     (e.prototype._formatterLabel = function (t, n) {
-      return Y(t) && t ? kG(t, n) : J(t) ? t(n) : n.nameMap;
+      return Y(t) && t ? k7(t, n) : J(t) ? t(n) : n.nameMap;
     }),
     (e.prototype._yearTextPositionControl = function (t, n, a, i, o) {
       var s = n[0],
@@ -60483,7 +60483,7 @@ function fre(r, e, t, n, a) {
         : !1
     );
 }
-OG("dataZoom", function (r) {
+O7("dataZoom", function (r) {
   var e = r.getComponent("toolbox", 0),
     t = ["feature", "dataZoom"];
   if (!e || e.get(t) == null) return;
@@ -67858,7 +67858,7 @@ function uie(r, e) {
       var f = Z(aL, u) ? aL[u] : u,
         c = r[u],
         h = s ? s(c) : c,
-        v = _7(f, h) || (f === "reg" && new rie(h));
+        v = _G(f, h) || (f === "reg" && new rie(h));
       v || Le(t), a.push(v);
     }
   }
@@ -70530,8 +70530,9 @@ const qie = {
       top: "3%",
       textStyle: {
         overflow: "break",
-        width: document.documentElement.clientWidth * 0.25,
-        lineHeight: 25,
+        width: document.documentElement.clientWidth * 0.3,
+        fontSize: document.documentElement.clientWidth / 60,
+        lineHeight: document.documentElement.clientWidth / 50,
       },
     },
     legend: {
@@ -70544,13 +70545,14 @@ const qie = {
         { name: "Works from companies", itemStyle: { color: "#ffffff" } },
       ],
       left: "2%",
-      top: "19%",
+      top: "22%",
       orient: "vertical",
       selected: {
         "All works": !0,
         "Works from educational institutions": !1,
         "Works from companies": !1,
       },
+      textStyle: { fontSize: document.documentElement.clientWidth / 105 },
     },
     color: or,
     z: 0,
@@ -70572,7 +70574,12 @@ const qie = {
       type: "category",
       data: Object.keys(Cc).map((r, e) => ({
         value: r,
-        textStyle: { color: or[e], overflow: "break", width: 80, fontSize: 14 },
+        textStyle: {
+          color: or[e],
+          overflow: "break",
+          width: document.documentElement.clientWidth / 15,
+          fontSize: document.documentElement.clientWidth / 100,
+        },
       })),
       startAngle: 105,
       axisLine: { show: !1 },
@@ -70607,11 +70614,14 @@ const qie = {
       symbolSize: 10,
       data: Object.keys(Gu),
       top: "90%",
-      left: "20%",
-      right: "10%",
+      left: "10%",
+      right: "5%",
       playInterval: 1e3,
-      label: {},
-      checkpointStyle: { symbolSize: 12 },
+      lineStyle: {},
+      label: { fontSize: document.documentElement.clientWidth / 120 },
+      checkpointStyle: {
+        symbolSize: document.documentElement.clientWidth / 110,
+      },
     },
     options: Object.keys(Gu).map((r) => ({
       legend: { formatter: `${r} {name}` },
@@ -70640,12 +70650,12 @@ const qie = {
       },
     })),
   },
-  Jie = "_githubLink_18bvw_1",
-  eoe = "_concept_18bvw_35",
-  toe = "_conceptLevel_18bvw_63",
-  roe = "_subtitle_18bvw_79",
-  noe = "_conceptDescription_18bvw_87",
-  aoe = "_borderLine_18bvw_111",
+  Jie = "_githubLink_1p77i_1",
+  eoe = "_concept_1p77i_37",
+  toe = "_conceptLevel_1p77i_67",
+  roe = "_subtitle_1p77i_83",
+  noe = "_conceptDescription_1p77i_91",
+  aoe = "_borderLine_1p77i_119",
   mo = {
     githubLink: Jie,
     concept: eoe,
@@ -70783,7 +70793,7 @@ const ooe = {
       label: {
         show: !0,
         color: "#ffffff",
-        fontSize: 16,
+        fontSize: document.documentElement.width / 100,
         alignTo: "labelLine",
         padding: 10,
         backgroundColor: "inherit",
@@ -70907,17 +70917,18 @@ function uoe(r, e, t, n, a) {
 const _p = {
     title: {
       text: "OpenAlex Top12 Concepts in HCI and their sub-concepts",
-      right: "2%",
+      right: "1%",
       top: "5%",
       textStyle: {
+        fontSize: document.documentElement.clientWidth / 60,
         overflow: "break",
         width: document.documentElement.clientWidth * 0.3,
-        lineHeight: 25,
+        lineHeight: document.documentElement.clientWidth / 50,
       },
     },
     tooltip: {
       trigger: "item",
-      textStyle: {},
+      textStyle: { fontSize: document.documentElement.clientWidth / 105 },
       position: uoe,
       formatter: loe,
       extraCssText:
@@ -70942,11 +70953,12 @@ const _p = {
         return e ? e + " concept - " + r : r;
       },
       orient: "horizental",
-      right: "3%",
+      right: "1%",
       top: "20%",
       textStyle: {
         width: document.documentElement.clientWidth * 0.25,
         overflow: "break",
+        fontSize: document.documentElement.clientWidth / 110,
       },
     },
     series: m0.map((r, e) => {
@@ -70957,7 +70969,7 @@ const _p = {
         {
           ...ooe,
           z: m0.length - e,
-          center: ["40%", "50%"],
+          center: ["36%", "50%"],
           radius: t,
           labelLine: {
             showAbove: !0,
