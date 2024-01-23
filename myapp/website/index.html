@@ -3,13 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width , initial-scale=1.0" />
-    <title>Ruipeng's Site</title>
+    <title>Ruipeng An</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Merriweather&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/files/style.css" />
     <link rel="icon" type="image/svg+xml" href="/files/logo.svg" />
   </head>
 
   <body>
-    <header id="mainHeader">Ruipeng An's site</header>
+    <header id="mainHeader">Ruipeng An</header>
 
     <nav>
       <ul>
@@ -27,70 +37,56 @@
       </ul>
     </nav>
 
-    <div class="gridContainer">
-      <div class="div">
-        <img
-          class="pic"
-          src=".\files\thumbnail_lidar.png"
-          alt="lidar"
-          width="100%"
-        />
-        <p class="text">Project OWL - a Lidar + Projector</p>
+    <section class="photoWall">
+      <div class="card">
+        <img src=".\files\thumbnail_gondola.jpg" alt="gondola" />
+        <div class="contentBx">
+          <h2>Project Gondola</h2>
+          <p>A decor design inspired by gondola in Venice</p>
+        </div>
       </div>
-
-      <div class="div">
-        <img
-          class="pic"
-          src=".\files\thumbnail_fridge.jpg"
-          alt="fridge"
-          width="100%"
-        />
-        <p class="text">Project Futurator - a Redesign of refrigerator</p>
+      <div class="card">
+        <img src=".\files\thumbnail_fridge.jpg" alt="fridge" />
+        <div class="contentBx">
+          <h2>Project Futurator</h2>
+          <p>Redesigned refrigerator for the future life</p>
+        </div>
       </div>
-
-      <div class="div">
-        <img
-          class="pic"
-          src=".\files\thumbnail_lamp.jpg"
-          alt="lamp"
-          width="100%"
-        />
-        <p class="text">Project Blicks - a lamp illuminate for your life</p>
+      <div class="card">
+        <img src=".\files\thumbnail_lamp.jpg" alt="lamp" />
+        <div class="contentBx">
+          <h2>Project Blicks</h2>
+          <p>A lamp design illuminate your night</p>
+        </div>
       </div>
-
-      <div class="div">
-        <img
-          class="pic"
-          src=".\files\thumbnail_gondola.jpg"
-          alt="gondola"
-          width="100%"
-        />
-        <p class="text">
-          Project Gondola - a decor design inspired by gondola in Venice
-        </p>
+      <div class="card">
+        <img src=".\files\thumbnail_lidar.png" alt="lidar" />
+        <div class="contentBx">
+          <h2>Project OWL</h2>
+          <p>A Lidar + laser line tool for construction</p>
+        </div>
       </div>
-
-      <div class="div">
-        <img class="pic" src=".\files\thumbnail_me.jpg" alt="me" width="100%" />
-        <p class="text">This is me</p>
+      <div class="card">
+        <img src=".\files\thumbnail_me.jpg" alt="me" />
+        <div class="contentBx">
+          <h2>Ruipeng An</h2>
+          <p>This is me</p>
+        </div>
       </div>
-
-      <div class="div">
-        <img
-          class="pic"
-          src=".\files\thumbnail_projecter.png"
-          alt="projector"
-          width="100%"
-        />
-        <p class="text">Project for fun</p>
+      <div class="card">
+        <img src=".\files\thumbnail_projecter.png" alt="projector" />
+        <div class="contentBx">
+          <h2>Project Lumen</h2>
+          <p>Design of an interactive projector</p>
+        </div>
       </div>
-    </div>
+    </section>
 
     <footer>
-      <div>
-        <p>rua9@pitt.edu</p>
-        <button class="backToTop" onclick="backToTop()">Back To Top</button>
-      </div>
+      <button type="button" class="backToTop" onclick="backToTop()">
+        Back To Top
+      </button>
+      <span class="email">rua9@pitt.edu</span>
     </footer>
 
     <script src=".\files\myScript.js"></script>

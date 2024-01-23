@@ -60472,16 +60472,14 @@ function fre(r, e, t, n, a) {
         ? "lineY"
         : "rect";
     });
-  t._brushController
-    .setPanels(s)
-    .enableBrush(
-      i && s.length
-        ? {
-            brushType: "auto",
-            brushStyle: r.getModel("brushStyle").getItemStyle(),
-          }
-        : !1
-    );
+  t._brushController.setPanels(s).enableBrush(
+    i && s.length
+      ? {
+          brushType: "auto",
+          brushStyle: r.getModel("brushStyle").getItemStyle(),
+        }
+      : !1
+  );
 }
 O7("dataZoom", function (r) {
   var e = r.getComponent("toolbox", 0),
@@ -70747,7 +70745,7 @@ function ioe() {
                     }),
                     et.jsx("div", {
                       className: mo.borderLine,
-                      style: { borderLeft: `0.2em solid ${s}` },
+                      style: { borderLeft: `0.3vw solid ${s}` },
                     }),
                   ],
                 }),

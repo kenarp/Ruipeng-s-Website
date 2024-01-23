@@ -13,17 +13,29 @@
 
     <nav>
       <ul>
-        <li><a href="/resume">Resume</a></li>
+        <li><a class="page-link" href="/resume">Resume</a></li>
         <li class="nav-dropdown">
-          <a href="#" onclick="return false;">Portfolio</a>
+          <a class="page-link" href="#" onclick="return false;">Portfolio</a>
           <ul class="nav-portfolio">
-            <li><a href="/portfolio/echarts"> Data Visualization </a></li>
-            <li><a href="/portfolio/threeJS"> ThreeJS Project </a></li>
-            <li><a href="/portfolio/otherProjects"> Other Projects </a></li>
+            <li>
+              <a class="page-link" href="/portfolio/echarts">
+                Data Visualization
+              </a>
+            </li>
+            <li>
+              <a class="page-link" href="/portfolio/threeJS">
+                ThreeJS Project
+              </a>
+            </li>
+            <li>
+              <a class="page-link" href="/portfolio/otherProjects">
+                Other Projects
+              </a>
+            </li>
           </ul>
         </li>
-        <li><a href="/blog"> Blog</a></li>
-        <li><a href="/links">Links</a></li>
+        <li><a class="page-link" href="/blog"> Blog</a></li>
+        <li><a class="page-link" href="/links">Links</a></li>
       </ul>
     </nav>
 
@@ -172,12 +184,10 @@
     </section>
 
     <footer>
-      <div>
-        <p>rua9@pitt.edu</p>
-        <button type="button" class="backToTop" onclick="backToTop()">
-          Back To Top
-        </button>
-      </div>
+      <button type="button" class="backToTop" onclick="backToTop()">
+        Back To Top
+      </button>
+      <span class="email">rua9@pitt.edu</span>
     </footer>
 
     <script src="/files/myScript.js"></script>
