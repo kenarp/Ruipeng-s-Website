@@ -9,6 +9,7 @@ const app = express();
 
 const server = http.createServer(app);
 
+app.use(express.static("public"));
 app.use("/files", express.static("website/files"));
 
 app.get("/", (req, res) => {

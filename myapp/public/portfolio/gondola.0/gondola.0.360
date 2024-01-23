@@ -1,0 +1,10 @@
+{
+    "horizontalFrames": 24,
+    "horizontalStartingIndex": 12,
+    "horizontalWrap": true,
+    "name": "gondola.0",
+    "type": "KeyShotXR",
+    "verticalFrames": 1,
+    "verticalStartingIndex": 0,
+    "verticalWrap": false
+}
