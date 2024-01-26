@@ -10,7 +10,25 @@
 
   <body>
     <header id="mainHeader">
-      <span> Welcome </span>
+      <span class="links">
+        <a href="/home">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z"
+            />
+            <path
+              d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z"
+            />
+          </svg>
+
+          Home
+        </a></span
+      >
       <span class="links">
         <a
           href="https://github.com/kenarp"
@@ -115,8 +133,8 @@
     </nav>
 
     <section class="portfolio">
-      <h2>Lost & Found</h2>
-      <div class="likeButton">
+      <h2 class="project-name">Lost & Found</h2>
+      <!-- <div class="likeButton">
         <input
           type="image"
           class="likeButton"
@@ -127,109 +145,84 @@
         />
         <span id="returnliked0"></span>
         <span id="span0"> people liked this project</span>
-      </div>
-      <div>
+      </div> -->
+      <div class="app-container">
         <iframe
           title="figma"
-          id="lostfoundApp"
+          class="lostfound-app"
           src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FYGfoZPf1ic38skcs2x1jQh%2Flost-%2526-found-(Copy)%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D2-2%26viewport%3D511%252C187%252C0.22%26t%3D4AD8iuUScK9PneKS-1%26scaling%3Dscale-down%26starting-point-node-id%3D2%253A3%26mode%3Ddesign"
           allowfullscreen
         ></iframe>
       </div>
       <p class="intro">
-        The lost & found project is designed and proposed to be a potential new
-        feature for Waze, an app providing real-time driving directions with
-        live traffic updates. This feature allows Waze users to report their
-        lost and/or found personal items and then mark them on the in-app
-        real-time interactive map, which dramatically improves efficiency and
-        accuracy compared to the current situation.
+        The lost & found project is designed to be a potential new feature for
+        Waze, an app providing real-time driving directions with live traffic
+        updates.
+        <br />
+        <br />
+        This new feature allows Waze users to report their lost and/or found
+        personal items and then mark them on the Waze map, which dramatically
+        improves efficiency and accuracy compared to other solutions.
       </p>
     </section>
 
     <section class="portfolio">
-      <h2>Futurator - a Redesign of refrigerator</h2>
-      <div class="likeButton">
-        <input
-          type="image"
-          class="likeButton"
-          id="likeButton1"
-          src="/files/likeButton.png"
-          alt="like"
-          onclick="likeButtonClicked('returnliked1','a01','span1','likeButton1')"
-        />
-        <span id="returnliked1"></span>
-        <span id="span1"> people liked this project</span>
-      </div>
+      <h2 class="project-name">Futurator - a Redesign of refrigerator</h2>
       <video id="videoEl1" controls></video>
-      <div>
+      <p class="intro">
+        <strong class="">Food waste</strong> is a widespread and increasingly
+        urgent global problem. According to research in 2011, the Food and
+        Agriculture Organization estimates approximately
+        <strong class="">1/3 of food</strong> produced for human consumption, is
+        lost or wasted annually. With recognizing the threat of food waste,
+        <strong class=""
+          >UN targets a 50% reduction in consumer food waste</strong
+        >
+        by 2030. Led by the EPA, USDA and FDA, the U.S. Food Loss and Waste
+        Reduction becomes the first-ever domestic goal to reduce food loss and
+        waste, which seeks to cut food loss and waste in half by 2030.
+        <br />
+        <br />
+        We know that <strong class="">refrigerator</strong> is the major place
+        for food storage at consumers' home. At the same time,
+        <strong class="">it's also where food waste happens.</strong>
+        Extant refrigerator products are very similar to each other:
+      </p>
+      <ul class="competitive-research">
+        <li>They are visually closed;</li>
+        <li>
+          They are always boxy so not easy to check and get food in the dark and
+          deep corners;
+        </li>
+        <li>
+          Their rooms and shelves are preset, even though some of them have
+          'flex zone' as advertised, users can hardly adjust it based on their
+          own needs.
+        </li>
+      </ul>
+
+      <p class="intro">
+        What if we make a new refrigerator with
+        <strong> transparent doors</strong> so users can clearly see what they
+        have inside? What if a refrigerator is in <strong>cylinder</strong>, not
+        boxy anymore, so the user can put in and retrieve food easier? What if
+        the whole <strong>storage room can be adjusted</strong>, not only the
+        size but also the temperature for different foods, freely by the
+        consumers? Even from a <strong>phone App</strong>?
+        <br />
+        <br />
+        In this project, I discovered these design possibilities on both the
+        hardware and software side, to better preserve food for our tomorrow.
+      </p>
+      <div class="app-container">
         <iframe
-          id="fridgeApp"
-          width="480"
-          height="720"
+          class="fridge-app"
           src="https://xd.adobe.com/embed/daf1765c-4d5c-403b-9987-2930da21b593-8fa2/?fullscreen"
           frameborder="0"
           allowfullscreen
         ></iframe>
       </div>
-      <div class="more" id="moreFridge">
-        <button class="readmoreButton" type="button" onclick="readMore(0)">
-          Read more >>
-        </button>
-        <p class="moreText" id="moreFridgeText">
-          Food waste is a widespread and increasingly urgent global problem.
-          According to research in 2011, the Food and Agriculture Organization
-          estimates approximately one third of food produced for human
-          consumption, is lost or wasted annually. The threat of food waste for
-          our sustainable future is increasingly being recognized by many
-          countries and organizations. UN targets a 50% reduction in consumer
-          food waste and the EU recycling of 60% of all household waste, both by
-          2030. In 2015, the U.S. 2030 Food Loss and Waste Reduction goal has
-          also been announced. Led by the EPA, USDA and FDA, this is the
-          first-ever domestic goal to reduce food loss and waste, which seeks to
-          cut food loss and waste in half by the year 2030. We know that
-          refrigerator is the major place for food storage at consumers' home.
-          However, as a designer, I found it is the place where many foods have
-          been wasted simultaneously. Extant refrigerator products are very
-          similar to each other: They are visually closed; They are always boxy
-          so not easy to check and get food in the dark and deep corners; Their
-          rooms and shelves are preset, even though some of them have 'flex
-          zone' as advertised, users can not freely adjust it based on their own
-          needs. What if we make a new refrigerator with transparent doors so
-          users can clearly see what they have inside? What if a refrigerator is
-          in cylinder, not boxy anymore, so the user can put in and retrieve
-          food easier? What if the whole storage room can be adjusted, not only
-          the size but also the temperature for different foods, freely by the
-          consumers? Even from a phone? In this project, I'm going to discover
-          these possible design opportunities, to better preserve our food for
-          tomorrow.
-        </p>
-      </div>
     </section>
-
-    <div class="more" id="moreGondola">
-      <button class="readmoreButton" type="button" onclick="readMore(1)">
-        Read more >>
-      </button>
-      <p class="moreText" id="moreGondolaText">
-        Bcakground: When I visisted Venice, Italy, the elegant shape of Gondola
-        as well as the classical structure of roof beams in traditional
-        buildings, left a strong impression of this famous city and its culture.
-        I then realized that these two elements can be somehow combined in a
-        way, to be used as an aesthetic reference for artwork design. With the
-        help of 3D CAD software, SolidWorks, together with my modeling
-        experiences, I finally found a solution to have these two elements
-        harmoniously presented in one piece, although the process was pretty
-        challenging and time consuming. You can see my effort and result from
-        the photos of 3D printed parts below. During this project, my skill of
-        3D modeling has been trained, my understanding of aesthetics become
-        deeper, my craftsmanship of sanding and gluing 3D printed parts has been
-        improved, and most importantly, as I described in the statement of
-        purpose, at the first time I realized that the latent power of
-        introducing information technology into traditional product design
-        field. From that time I started to think about moving into the
-        technology world of Information Science and Human- Computer Interaction.
-      </p>
-    </div>
 
     <footer>
       <button type="button" class="backToTop" onclick="backToTop()">
