@@ -446,6 +446,7 @@ strong {
   color: #444;
   width: 70vw;
   margin: 20px auto;
+  text-align: justify;
   overflow-wrap: break-word;
 }
 
