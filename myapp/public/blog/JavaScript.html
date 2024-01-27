@@ -1,0 +1,2370 @@
+
+				<!DOCTYPE html>
+				<html>
+					<head>
+						<meta charset="UTF-8">
+						<meta name="viewport" content="width=device-width, initial-scale=1" />
+						<link rel="stylesheet" href="pluginAssets/katex/katex.css"><script type="application/javascript" src="pluginAssets/mermaid/mermaid.min.js"></script><script type="application/javascript" src="pluginAssets/mermaid/mermaid_render.js"></script><link rel="stylesheet" href="pluginAssets/highlight.js/atom-one-light.css">
+						<title>JavaScript</title>
+					</head>
+					<body>
+						<div class="exported-note"><div class="exported-note-title">JavaScript</div>
+
+<style>
+		/* https://necolas.github.io/normalize.css/ */
+		html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
+		article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}
+		pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}
+		b,strong{font-weight:bolder}small{font-size:80%}img{border-style:none}
+
+		body {
+			font-size: 15px;
+			color: #32373F;
+			word-wrap: break-word;
+			line-height: 1.6em;
+			background-color: #ffffff;
+			font-family: 'Avenir', 'Arial', sans-serif;
+			padding-bottom: 0px;
+			padding-top: 0px;
+		}
+		kbd {
+			border: 1px solid rgb(220, 220, 220);
+			box-shadow: inset 0 -1px 0 rgb(220, 220, 220);
+			padding: 2px 4px;
+			border-radius: 3px;
+			background-color: rgb(243, 243, 243);
+		}
+		::-webkit-scrollbar {
+			width: 7px;
+			height: 7px;
+		}
+		::-webkit-scrollbar-corner {
+			background: none;
+		}
+		::-webkit-scrollbar-track {
+			border: none;
+		}
+		::-webkit-scrollbar-thumb {
+			background: rgba(100, 100, 100, 0.3); 
+			border-radius: 5px;
+		}
+		::-webkit-scrollbar-track:hover {
+			background: rgba(0, 0, 0, 0.1); 
+		}
+		::-webkit-scrollbar-thumb:hover {
+			background: rgba(100, 100, 100, 0.7); 
+		}
+
+		
+
+		/* Remove top padding and margin from first child so that top of rendered text is aligned to top of text editor text */
+
+		#rendered-md > h1:first-child,
+		#rendered-md > h2:first-child,
+		#rendered-md > h3:first-child,
+		#rendered-md > h4:first-child,
+		#rendered-md > ul:first-child,
+		#rendered-md > ol:first-child,
+		#rendered-md > table:first-child,
+		#rendered-md > blockquote:first-child,
+		#rendered-md > img:first-child,
+		#rendered-md > p:first-child {
+			margin-top: 0;
+			padding-top: 0;
+		}
+		
+		p, h1, h2, h3, h4, h5, h6, ul, table {
+			margin-top: .6em;
+			margin-bottom: 1.35em;
+
+			/*
+				Adds support for RTL text in the note body. It automatically detects the direction using the content.
+				Issue: https://github.com/laurent22/joplin/issues/3991
+			*/
+			unicode-bidi: plaintext;
+		}
+
+		h1, h2, h3, h4, h5, h6, ul, table {
+			margin-bottom: 0.65em;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			line-height: 1.5em;
+		}
+		h1 {
+			font-size: 1.5em;
+			font-weight: bold;
+			border-bottom: 1px solid #dddddd;
+			padding-bottom: .3em;
+		}
+		h2 {
+			font-size: 1.3em;
+			font-weight: bold;
+			padding-bottom: .1em; */
+		}
+		h3 {
+			font-size: 1.1em;
+			font-weight: bold;
+		}
+		h4, h5, h6 {
+			font-size: 1em;
+			font-weight: bold;
+		}
+
+		.exported-note-title {
+			font-size: 2em;
+			font-weight: bold;
+			margin-bottom: 0.8em;
+			line-height: 1.5em;
+			padding-bottom: .35em;
+			border-bottom: 1px solid #dddddd;
+		}
+
+		a {
+			color: #155BDA;
+		}
+		ul, ol {
+			padding-left: 0;
+			margin-left: 1.7em;
+		}
+		li {
+			margin-bottom: .4em;
+		}
+		li p {
+			margin-top: 0.2em;
+			margin-bottom: 0;
+		}
+
+		.resource-icon {
+			display: inline-block;
+			position: relative;
+			top: 0.3em;
+			text-decoration: none;
+			width: 1.2em;
+			height: 1.4em;
+			margin-right: 0.4em;
+			background-color:  #155BDA;
+		}
+    /* These icons are obtained from the wonderful ForkAwesome project by copying the src svgs 
+     * into the css classes below.
+     * svgs are obtained from https://github.com/ForkAwesome/Fork-Awesome/tree/master/src/icons/svg
+     * instead of the svg width, height property you must use a viewbox here, 0 0 1536 1792 is typically the actual size of the icon
+     * each line begins with the pre-amble -webkit-mask: url("data:image/svg+xml;utf8,
+     * and of course finishes with ");
+     * to precvent artifacts it is also necessary to include -webkit-mask-repeat: no-repeat;
+     * on the following line
+     * */
+		.fa-joplin {
+			/* Awesome Font file */
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M373.834 128C168.227 128 0 296.223 0 501.834v788.336C0 1495.778 168.227 1664 373.834 1664h788.336c205.608 0 373.83-168.222 373.83-373.83V501.834C1536 296.224 1367.778 128 1162.17 128zm397.222 205.431h417.424a7.132 7.132 0 0 1 7.132 7.133v132.552c0 4.461-3.619 8.073-8.077 8.073h-57.23c-24.168 0-43.768 19.338-44.284 43.374v2.377h-.017v136.191h-.053l-.466 509.375c-5.02 77.667-39.222 149.056-96.324 201.046-60.28 54.834-141.948 85.017-229.962 85.017-12.45 0-25.208-.61-37.907-1.785-92.157-8.682-181.494-48.601-251.662-112.438-71.99-65.517-117.147-150.03-127.164-238-11.226-98.763 23.42-192.783 95.045-257.937 81.99-74.637 198.185-101.768 316.613-75.704 5.574 1.227 9.55 6.282 9.55 11.997v199.52c-.199 2.625-1.481 6.599-8.183 2.896-.663-.365-1.194-.511-1.653-.531-21.987-10.587-45.159-17.57-68.559-19.916-.38-.04-.757-.124-1.138-.163-.537-.048-1.034-.033-1.556-.075-4.13-.354-8.183-.517-12.203-.58-.87-.011-1.771-.127-2.641-.127-.486 0-.951.05-1.437.057-1.464.011-2.886.115-4.33.163-2.76.102-5.497.211-8.182.448-.273.024-.547.07-.835.097-25.509 2.4-47.864 11.104-65.012 25.47-.954.802-1.974 1.53-2.9 2.36a1.34 1.34 0 0 1-.168.146c-23.96 21.8-34.881 53.872-30.726 90.316 4.62 40.737 26.94 81.156 62.841 113.823 35.908 32.67 80.335 52.977 125.113 57.186 35.118 3.36 66.547-3.919 89.899-20.461a97.255 97.255 0 0 0 9.365-7.501c2.925-2.661 5.569-5.5 8.086-8.416.3-.348.672-.673.975-1.024 8.253-9.864 14.222-21.067 17.996-33.148.639-2.034 1.051-4.148 1.564-6.227.381-1.563.81-3.106 1.112-4.693.555-2.784.923-5.632 1.253-8.49.086-.709.183-1.414.237-2.128.492-4.893.693-9.858.55-14.91h.013V521.623c-2.01-22.626-20.78-40.434-43.928-40.434h-57.23a8.071 8.071 0 0 1-8.077-8.073V340.564a7.132 7.132 0 0 1 7.136-7.133z'/></svg>");
+		}
+		.fa-file-image {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zm-128-448v320H256v-192l192-192 128 128 384-384zm-832-192c-106 0-192-86-192-192s86-192 192-192 192 86 192 192-86 192-192 192z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-pdf {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zm-514-593c25 20 53 38 84 56 42-5 81-7 117-7 67 0 152 8 177 49 7 10 13 28 2 52-1 1-2 3-3 4v1c-3 18-18 38-71 38-64 0-161-29-245-73-139 15-285 46-392 83-103 176-182 262-242 262-10 0-19-2-28-7l-24-12c-3-1-4-3-6-5-5-5-9-16-6-36 10-46 64-123 188-188 8-5 18-2 23 6 1 1 2 3 2 4 31-51 67-116 107-197 45-90 80-178 104-262-32-109-42-221-24-287 7-25 22-40 42-40h22c15 0 27 5 35 15 12 14 15 36 9 68-1 3-2 6-4 8 1 3 1 5 1 8v30c-1 63-2 123-14 192 35 105 87 190 146 238zm-576 411c30-14 73-57 137-158-75 58-122 124-137 158zm398-920c-10 28-10 76-2 132 3-16 5-31 7-44 2-17 5-31 7-43 1-3 2-5 4-8-1-1-1-3-2-5-1-18-7-29-13-36 0 2-1 3-1 4zm-124 661c88-35 186-63 284-81-10-8-20-15-29-23-49-43-93-103-127-176-19 61-47 126-83 197-15 28-30 56-45 83zm646-16c-5-5-31-24-140-24 49 18 94 28 124 28 9 0 14 0 18-1 0-1-1-2-2-3z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-word {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zM233 768v107h70l164 661h159l128-485c5-15 8-30 10-46 1-8 2-16 2-24h4l3 24c3 14 4 30 9 46l128 485h159l164-661h70V768h-300v107h90l-99 438c-4 16-6 33-7 46l-2 21h-4c0-6-2-14-3-21-3-13-5-30-9-46L825 768H711l-144 545c-4 16-5 33-8 46l-4 21h-4l-2-21c-1-13-3-30-7-46l-99-438h90V768H233z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-powerpoint {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zm-992-234v106h327v-106h-93v-167h137c43 0 82-2 118-15 90-31 146-124 146-233s-54-193-137-228c-38-15-84-19-130-19H416v107h92v555h-92zm353-280H650V882h120c35 0 62 6 83 18 36 21 56 62 56 115 0 56-20 99-62 120-21 10-47 15-78 15z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-excel {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zm-979-234v106h281v-106h-75l103-161c12-19 18-34 21-34h2c1 4 3 7 5 10 4 8 10 14 17 24l107 161h-76v106h291v-106h-68l-192-273 195-282h67V768H828v107h74l-103 159c-12 19-21 34-21 33h-2c-1-4-3-7-5-10-4-7-9-14-17-23L648 875h76V768H434v107h68l189 272-194 283h-68z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-audio {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zM620 850c12 5 20 17 20 30v544c0 13-8 25-20 30-4 1-8 2-12 2-8 0-16-3-23-9l-166-167H288c-18 0-32-14-32-32v-192c0-18 14-32 32-32h131l166-167c10-9 23-12 35-7zm417 689c19 0 37-8 50-24 83-102 129-231 129-363s-46-261-129-363c-22-28-63-32-90-10-28 23-32 63-9 91 65 80 100 178 100 282s-35 202-100 282c-23 28-19 68 9 90 12 10 26 15 40 15zm-211-148c17 0 34-7 47-20 56-60 87-137 87-219s-31-159-87-219c-24-26-65-27-91-3-25 24-27 65-2 91 33 36 52 82 52 131s-19 95-52 131c-25 26-23 67 2 91 13 11 29 17 44 17z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-video {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zM768 768c70 0 128 58 128 128v384c0 70-58 128-128 128H384c-70 0-128-58-128-128V896c0-70 58-128 128-128h384zm492 2c12 5 20 17 20 30v576c0 13-8 25-20 30-4 1-8 2-12 2-8 0-17-3-23-9l-265-266v-90l265-266c6-6 15-9 23-9 4 0 8 1 12 2z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-archive {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M640 384V256H512v128h128zm128 128V384H640v128h128zM640 640V512H512v128h128zm128 128V640H640v128h128zm700-388c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H768v128H640V128H128v1536h1280zM781 943c85 287 107 349 107 349 5 17 8 34 8 52 0 111-108 192-256 192s-256-81-256-192c0-18 3-35 8-52 0 0 21-62 120-396V768h128v128h79c29 0 54 19 62 47zm-141 465c71 0 128-29 128-64s-57-64-128-64-128 29-128 64 57 64 128 64z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-code {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zM480 768c11-14 31-17 45-6l51 38c14 11 17 31 6 45l-182 243 182 243c11 14 8 34-6 45l-51 38c-14 11-34 8-45-6l-226-301c-8-11-8-27 0-38zm802 301c8 11 8 27 0 38l-226 301c-11 14-31 17-45 6l-51-38c-14-11-17-31-6-45l182-243-182-243c-11-14-8-34 6-45l51-38c14-11 34-8 45 6zm-620 461c-18-3-29-20-26-37l138-831c3-18 20-29 37-26l63 10c18 3 29 20 26 37l-138 831c-3 18-20 29-37 26z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-alt, .fa-file-csv {
+      /* fork-awesome doesn't have csv so we use the text icon */
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zM384 800c0-18 14-32 32-32h704c18 0 32 14 32 32v64c0 18-14 32-32 32H416c-18 0-32-14-32-32v-64zm736 224c18 0 32 14 32 32v64c0 18-14 32-32 32H416c-18 0-32-14-32-32v-64c0-18 14-32 32-32h704zm0 256c18 0 32 14 32 32v64c0 18-14 32-32 32H416c-18 0-32-14-32-32v-64c0-18 14-32 32-32h704z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		blockquote {
+			border-left: 4px solid rgb(220, 220, 220);
+			padding-left: 1.2em;
+			margin-left: 0;
+			opacity: 0.7;
+		}
+
+		.jop-tinymce table,
+		table {
+			text-align: left;
+			border-collapse: collapse;
+			border: 1px solid rgb(220, 220, 220);
+			background-color: #ffffff;
+		}
+
+		.jop-tinymce table td, .jop-tinymce table th,
+		table td, th {
+			text-align: left;
+			padding: .5em 1em .5em 1em;
+			font-size: 15;
+			color: #32373F;
+			font-family: 'Avenir', 'Arial', sans-serif;
+		}
+
+		.jop-tinymce table td,
+		table td {
+			border: 1px solid rgb(220, 220, 220);
+		}
+
+		.jop-tinymce table th,
+		table th {
+			border: 1px solid rgb(220, 220, 220);
+			border-bottom: 2px solid rgb(220, 220, 220);
+			background-color: rgb(247, 247, 247);
+		}
+
+		.jop-tinymce table tr:nth-child(even),
+		table tr:nth-child(even) {
+			background-color: rgb(247, 247, 247);
+		}
+
+		.jop-tinymce table tr:hover,
+		table tr:hover {
+			background-color: #e5e5e5;
+		}
+
+		hr {
+			border: none;
+			border-bottom: 2px solid #dddddd;
+		}
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+		
+		.inline-code,
+		.mce-content-body code {
+			border: 1px solid rgb(220, 220, 220);
+			background-color: rgb(243, 243, 243);
+			padding-right: .2em;
+			padding-left: .2em;
+			border-radius: .25em;
+			color: rgb(0,0,0);
+			font-size: .9em;
+		}
+
+		.highlighted-keyword {
+			background-color: #F3B717;
+			color: black;
+		}
+
+		.not-loaded-resource img {
+			width: 1.15em;
+			height: 1.15em;
+			background: white;
+			padding: 2px !important;
+			border-radius: 2px;
+			box-shadow: 0 1px 3px #000000aa;
+		}
+
+		a.not-loaded-resource img {
+			margin-right: .2em;
+		}
+
+		a.not-loaded-resource {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		.md-checkbox input[type=checkbox]:checked {
+			opacity: 0.7;
+		}
+
+		.jop-tinymce ul.joplin-checklist .checked,
+		.md-checkbox .checkbox-label-checked {
+			opacity: 0.5;
+		}
+
+		.exported-note {
+			padding: 1em;
+		}
+
+		.joplin-editable .joplin-source {
+			display: none;
+		}
+
+		mark {
+			background: #F7D26E;
+			color: black;
+		}
+
+		/* =============================================== */
+		/* For TinyMCE */
+		/* =============================================== */
+
+		.mce-content-body {
+			/* Note: we give a bit more padding at the bottom, to allow scrolling past the end of the document */
+			padding: 5px 10px 10em 0;
+		}
+
+		/*
+		.mce-content-body code {
+			background-color: transparent;
+		}
+		*/
+
+		.mce-content-body [data-mce-selected=inline-boundary] {
+			background-color: transparent;
+		}
+
+		.mce-content-body .joplin-editable {
+			cursor: pointer !important;
+		}
+
+		.mce-content-body.mce-content-readonly {
+			opacity: 0.5;
+		}
+
+		/* We need that to make sure click events have the A has a target */
+		.katex a span {
+			pointer-events: none;
+		}
+
+		.media-player {
+			width: 100%;
+			margin-top: 10px;
+		}
+
+		.media-player.media-pdf {
+			min-height: 35rem;
+			width: 100%;
+			max-width: 1000px;
+			margin: 0;
+			border: 0;
+			display: block;
+		}
+
+		/* Clear the CODE style if the element is within a joplin-editable block */
+		.mce-content-body .joplin-editable code {
+			border: none;
+			background: none;
+			padding: 0;
+			color: inherit;
+			font-size: inherit;
+		}
+
+		/* To make code blocks horizontally scrollable */
+		/* https://github.com/laurent22/joplin/issues/5740 */
+		pre.hljs {
+			overflow-x: auto;
+		}
+
+		/* =============================================== */
+		/* For TinyMCE */
+		/* =============================================== */
+
+		@media print {
+			body {
+				height: auto !important;
+			}
+
+			pre {
+				white-space: pre-wrap;
+			}
+
+			.code, .inline-code {
+				border: 1px solid #CBCBCB;
+			}
+
+			#joplin-container-content {
+				/* The height of the content is set dynamically by JavaScript (in updateBodyHeight) to go
+				   around various issues related to scrolling. However when printing we don't want this
+				   fixed size as that would crop the content. So we set it to auto here. "important" is
+				   needed to override the style set by JavaScript at the element-level. */
+				height: auto !important;
+			}
+		}
+	
+
+				/*
+					FOR THE MARKDOWN EDITOR
+				*/
+
+				/* Remove the indentation from the checkboxes at the root of the document
+				   (otherwise they are too far right), but keep it for their children to allow
+				   nested lists. Make sure this value matches the UL margin. */
+
+				li.md-checkbox {
+					list-style-type: none;
+				}
+
+				li.md-checkbox input[type=checkbox] {
+					margin-left: -1.71em;
+					margin-right: 0.7em;
+				}
+				
+				ul.joplin-checklist {
+					list-style:none;
+				}
+
+				/*
+					FOR THE RICH TEXT EDITOR
+				*/
+
+				ul.joplin-checklist li::before {
+					content:"\f14a";
+					font-family:"Font Awesome 5 Free";
+					background-size: 16px 16px;
+					pointer-events: all;
+					cursor: pointer;
+					width: 1em;
+					height: 1em;
+					margin-left: -1.3em;
+					position: absolute;
+					color: #32373F;
+				}
+
+				.joplin-checklist li:not(.checked)::before {
+					content:"\f0c8";
+				}
+.mermaid { background-color: white; width: 640px; }
+.mermaid-export-graph { visibility: hidden; } 
+				.joplin-editable:hover .mermaid-export-graph { visibility: visible; }
+				.mermaid-export-graph:hover { background-color: #CBDAF1 !important; }</style><div id="rendered-md"><h1 id="javascript">JavaScript</h1>
+<h2 id="const-vs-let-vs-var">Const vs Let vs Var</h2>
+<p>The const keyword in front of an object implies that there is an object, and you're working with references to alter it. It also (correctly) implies that you should not attempt to reassign references to this object.</p>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const obj = {a: 'foo', b: 'bar'};
+
+const obj2 = {z: 'baz'};
+
+obj = obj2; // const will prevent this operation. </pre><pre class="hljs"><code><span class="hljs-keyword">const</span> obj = {<span class="hljs-attr">a</span>: <span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-attr">b</span>: <span class="hljs-string">&#x27;bar&#x27;</span>};
+
+<span class="hljs-keyword">const</span> obj2 = {<span class="hljs-attr">z</span>: <span class="hljs-string">&#x27;baz&#x27;</span>};
+
+obj = obj2; <span class="hljs-comment">// const will prevent this operation. </span></code></pre></div>
+<p>const does not imply that the object properties should not be altered. It does imply that you should not try to change the reference. If you plan to reassign references to the object, then you use let.</p>
+<ul>
+<li>var</li>
+</ul>
+<h2 id="x-vs-x">x++ VS ++x</h2>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">let x = 1;
+console.log(x++);//1 return the value before operation
+console.log(x);//2
+x = 1;
+console.log(++x);//2 return the value after operation, equals to the value of (x+1)
+console.log(x);//2
+x=1;
+console.log(x+1);//2
+console.log(x);//1
+</pre><pre class="hljs"><code><span class="hljs-keyword">let</span> x = <span class="hljs-number">1</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x++);<span class="hljs-comment">//1 return the value before operation</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);<span class="hljs-comment">//2</span>
+x = <span class="hljs-number">1</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(++x);<span class="hljs-comment">//2 return the value after operation, equals to the value of (x+1)</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);<span class="hljs-comment">//2</span>
+x=<span class="hljs-number">1</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x+<span class="hljs-number">1</span>);<span class="hljs-comment">//2</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);<span class="hljs-comment">//1</span>
+</code></pre></div>
+<h3 id="type-conversion-and-coercion">Type Conversion and Coercion</h3>
+<ul>
+<li>Conversion</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">  Number()
+  String()</pre><pre class="hljs"><code>  <span class="hljs-title class_">Number</span>()
+  <span class="hljs-title class_">String</span>()</code></pre></div>
+<h3 id="logical-operators">Logical Operators</h3>
+<p>== loose equal (type coercion)<br>
+!=<br>
+=== strict equal<br>
+!==</p>
+<h3 id="truthy-and-falsy-values">Truthy and Falsy Values</h3>
+<ul>
+<li>
+<p>Falsy value:</p>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">'' or &quot;&quot;
+0
+undefined
+null
+NaN
+false</pre><pre class="hljs"><code><span class="hljs-string">&#x27;&#x27;</span> or <span class="hljs-string">&quot;&quot;</span>
+<span class="hljs-number">0</span>
+<span class="hljs-literal">undefined</span>
+<span class="hljs-literal">null</span>
+<span class="hljs-title class_">NaN</span>
+<span class="hljs-literal">false</span></code></pre></div>
+<ul>
+<li>NaN - Not a number</li>
+</ul>
+</li>
+</ul>
+<h3 id="switch-statement">Switch statement</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="Javascript" data-joplin-source-open="```Javascript&#10;" data-joplin-source-close="&#10;```">const day = 'monday';
+
+switch(day){
+    case 'monday:
+        console.log('It is monday');
+        break;
+    case 'tuesday':
+        console.log('It is tuesday');
+        break;
+    default:
+        console.log('');
+}</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> day = <span class="hljs-string">&#x27;monday&#x27;</span>;
+
+<span class="hljs-keyword">switch</span>(day){
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;monday:
+        console.log(&#x27;</span><span class="hljs-title class_">It</span> is monday<span class="hljs-string">&#x27;);
+        break;
+    case &#x27;</span>tuesday<span class="hljs-string">&#x27;:
+        console.log(&#x27;</span><span class="hljs-title class_">It</span> is tuesday<span class="hljs-string">&#x27;);
+        break;
+    default:
+        console.log(&#x27;</span><span class="hljs-string">&#x27;);
+}</span></code></pre></div>
+<h3 id="conditionalternary-operator">Conditional(ternary) operator</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">const age =23;
+age &gt;= 18 ? consol.log('Can drink alcholol') : console.log('Can not drink alcholol');</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> age =<span class="hljs-number">23</span>;
+age &gt;= <span class="hljs-number">18</span> ? consol.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Can drink alcholol&#x27;</span>) : <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Can not drink alcholol&#x27;</span>);</code></pre></div>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">let age;
+const drink = age &gt;= 18 ? 'alcholol' : 'non-alcholol';
+console.log(drink);</pre><pre class="hljs"><code><span class="hljs-keyword">let</span> age;
+<span class="hljs-keyword">const</span> drink = age &gt;= <span class="hljs-number">18</span> ? <span class="hljs-string">&#x27;alcholol&#x27;</span> : <span class="hljs-string">&#x27;non-alcholol&#x27;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(drink);</code></pre></div>
+<h4 id="together-with-template-literal">Together with template literal</h4>
+<ul>
+<li>Usage of the backtick character (`) in JavaScript</li>
+</ul>
+<blockquote>
+<p><code class="inline-code">${}</code></p>
+</blockquote>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">console.log('I drink ${age &gt;= 18 ? 'alcholol' : 'non-alcholol'}')</pre><pre class="hljs"><code><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;I drink ${age &gt;= 18 ? &#x27;</span>alcholol<span class="hljs-string">&#x27; : &#x27;</span>non-alcholol<span class="hljs-string">&#x27;}&#x27;</span>)</code></pre></div>
+<h3 id="array">Array</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const arr1 = ['a',1,true];
+console.log(arr1[0]);</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> arr1 = [<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-number">1</span>,<span class="hljs-literal">true</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr1[<span class="hljs-number">0</span>]);</code></pre></div>
+<h4 id="array-method">array method</h4>
+<ul>
+<li>push: add an element to the end of an array.</li>
+</ul>
+<blockquote>
+<p>const newArrLength = arr.push(element);</p>
+</blockquote>
+<ul>
+<li>unshift: add an element to the start of an array.</li>
+</ul>
+<blockquote>
+<p>const newArrLength = arr.unshift(element);</p>
+</blockquote>
+<ul>
+<li>pop: remove the last element from array</li>
+</ul>
+<blockquote>
+<p>const lastElement = arr.pop();</p>
+</blockquote>
+<ul>
+<li>shift: remove the first element from array</li>
+</ul>
+<blockquote>
+<p>const firstElement = arr.shift();</p>
+</blockquote>
+<ul>
+<li>join:</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const arr1 = [0,1,2,3];
+console.log(arr1.join(''));//output: 0123
+console.log(arr1.join(' '));//output: 0 1 2 3
+console.log(arr1.join('.'));//output: 0.1.2.3
+console.log(arr1.join('\n'));
+/*output: 
+0
+1
+2
+3
+*/</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> arr1 = [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr1.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;&#x27;</span>));<span class="hljs-comment">//output: 0123</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr1.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27; &#x27;</span>));<span class="hljs-comment">//output: 0 1 2 3</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr1.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;.&#x27;</span>));<span class="hljs-comment">//output: 0.1.2.3</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr1.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;\n&#x27;</span>));
+<span class="hljs-comment">/*output: 
+0
+1
+2
+3
+*/</span></code></pre></div>
+<ul>
+<li>indexOf(element):<br>
+The indexOf() method returns the first index at which a given element can be found in the array, or -1 if it is not present.</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
+console.log(beasts.indexOf('bison'));
+// Expected output: 1
+
+// Start from index 2
+console.log(beasts.indexOf('bison', 2));
+// Expected output: 4
+
+console.log(beasts.indexOf('giraffe'));
+// Expected output: -1
+</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> beasts = [<span class="hljs-string">&#x27;ant&#x27;</span>, <span class="hljs-string">&#x27;bison&#x27;</span>, <span class="hljs-string">&#x27;camel&#x27;</span>, <span class="hljs-string">&#x27;duck&#x27;</span>, <span class="hljs-string">&#x27;bison&#x27;</span>];
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(beasts.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;bison&#x27;</span>));
+<span class="hljs-comment">// Expected output: 1</span>
+
+<span class="hljs-comment">// Start from index 2</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(beasts.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;bison&#x27;</span>, <span class="hljs-number">2</span>));
+<span class="hljs-comment">// Expected output: 4</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(beasts.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;giraffe&#x27;</span>));
+<span class="hljs-comment">// Expected output: -1</span>
+</code></pre></div>
+<ul>
+<li>includes(element):<br>
+The includes() method determines whether an array includes a certain value among its entries, returning true or false as appropriate.</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const pets = ['cat', 'dog', 'bat'];
+
+console.log(pets.includes('cat'));
+// Expected output: true
+
+console.log(pets.includes('snake'));
+// Expected output: false</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> pets = [<span class="hljs-string">&#x27;cat&#x27;</span>, <span class="hljs-string">&#x27;dog&#x27;</span>, <span class="hljs-string">&#x27;bat&#x27;</span>];
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(pets.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;cat&#x27;</span>));
+<span class="hljs-comment">// Expected output: true</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(pets.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;snake&#x27;</span>));
+<span class="hljs-comment">// Expected output: false</span></code></pre></div>
+<h3 id="object">Object</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const obj1 = {arr:['a',1,true],char:'a',num:1,boolean:true};
+console.log(obj1.arr);// Dot notation, output: ['a', 1, true]
+console.log(obj1['num']);// Bracket Notation, output: 1
+
+const key = 'boolean';
+
+console.log(obj1[key]);//output: true Bracket Notation works with computed property name(a variable for example)
+console.log(obj1.key);//output: undefined  reason: Dot notation dosen't work with a computed property name, only takes real property name.</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> obj1 = {<span class="hljs-attr">arr</span>:[<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-number">1</span>,<span class="hljs-literal">true</span>],<span class="hljs-attr">char</span>:<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-attr">num</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">boolean</span>:<span class="hljs-literal">true</span>};
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj1.<span class="hljs-property">arr</span>);<span class="hljs-comment">// Dot notation, output: [&#x27;a&#x27;, 1, true]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj1[<span class="hljs-string">&#x27;num&#x27;</span>]);<span class="hljs-comment">// Bracket Notation, output: 1</span>
+
+<span class="hljs-keyword">const</span> key = <span class="hljs-string">&#x27;boolean&#x27;</span>;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj1[key]);<span class="hljs-comment">//output: true Bracket Notation works with computed property name(a variable for example)</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj1.<span class="hljs-property">key</span>);<span class="hljs-comment">//output: undefined  reason: Dot notation dosen&#x27;t work with a computed property name, only takes real property name.</span></code></pre></div>
+<h3 id="function">Function</h3>
+<ul>
+<li>Funciton declaration</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">function calc1(){
+    return ;
+}</pre><pre class="hljs"><code><span class="hljs-keyword">function</span> <span class="hljs-title function_">calc1</span>(<span class="hljs-params"></span>){
+    <span class="hljs-keyword">return</span> ;
+}</code></pre></div>
+<ul>
+<li>Funciton expression:<br>
+Function expressions in JavaScript are not hoisted, unlike function declarations. You can't use function expressions before you create them.</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const calc2 = function (){
+                return ;
+              }</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> calc2 = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>){
+                <span class="hljs-keyword">return</span> ;
+              }</code></pre></div>
+<ul>
+<li>Arrow function: a compact alternative to a traditional function expression(not hoisted as well)<br>
+Arrow functions don't have their own bindings to this, arguments or super, and should not be used as methods.<br>
+Arrow functions don't have access to the new.target keyword.<br>
+Arrow functions aren't suitable for call, apply and bind methods, which generally rely on establishing a scope.<br>
+Arrow functions cannot be used as constructors.<br>
+Arrow functions cannot use yield, within its body.</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const calc3 = (param1, paramN) =&gt; param1+paramN //expression</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> <span class="hljs-title function_">calc3</span> = (<span class="hljs-params">param1, paramN</span>) =&gt; param1+paramN <span class="hljs-comment">//expression</span></code></pre></div>
+<h3 id="scope-tdz-hoist">Scope &amp; TDZ hoist</h3>
+<ul>
+<li>
+<p>Global scope (This keyword point to window)</p>
+</li>
+<li>
+<p>Function scope</p>
+</li>
+<li>
+<p>Block scope (Introduced from ES6)<br>
+Example: An if statement or a for loop is a scope</p>
+</li>
+<li>
+<p>var doesn't apply to block scope</p>
+</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">{
+    var str =  'hello';
+    const str2 = 'hello2';
+}
+  console.log(str); // hello
+  console.log(str2); //Uncaught ReferenceError: str2 is not defined</pre><pre class="hljs"><code>{
+    <span class="hljs-keyword">var</span> str =  <span class="hljs-string">&#x27;hello&#x27;</span>;
+    <span class="hljs-keyword">const</span> str2 = <span class="hljs-string">&#x27;hello2&#x27;</span>;
+}
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str); <span class="hljs-comment">// hello</span>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str2); <span class="hljs-comment">//Uncaught ReferenceError: str2 is not defined</span></code></pre></div>
+<h3 id="this-keyword">This keyword</h3>
+<p>Used with a method:  point to the object that is calling the method<br>
+Used with a simple function call: this = undefined<br>
+Used with a arrow function: this point to the surrounding of the arrow function(lexical this)<br>
+Used with Event listener: this point to DOM element that the handler is attached to</p>
+<h2 id="data-structures-modern-operaters-and-strings">Data Structures, Modern operaters and Strings</h2>
+<h3 id="destructuring-arrays">Destructuring Arrays</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">let arr1 = [1,2,3];
+const [x,y,z] = arr1;
+console.log(x,y,z);
+const[first, ,second] = arr1;
+console.log(first,second);
+
+let arr2 = ['a','b','c'];
+[arr1,arr2] = [arr2, arr1];
+console.log(arr1);
+console.log(arr2);
+
+const nested = [1,2, [3, 4]];
+const [a, , [c,d]] = nested;
+console.log(a,c,d);
+
+const [i=1,j=1,k=1] = [7,8];
+console.log(i,j,k);</pre><pre class="hljs"><code><span class="hljs-keyword">let</span> arr1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-keyword">const</span> [x,y,z] = arr1;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x,y,z);
+<span class="hljs-keyword">const</span>[first, ,second] = arr1;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(first,second);
+
+<span class="hljs-keyword">let</span> arr2 = [<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>];
+[arr1,arr2] = [arr2, arr1];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr1);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr2);
+
+<span class="hljs-keyword">const</span> nested = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]];
+<span class="hljs-keyword">const</span> [a, , [c,d]] = nested;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a,c,d);
+
+<span class="hljs-keyword">const</span> [i=<span class="hljs-number">1</span>,j=<span class="hljs-number">1</span>,k=<span class="hljs-number">1</span>] = [<span class="hljs-number">7</span>,<span class="hljs-number">8</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i,j,k);</code></pre></div>
+<h3 id="destructuring-objects">Destructuring Objects</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const restaurant = {
+  name:'wendys',
+  openningHours:'6-24',
+  categories:'fastFood'
+};
+
+const {name,openningHours, categories} = restaurant;
+console.log(openningHours);
+
+const {name: restaurantName,openningHours: hours, categories: tags} = restaurant;//assign key to new vraiable name
+console.log(restaurantName,hours,tags);//wendys 6-24 fastFood
+
+const {menue1, menue2 = 'burger',name: name2 = 'alternative name', categories:tag} = restaurant;
+console.log(menue1,menue2,name2,tag);//undefined burger wendys fastFood</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> restaurant = {
+  <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;wendys&#x27;</span>,
+  <span class="hljs-attr">openningHours</span>:<span class="hljs-string">&#x27;6-24&#x27;</span>,
+  <span class="hljs-attr">categories</span>:<span class="hljs-string">&#x27;fastFood&#x27;</span>
+};
+
+<span class="hljs-keyword">const</span> {name,openningHours, categories} = restaurant;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(openningHours);
+
+<span class="hljs-keyword">const</span> {<span class="hljs-attr">name</span>: restaurantName,<span class="hljs-attr">openningHours</span>: hours, <span class="hljs-attr">categories</span>: tags} = restaurant;<span class="hljs-comment">//assign key to new vraiable name</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(restaurantName,hours,tags);<span class="hljs-comment">//wendys 6-24 fastFood</span>
+
+<span class="hljs-keyword">const</span> {menue1, menue2 = <span class="hljs-string">&#x27;burger&#x27;</span>,<span class="hljs-attr">name</span>: name2 = <span class="hljs-string">&#x27;alternative name&#x27;</span>, <span class="hljs-attr">categories</span>:tag} = restaurant;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(menue1,menue2,name2,tag);<span class="hljs-comment">//undefined burger wendys fastFood</span></code></pre></div>
+<ul>
+<li>Mutating variables</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">//Mutating variables
+let a = 111;
+let b = 999;
+const obj = {a:2,b:8,c:14};
+({a,b} = obj); // need to wrap {} into parenthesis or it won't work
+console.log(a,b);//a=2,b=8</pre><pre class="hljs"><code><span class="hljs-comment">//Mutating variables</span>
+<span class="hljs-keyword">let</span> a = <span class="hljs-number">111</span>;
+<span class="hljs-keyword">let</span> b = <span class="hljs-number">999</span>;
+<span class="hljs-keyword">const</span> obj = {<span class="hljs-attr">a</span>:<span class="hljs-number">2</span>,<span class="hljs-attr">b</span>:<span class="hljs-number">8</span>,<span class="hljs-attr">c</span>:<span class="hljs-number">14</span>};
+({a,b} = obj); <span class="hljs-comment">// need to wrap {} into parenthesis or it won&#x27;t work</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a,b);<span class="hljs-comment">//a=2,b=8</span></code></pre></div>
+<ul>
+<li>Nested objects</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">//Nested objects
+const hours = {fri:{open:'8', close:'17'},sat:{open:'8', close:'17'}};
+
+const {fri:{open, close}} = hours;
+console.log(open,close);</pre><pre class="hljs"><code><span class="hljs-comment">//Nested objects</span>
+<span class="hljs-keyword">const</span> hours = {<span class="hljs-attr">fri</span>:{<span class="hljs-attr">open</span>:<span class="hljs-string">&#x27;8&#x27;</span>, <span class="hljs-attr">close</span>:<span class="hljs-string">&#x27;17&#x27;</span>},<span class="hljs-attr">sat</span>:{<span class="hljs-attr">open</span>:<span class="hljs-string">&#x27;8&#x27;</span>, <span class="hljs-attr">close</span>:<span class="hljs-string">&#x27;17&#x27;</span>}};
+
+<span class="hljs-keyword">const</span> {<span class="hljs-attr">fri</span>:{open, close}} = hours;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(open,close);</code></pre></div>
+<ul>
+<li>function</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">function orderDelivery({starter = 'soup',main,time,address}){
+console.log(`This ${starter} and ${main} will be delivered to ${address} at ${time} o'clock`)
+}  //soup is the default value of starter
+
+const order1 = {starter:'salad', main:'steak', time:'5', address:'Pitt'};
+orderDelivery(order1);
+
+const order2 = {main:'burger', time:'8', address:'ASU'};
+orderDelivery(order2);</pre><pre class="hljs"><code><span class="hljs-keyword">function</span> <span class="hljs-title function_">orderDelivery</span>(<span class="hljs-params">{starter = <span class="hljs-string">&#x27;soup&#x27;</span>,main,time,address}</span>){
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`This <span class="hljs-subst">${starter}</span> and <span class="hljs-subst">${main}</span> will be delivered to <span class="hljs-subst">${address}</span> at <span class="hljs-subst">${time}</span> o&#x27;clock`</span>)
+}  <span class="hljs-comment">//soup is the default value of starter</span>
+
+<span class="hljs-keyword">const</span> order1 = {<span class="hljs-attr">starter</span>:<span class="hljs-string">&#x27;salad&#x27;</span>, <span class="hljs-attr">main</span>:<span class="hljs-string">&#x27;steak&#x27;</span>, <span class="hljs-attr">time</span>:<span class="hljs-string">&#x27;5&#x27;</span>, <span class="hljs-attr">address</span>:<span class="hljs-string">&#x27;Pitt&#x27;</span>};
+<span class="hljs-title function_">orderDelivery</span>(order1);
+
+<span class="hljs-keyword">const</span> order2 = {<span class="hljs-attr">main</span>:<span class="hljs-string">&#x27;burger&#x27;</span>, <span class="hljs-attr">time</span>:<span class="hljs-string">&#x27;8&#x27;</span>, <span class="hljs-attr">address</span>:<span class="hljs-string">&#x27;ASU&#x27;</span>};
+<span class="hljs-title function_">orderDelivery</span>(order2);</code></pre></div>
+<h3 id="the-spread-operator">The spread operator</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">const arr = [3,4,5];
+const arr1 = [1,2,arr[0],arr[1],arr[2]];
+const arr2 = [1,2, ...arr];
+console.log(arr2);//[1 2 3 4 5]
+console.log(...arr1);//1 2 3 4 5</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];
+<span class="hljs-keyword">const</span> arr1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,arr[<span class="hljs-number">0</span>],arr[<span class="hljs-number">1</span>],arr[<span class="hljs-number">2</span>]];
+<span class="hljs-keyword">const</span> arr2 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>, ...arr];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr2);<span class="hljs-comment">//[1 2 3 4 5]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(...arr1);<span class="hljs-comment">//1 2 3 4 5</span></code></pre></div>
+<ul>
+<li>Iterables: arrays, strings, maps, set, BUT NOT objects</li>
+<li>Although objects are not iterable, the spread operater works on objects</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">const str = 'hello';
+const letters = [...str,'',...'world'];
+console.log(letters);
+
+const workdays = {Mon:1,Tue:2,Wed:3,Thu:4,Fri:5};
+const weekdays = {...workdays,Sat:6,Sun:7};
+console.log(weekdays.Sat);//output:6</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;hello&#x27;</span>;
+<span class="hljs-keyword">const</span> letters = [...str,<span class="hljs-string">&#x27;&#x27;</span>,...<span class="hljs-string">&#x27;world&#x27;</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(letters);
+
+<span class="hljs-keyword">const</span> workdays = {<span class="hljs-title class_">Mon</span>:<span class="hljs-number">1</span>,<span class="hljs-title class_">Tue</span>:<span class="hljs-number">2</span>,<span class="hljs-title class_">Wed</span>:<span class="hljs-number">3</span>,<span class="hljs-title class_">Thu</span>:<span class="hljs-number">4</span>,<span class="hljs-title class_">Fri</span>:<span class="hljs-number">5</span>};
+<span class="hljs-keyword">const</span> weekdays = {...workdays,<span class="hljs-title class_">Sat</span>:<span class="hljs-number">6</span>,<span class="hljs-title class_">Sun</span>:<span class="hljs-number">7</span>};
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(weekdays.<span class="hljs-property">Sat</span>);<span class="hljs-comment">//output:6</span></code></pre></div>
+<h3 id="rest-pattern-and-parameters">Rest pattern and parameters</h3>
+<ul>
+<li>Object</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">const arr1 = [1,2,3,4,5,6];
+const [x,/*y*/,z,...arr2] = [1,2,...arr1]; // the rest pattern has to be at the last position on the left of assignment operation;
+console.log(x,z,arr2);//x=1,z=1,arr2 = [2,3,4,5,6]
+
+const weekdays = {Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6,Sun:7};
+const {Sat,Sun,...workdays} = weekdays;
+console.log(workdays);// {Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5}</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> arr1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>];
+<span class="hljs-keyword">const</span> [x,<span class="hljs-comment">/*y*/</span>,z,...arr2] = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,...arr1]; <span class="hljs-comment">// the rest pattern has to be at the last position on the left of assignment operation;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x,z,arr2);<span class="hljs-comment">//x=1,z=1,arr2 = [2,3,4,5,6]</span>
+
+<span class="hljs-keyword">const</span> weekdays = {<span class="hljs-title class_">Mon</span>:<span class="hljs-number">1</span>,<span class="hljs-title class_">Tue</span>:<span class="hljs-number">2</span>,<span class="hljs-title class_">Wed</span>:<span class="hljs-number">3</span>,<span class="hljs-title class_">Thu</span>:<span class="hljs-number">4</span>,<span class="hljs-title class_">Fri</span>:<span class="hljs-number">5</span>,<span class="hljs-title class_">Sat</span>:<span class="hljs-number">6</span>,<span class="hljs-title class_">Sun</span>:<span class="hljs-number">7</span>};
+<span class="hljs-keyword">const</span> {<span class="hljs-title class_">Sat</span>,<span class="hljs-title class_">Sun</span>,...workdays} = weekdays;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(workdays);<span class="hljs-comment">// {Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5}</span></code></pre></div>
+<ul>
+<li>Function(rest parameters)</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">function add(...numbers){
+  console.log(numbers);//numbers = [1, 2, 3]
+  let sum = 0;
+  for (let index = 0; index &lt; numbers.length; index++) {
+    sum += numbers[index];
+  }
+  console.log(sum);
+}
+
+add(1,2,3);//output 6
+
+const x = [1,2,3];
+add(...x);//output 6</pre><pre class="hljs"><code><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">...numbers</span>){
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(numbers);<span class="hljs-comment">//numbers = [1, 2, 3]</span>
+  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; numbers.<span class="hljs-property">length</span>; index++) {
+    sum += numbers[index];
+  }
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sum);
+}
+
+<span class="hljs-title function_">add</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);<span class="hljs-comment">//output 6</span>
+
+<span class="hljs-keyword">const</span> x = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-title function_">add</span>(...x);<span class="hljs-comment">//output 6</span></code></pre></div>
+<h3 id="short-circuiting">Short circuiting(||,&amp;&amp;)</h3>
+<ul>
+<li>
+<p>Can use ANY data type, return ANY data type, short-circuiting</p>
+</li>
+<li>
+<p>OR operation:<br>
+<strong>short-circuiting: it will immediately return the first truthy value, or the last falsy value when there are no truthy value at all.</strong></p>
+</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">console.log(3||'hello');//output:3 </pre><pre class="hljs"><code><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">3</span>||<span class="hljs-string">&#x27;hello&#x27;</span>);<span class="hljs-comment">//output:3 </span></code></pre></div>
+<ul>
+<li>AND operation:<br>
+<strong>short-circuiting: it will immediately return the first falsy value, or the last truthy value when there are no falsy value after checking every element.</strong></li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">console.log(0&amp;&amp;3);//output:0</pre><pre class="hljs"><code><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">0</span>&amp;&amp;<span class="hljs-number">3</span>);<span class="hljs-comment">//output:0</span></code></pre></div>
+<h3 id="nullish-coalescing-operator">Nullish Coalescing Operator (??)</h3>
+<ul>
+<li>Nullish value: null and undefined</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">let x;
+const y = 3;
+console.log(x??y);//output 3
+x = 0;
+console.log(x??y);//output 0, because 0 is not nullish
+console.log(x||y);//output 3, because 0 is a falsy value</pre><pre class="hljs"><code><span class="hljs-keyword">let</span> x;
+<span class="hljs-keyword">const</span> y = <span class="hljs-number">3</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x??y);<span class="hljs-comment">//output 3</span>
+x = <span class="hljs-number">0</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x??y);<span class="hljs-comment">//output 0, because 0 is not nullish</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x||y);<span class="hljs-comment">//output 3, because 0 is a falsy value</span></code></pre></div>
+<h3 id="orandnullish-assignment-operator">OR,AND,Nullish assignment operator</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">let x = 0;
+x ||= 10;//x = x||10;
+console.log(x);//output:10, because 0 is falsy
+x = 0;
+x &amp;&amp;= 10;// x = x&amp;&amp;10;
+console.log(x);//output:0
+x ??= 10;
+console.log(x);//output:0,because x=0 is not nullish</pre><pre class="hljs"><code><span class="hljs-keyword">let</span> x = <span class="hljs-number">0</span>;
+x ||= <span class="hljs-number">10</span>;<span class="hljs-comment">//x = x||10;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);<span class="hljs-comment">//output:10, because 0 is falsy</span>
+x = <span class="hljs-number">0</span>;
+x &amp;&amp;= <span class="hljs-number">10</span>;<span class="hljs-comment">// x = x&amp;&amp;10;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);<span class="hljs-comment">//output:0</span>
+x ??= <span class="hljs-number">10</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);<span class="hljs-comment">//output:0,because x=0 is not nullish</span></code></pre></div>
+<h3 id="for-of-loop">For-of loop</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const days = ['mon','tue','wed','thu','fri','sat','sun'];
+for (const day of days) {
+  console.log(day);
+}
+
+for (const day of days.entries()) {
+  console.log(day);
+}
+/* Array Iterator
+Output:
+(2) [0, 'mon']
+(2) [1, 'tue']
+(2) [2, 'wed']
+(2) [3, 'thu']
+(2) [4, 'fri']
+(2) [5, 'sat']
+(2) [6, 'sun'] */</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> days = [<span class="hljs-string">&#x27;mon&#x27;</span>,<span class="hljs-string">&#x27;tue&#x27;</span>,<span class="hljs-string">&#x27;wed&#x27;</span>,<span class="hljs-string">&#x27;thu&#x27;</span>,<span class="hljs-string">&#x27;fri&#x27;</span>,<span class="hljs-string">&#x27;sat&#x27;</span>,<span class="hljs-string">&#x27;sun&#x27;</span>];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> day <span class="hljs-keyword">of</span> days) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(day);
+}
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> day <span class="hljs-keyword">of</span> days.<span class="hljs-title function_">entries</span>()) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(day);
+}
+<span class="hljs-comment">/* Array Iterator
+Output:
+(2) [0, &#x27;mon&#x27;]
+(2) [1, &#x27;tue&#x27;]
+(2) [2, &#x27;wed&#x27;]
+(2) [3, &#x27;thu&#x27;]
+(2) [4, &#x27;fri&#x27;]
+(2) [5, &#x27;sat&#x27;]
+(2) [6, &#x27;sun&#x27;] */</span></code></pre></div>
+<h3 id="object-literals">Object Literals</h3>
+<h4 id="optional-chaining">Optional Chaining(?.)</h4>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const hours ={Mon:{open:'8-17'},Tue:'8-17',Wed:'8-17',Thu:'8-17',Fri:{open:{normal:{holidays:'not open',workdays:'8-20'}}}};
+
+console.log(hours.Mon?.open);//Will return correct value
+console.log(hours.Tue.open);//Will return undefined
+console.log(hours.Sat?.open);//Will return undefined
+console.log(hours.Sat.open);//Error will occur(TypeError: Cannot read property 'open' of undefined) since object 'Sat' is undefined, undefined datatype can't have property.
+console.log(hours.Fri.open.normal.workdays);//Will return correct value
+console.log(hours.Thu.open?.normal.workdays);//Will return undefined, because there is an object called 'Thu' while 'normal' is undefined.
+console.log(hours.Thu.open.normal?.workdays);//Error will occur(TypeError: Cannot read property 'normal' of undefined) since object 'Open' is undefined, undefined datatype can't have property.</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> hours ={<span class="hljs-title class_">Mon</span>:{<span class="hljs-attr">open</span>:<span class="hljs-string">&#x27;8-17&#x27;</span>},<span class="hljs-title class_">Tue</span>:<span class="hljs-string">&#x27;8-17&#x27;</span>,<span class="hljs-title class_">Wed</span>:<span class="hljs-string">&#x27;8-17&#x27;</span>,<span class="hljs-title class_">Thu</span>:<span class="hljs-string">&#x27;8-17&#x27;</span>,<span class="hljs-title class_">Fri</span>:{<span class="hljs-attr">open</span>:{<span class="hljs-attr">normal</span>:{<span class="hljs-attr">holidays</span>:<span class="hljs-string">&#x27;not open&#x27;</span>,<span class="hljs-attr">workdays</span>:<span class="hljs-string">&#x27;8-20&#x27;</span>}}}};
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hours.<span class="hljs-property">Mon</span>?.<span class="hljs-property">open</span>);<span class="hljs-comment">//Will return correct value</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hours.<span class="hljs-property">Tue</span>.<span class="hljs-property">open</span>);<span class="hljs-comment">//Will return undefined</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hours.<span class="hljs-property">Sat</span>?.<span class="hljs-property">open</span>);<span class="hljs-comment">//Will return undefined</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hours.<span class="hljs-property">Sat</span>.<span class="hljs-property">open</span>);<span class="hljs-comment">//Error will occur(TypeError: Cannot read property &#x27;open&#x27; of undefined) since object &#x27;Sat&#x27; is undefined, undefined datatype can&#x27;t have property.</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hours.<span class="hljs-property">Fri</span>.<span class="hljs-property">open</span>.<span class="hljs-property">normal</span>.<span class="hljs-property">workdays</span>);<span class="hljs-comment">//Will return correct value</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hours.<span class="hljs-property">Thu</span>.<span class="hljs-property">open</span>?.<span class="hljs-property">normal</span>.<span class="hljs-property">workdays</span>);<span class="hljs-comment">//Will return undefined, because there is an object called &#x27;Thu&#x27; while &#x27;normal&#x27; is undefined.</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hours.<span class="hljs-property">Thu</span>.<span class="hljs-property">open</span>.<span class="hljs-property">normal</span>?.<span class="hljs-property">workdays</span>);<span class="hljs-comment">//Error will occur(TypeError: Cannot read property &#x27;normal&#x27; of undefined) since object &#x27;Open&#x27; is undefined, undefined datatype can&#x27;t have property.</span></code></pre></div>
+<h4 id="looping-objects">Looping objects</h4>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const hours = {Monday:{open:'8',close:'17'},Tuesday:{open:'8',close:'17'},Wednesday:{open:'8',close:'17'},Thursday:{open:'8',close:'20'},Friday:{open:'8',close:'21'}};
+
+for (const day of Object.keys(hours)) {
+    console.log(day); // Mon Tue Wed Thu Fri
+}
+
+const days = Object.keys(hours);
+const openHours = Object.values(hours);
+console.log(days);//['Mon', 'Tue', 'Wed', 'Thu', 'Fri'] array
+console.log(openHours);//array of values
+
+for (const [day,{open,close}] of Object.entries(hours)) {
+    console.log(`${day} open at ${open}, close at ${close}`); //Monday open at 8, close at 17 Tuesday open at 8, close at 17 ...
+}</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> hours = {<span class="hljs-title class_">Monday</span>:{<span class="hljs-attr">open</span>:<span class="hljs-string">&#x27;8&#x27;</span>,<span class="hljs-attr">close</span>:<span class="hljs-string">&#x27;17&#x27;</span>},<span class="hljs-title class_">Tuesday</span>:{<span class="hljs-attr">open</span>:<span class="hljs-string">&#x27;8&#x27;</span>,<span class="hljs-attr">close</span>:<span class="hljs-string">&#x27;17&#x27;</span>},<span class="hljs-title class_">Wednesday</span>:{<span class="hljs-attr">open</span>:<span class="hljs-string">&#x27;8&#x27;</span>,<span class="hljs-attr">close</span>:<span class="hljs-string">&#x27;17&#x27;</span>},<span class="hljs-title class_">Thursday</span>:{<span class="hljs-attr">open</span>:<span class="hljs-string">&#x27;8&#x27;</span>,<span class="hljs-attr">close</span>:<span class="hljs-string">&#x27;20&#x27;</span>},<span class="hljs-title class_">Friday</span>:{<span class="hljs-attr">open</span>:<span class="hljs-string">&#x27;8&#x27;</span>,<span class="hljs-attr">close</span>:<span class="hljs-string">&#x27;21&#x27;</span>}};
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> day <span class="hljs-keyword">of</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(hours)) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(day); <span class="hljs-comment">// Mon Tue Wed Thu Fri</span>
+}
+
+<span class="hljs-keyword">const</span> days = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(hours);
+<span class="hljs-keyword">const</span> openHours = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">values</span>(hours);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(days);<span class="hljs-comment">//[&#x27;Mon&#x27;, &#x27;Tue&#x27;, &#x27;Wed&#x27;, &#x27;Thu&#x27;, &#x27;Fri&#x27;] array</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(openHours);<span class="hljs-comment">//array of values</span>
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [day,{open,close}] <span class="hljs-keyword">of</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(hours)) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${day}</span> open at <span class="hljs-subst">${open}</span>, close at <span class="hljs-subst">${close}</span>`</span>); <span class="hljs-comment">//Monday open at 8, close at 17 Tuesday open at 8, close at 17 ...</span>
+}</code></pre></div>
+<h4 id="object-methods">Object Methods</h4>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">Object.freeze()//Can not add new entry into Object, but still be able to edit the entry</pre><pre class="hljs"><code><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">freeze</span>()<span class="hljs-comment">//Can not add new entry into Object, but still be able to edit the entry</span></code></pre></div>
+<h3 id="set">Set</h3>
+<ul>
+<li>Iterable</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">.size
+.has()
+.add()
+.delete()
+.clear() //delete all the elements in a set
+
+const numbers = [1,2,3,1,2,4,5,6];
+const set = new Set(numbers);
+console.log(set);// {1, 2, 3, 4, 5, 6}
+console.log(new Set('12312').size);//3
+
+//forEach
+const set2 = new Set(['USD','GBP','USD','EUR']);
+set2.forEach(function(value,_,set){
+    console.log(`${value}:${_}`);
+});
+/*
+USD:USD
+map.js:18
+GBP:GBP
+map.js:18
+EUR:EUR
+*/</pre><pre class="hljs"><code>.<span class="hljs-property">size</span>
+.<span class="hljs-title function_">has</span>()
+.<span class="hljs-title function_">add</span>()
+.<span class="hljs-title function_">delete</span>()
+.<span class="hljs-title function_">clear</span>() <span class="hljs-comment">//delete all the elements in a set</span>
+
+<span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>];
+<span class="hljs-keyword">const</span> set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>(numbers);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(set);<span class="hljs-comment">// {1, 2, 3, 4, 5, 6}</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>(<span class="hljs-string">&#x27;12312&#x27;</span>).<span class="hljs-property">size</span>);<span class="hljs-comment">//3</span>
+
+<span class="hljs-comment">//forEach</span>
+<span class="hljs-keyword">const</span> set2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>([<span class="hljs-string">&#x27;USD&#x27;</span>,<span class="hljs-string">&#x27;GBP&#x27;</span>,<span class="hljs-string">&#x27;USD&#x27;</span>,<span class="hljs-string">&#x27;EUR&#x27;</span>]);
+set2.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">value,_,set</span>){
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${value}</span>:<span class="hljs-subst">${_}</span>`</span>);
+});
+<span class="hljs-comment">/*
+USD:USD
+map.js:18
+GBP:GBP
+map.js:18
+EUR:EUR
+*/</span></code></pre></div>
+<h3 id="map">Map</h3>
+<p>.size<br>
+.set()<br>
+.get()<br>
+.has()<br>
+.delete()<br>
+.claer()</p>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const map = new Map();
+console.log(map.set(1,'One'));//Map(1) {1 =&gt; One}
+map.set('Tow',2).set(true,'1+2=3');
+console.log(map.get(true));//1+2=3</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(map.<span class="hljs-title function_">set</span>(<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;One&#x27;</span>));<span class="hljs-comment">//Map(1) {1 =&gt; One}</span>
+map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;Tow&#x27;</span>,<span class="hljs-number">2</span>).<span class="hljs-title function_">set</span>(<span class="hljs-literal">true</span>,<span class="hljs-string">&#x27;1+2=3&#x27;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(map.<span class="hljs-title function_">get</span>(<span class="hljs-literal">true</span>));<span class="hljs-comment">//1+2=3</span></code></pre></div>
+<ul>
+<li>Map Iterator:</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const map = new Map();
+map.keys() //data type:Map Iterator
+map.values() //data type:Map Iterator
+map.entries() //data type:Map Iterator
+
+
+//forEach:
+const currencies = new Map([['USD','United States Dollar'],['EUR','Euro'],['GBP','Pound']]);
+currencies.forEach(function(value,key,map){
+    console.log(`${key} : 1 ${value}`);
+});
+/*
+USD : 1 United States Dollar
+EUR : 1 Euro
+GBP : 1 Pound*/</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+map.<span class="hljs-title function_">keys</span>() <span class="hljs-comment">//data type:Map Iterator</span>
+map.<span class="hljs-title function_">values</span>() <span class="hljs-comment">//data type:Map Iterator</span>
+map.<span class="hljs-title function_">entries</span>() <span class="hljs-comment">//data type:Map Iterator</span>
+
+
+<span class="hljs-comment">//forEach:</span>
+<span class="hljs-keyword">const</span> currencies = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>([[<span class="hljs-string">&#x27;USD&#x27;</span>,<span class="hljs-string">&#x27;United States Dollar&#x27;</span>],[<span class="hljs-string">&#x27;EUR&#x27;</span>,<span class="hljs-string">&#x27;Euro&#x27;</span>],[<span class="hljs-string">&#x27;GBP&#x27;</span>,<span class="hljs-string">&#x27;Pound&#x27;</span>]]);
+currencies.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">value,key,map</span>){
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${key}</span> : 1 <span class="hljs-subst">${value}</span>`</span>);
+});
+<span class="hljs-comment">/*
+USD : 1 United States Dollar
+EUR : 1 Euro
+GBP : 1 Pound*/</span></code></pre></div>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const question = new Map(
+    [
+        ['question','The best language is? '],
+        [1,'C'],
+        [2,'Java'],
+        [3,'JavaSctipt'],
+        ['correct',3],
+        [true,'You are correct!'],
+        [false,'Try again!']
+
+    ]
+);
+
+console.log(question.get('question'));
+
+for (const [key,value] of Object.entries(question)) {
+    
+}
+
+const answer = Number(prompt('Your answer'));
+question.get('correct') === answer ? console.log(question.get(true)) : console.log(question.get(false));
+
+const arr = [...question] //convert map to array</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> question = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>(
+    [
+        [<span class="hljs-string">&#x27;question&#x27;</span>,<span class="hljs-string">&#x27;The best language is? &#x27;</span>],
+        [<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;C&#x27;</span>],
+        [<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;Java&#x27;</span>],
+        [<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;JavaSctipt&#x27;</span>],
+        [<span class="hljs-string">&#x27;correct&#x27;</span>,<span class="hljs-number">3</span>],
+        [<span class="hljs-literal">true</span>,<span class="hljs-string">&#x27;You are correct!&#x27;</span>],
+        [<span class="hljs-literal">false</span>,<span class="hljs-string">&#x27;Try again!&#x27;</span>]
+
+    ]
+);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(question.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;question&#x27;</span>));
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [key,value] <span class="hljs-keyword">of</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(question)) {
+    
+}
+
+<span class="hljs-keyword">const</span> answer = <span class="hljs-title class_">Number</span>(<span class="hljs-title function_">prompt</span>(<span class="hljs-string">&#x27;Your answer&#x27;</span>));
+question.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;correct&#x27;</span>) === answer ? <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(question.<span class="hljs-title function_">get</span>(<span class="hljs-literal">true</span>)) : <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(question.<span class="hljs-title function_">get</span>(<span class="hljs-literal">false</span>));
+
+<span class="hljs-keyword">const</span> arr = [...question] <span class="hljs-comment">//convert map to array</span></code></pre></div>
+<h3 id="string">String</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const airline = 'Air France';
+console.log(airline.indexOf('i')); // 1
+console.log(airline.indexOf('d')); //-1
+console.log(airline.indexOf('r')); //2
+console.log(airline.lastIndexOf('r')); //5
+console.log(airline.length); //10
+console.log(airline.slice(4)); //output: France
+console.log(airline.slice(4,5)); //output: F
+console.log(airline.slice(-6)); //output: France
+console.log(airline.slice(0,airline.indexOf(' '))); //output: Air
+console.log(airline.charAt(airline.length-1));//e
+console.log(airline[airline.length-1]);//e
+console.log(airline.at(-1));//e
+
+const airlineLower = airline.toLowerCase();
+const airlineCorrect = airline[0].toUpperCase()+airline.slice(1,4)+airline[4].toUpperCase()+airline.slice(5);
+console.log(airlineLower);//air france
+console.log(airlineCorrect);//Air France
+
+//.trim()
+const email = 'rua9@pitt.edu';
+const typedEmail = ' RUA9@Pitt.edu \n';
+const trimmedLowerEmail = typedEmail.toLowerCase().trim();
+console.log(trimmedLowerEmail);//rua9@pitt.edu
+
+
+const annoucement = 'Hello World, Hello you!';
+console.log(annoucement.replace('Hello','Hi'));//output: Hi World, Hello you!
+console.log(annoucement.replace(/Hello/g,'Hi'));//output: Hi World, Hi you!  Regular Expression replaced all 'Hello'
+
+console.log(annoucement.includes('hello'));//false
+console.log(annoucement.includes('Hello'));//true
+console.log(annoucement.startsWith('He'));//true
+console.log(annoucement.endsWith('ou!'));//true
+
+//split &amp; join
+console.log(annoucement.split('o'));//['Hell', ' W', 'rld, Hell', ' y', 'u!']
+const [str1,str2] = annoucement.split(',');
+console.log(str1,str2);//Hello World        Hello you!
+
+const newAnnouncement = ['Hello', str1.toLowerCase(), str2.toLowerCase()].join(' ');//Hello hello world hello you!
+console.log(newAnnouncement);
+
+//padding to a particular length
+const message = '12345';
+console.log(message.padStart(10,'+'));
+console.log(message.padEnd(10,'+'));
+
+//repeat
+console.log(message.repeat(3));
+</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> airline = <span class="hljs-string">&#x27;Air France&#x27;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airline.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;i&#x27;</span>)); <span class="hljs-comment">// 1</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airline.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;d&#x27;</span>)); <span class="hljs-comment">//-1</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airline.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;r&#x27;</span>)); <span class="hljs-comment">//2</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airline.<span class="hljs-title function_">lastIndexOf</span>(<span class="hljs-string">&#x27;r&#x27;</span>)); <span class="hljs-comment">//5</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airline.<span class="hljs-property">length</span>); <span class="hljs-comment">//10</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airline.<span class="hljs-title function_">slice</span>(<span class="hljs-number">4</span>)); <span class="hljs-comment">//output: France</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airline.<span class="hljs-title function_">slice</span>(<span class="hljs-number">4</span>,<span class="hljs-number">5</span>)); <span class="hljs-comment">//output: F</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airline.<span class="hljs-title function_">slice</span>(-<span class="hljs-number">6</span>)); <span class="hljs-comment">//output: France</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airline.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>,airline.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27; &#x27;</span>))); <span class="hljs-comment">//output: Air</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airline.<span class="hljs-title function_">charAt</span>(airline.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>));<span class="hljs-comment">//e</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airline[airline.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>]);<span class="hljs-comment">//e</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airline.<span class="hljs-title function_">at</span>(-<span class="hljs-number">1</span>));<span class="hljs-comment">//e</span>
+
+<span class="hljs-keyword">const</span> airlineLower = airline.<span class="hljs-title function_">toLowerCase</span>();
+<span class="hljs-keyword">const</span> airlineCorrect = airline[<span class="hljs-number">0</span>].<span class="hljs-title function_">toUpperCase</span>()+airline.<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>,<span class="hljs-number">4</span>)+airline[<span class="hljs-number">4</span>].<span class="hljs-title function_">toUpperCase</span>()+airline.<span class="hljs-title function_">slice</span>(<span class="hljs-number">5</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airlineLower);<span class="hljs-comment">//air france</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(airlineCorrect);<span class="hljs-comment">//Air France</span>
+
+<span class="hljs-comment">//.trim()</span>
+<span class="hljs-keyword">const</span> email = <span class="hljs-string">&#x27;rua9@pitt.edu&#x27;</span>;
+<span class="hljs-keyword">const</span> typedEmail = <span class="hljs-string">&#x27; RUA9@Pitt.edu \n&#x27;</span>;
+<span class="hljs-keyword">const</span> trimmedLowerEmail = typedEmail.<span class="hljs-title function_">toLowerCase</span>().<span class="hljs-title function_">trim</span>();
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(trimmedLowerEmail);<span class="hljs-comment">//rua9@pitt.edu</span>
+
+
+<span class="hljs-keyword">const</span> annoucement = <span class="hljs-string">&#x27;Hello World, Hello you!&#x27;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(annoucement.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&#x27;Hello&#x27;</span>,<span class="hljs-string">&#x27;Hi&#x27;</span>));<span class="hljs-comment">//output: Hi World, Hello you!</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(annoucement.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/Hello/g</span>,<span class="hljs-string">&#x27;Hi&#x27;</span>));<span class="hljs-comment">//output: Hi World, Hi you!  Regular Expression replaced all &#x27;Hello&#x27;</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(annoucement.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;hello&#x27;</span>));<span class="hljs-comment">//false</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(annoucement.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;Hello&#x27;</span>));<span class="hljs-comment">//true</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(annoucement.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&#x27;He&#x27;</span>));<span class="hljs-comment">//true</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(annoucement.<span class="hljs-title function_">endsWith</span>(<span class="hljs-string">&#x27;ou!&#x27;</span>));<span class="hljs-comment">//true</span>
+
+<span class="hljs-comment">//split &amp; join</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(annoucement.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;o&#x27;</span>));<span class="hljs-comment">//[&#x27;Hell&#x27;, &#x27; W&#x27;, &#x27;rld, Hell&#x27;, &#x27; y&#x27;, &#x27;u!&#x27;]</span>
+<span class="hljs-keyword">const</span> [str1,str2] = annoucement.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;,&#x27;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str1,str2);<span class="hljs-comment">//Hello World        Hello you!</span>
+
+<span class="hljs-keyword">const</span> newAnnouncement = [<span class="hljs-string">&#x27;Hello&#x27;</span>, str1.<span class="hljs-title function_">toLowerCase</span>(), str2.<span class="hljs-title function_">toLowerCase</span>()].<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27; &#x27;</span>);<span class="hljs-comment">//Hello hello world hello you!</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newAnnouncement);
+
+<span class="hljs-comment">//padding to a particular length</span>
+<span class="hljs-keyword">const</span> message = <span class="hljs-string">&#x27;12345&#x27;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(message.<span class="hljs-title function_">padStart</span>(<span class="hljs-number">10</span>,<span class="hljs-string">&#x27;+&#x27;</span>));
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(message.<span class="hljs-title function_">padEnd</span>(<span class="hljs-number">10</span>,<span class="hljs-string">&#x27;+&#x27;</span>));
+
+<span class="hljs-comment">//repeat</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(message.<span class="hljs-title function_">repeat</span>(<span class="hljs-number">3</span>));
+</code></pre></div>
+<h2 id="functions">Functions</h2>
+<h3 id="call-and-apply-method">Call and Apply method:</h3>
+<ul>
+<li>Use .call() or .apply() when you want to invoke the function immediately, and modify the context.</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const uberOrder = {
+    restaurant: 'KFC',
+    food: 'fried chicken',
+    order(number,addr){
+      console.log(`${number} * ${this.food} to ${addr}`);
+    }
+  };
+  
+  const makeOrder = uberOrder.order;
+  //call method:
+  makeOrder.call(uberOrder,5,'university of pittsburgh');//5 * fried chiecken, The call() method calls the function with a given this value and arguments provided individually.
+  makeOrder(3);//error, this not defined
+
+  //apply method:
+  makeOrder.apply(uberOrder,[3,'apt305']);//The apply() method calls the specified function with a given &quot;this&quot; value, and arguments provided as an array (or an array-like object)
+</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> uberOrder = {
+    <span class="hljs-attr">restaurant</span>: <span class="hljs-string">&#x27;KFC&#x27;</span>,
+    <span class="hljs-attr">food</span>: <span class="hljs-string">&#x27;fried chicken&#x27;</span>,
+    <span class="hljs-title function_">order</span>(<span class="hljs-params">number,addr</span>){
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${number}</span> * <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.food}</span> to <span class="hljs-subst">${addr}</span>`</span>);
+    }
+  };
+  
+  <span class="hljs-keyword">const</span> makeOrder = uberOrder.<span class="hljs-property">order</span>;
+  <span class="hljs-comment">//call method:</span>
+  makeOrder.<span class="hljs-title function_">call</span>(uberOrder,<span class="hljs-number">5</span>,<span class="hljs-string">&#x27;university of pittsburgh&#x27;</span>);<span class="hljs-comment">//5 * fried chiecken, The call() method calls the function with a given this value and arguments provided individually.</span>
+  <span class="hljs-title function_">makeOrder</span>(<span class="hljs-number">3</span>);<span class="hljs-comment">//error, this not defined</span>
+
+  <span class="hljs-comment">//apply method:</span>
+  makeOrder.<span class="hljs-title function_">apply</span>(uberOrder,[<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;apt305&#x27;</span>]);<span class="hljs-comment">//The apply() method calls the specified function with a given &quot;this&quot; value, and arguments provided as an array (or an array-like object)</span>
+</code></pre></div>
+<h3 id="bind-method">Bind method</h3>
+<ul>
+<li>Use .bind() when you want that function to later be called with a certain context, useful in events.</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const orderBind = makeOrder.bind(uberOrder);
+orderBind(10,'PITT'); //output: 10 * fried chicken to PITT (this keyword has been bound to the uberOrder object)
+
+const orderBind7 = makeOrder.bind(uberOrder,7);
+orderBind7('my apartment');//output: 7 * fried chicken to my apartment
+
+//using with DOM
+document.querySelector('.buy').addEventListener('click',uberOrder.buyPlane);//output: undefined has bought a new plane for delivery; Reason: 'this' keyword point to the button;
+document.querySelector('.buy').addEventListener('click',uberOrder.buyPlane.bind(uberOrder));//output: KFC has bought a new plane for delivery
+  
+//partially bind
+const tax = (rate,value) =&gt; value+rate*value;
+console.log(tax(0.1,200));//220
+
+const fixedTax = tax.bind(null,0.2);
+console.log(fixedTax(200));//240
+
+//same result using return function
+const tax2 = function(rate){
+    return function(value){
+        return value+value*rate;
+    }
+};
+
+const fixedTax2 = tax2(0.2);
+console.log(fixedTax2(200));//240</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> orderBind = makeOrder.<span class="hljs-title function_">bind</span>(uberOrder);
+<span class="hljs-title function_">orderBind</span>(<span class="hljs-number">10</span>,<span class="hljs-string">&#x27;PITT&#x27;</span>); <span class="hljs-comment">//output: 10 * fried chicken to PITT (this keyword has been bound to the uberOrder object)</span>
+
+<span class="hljs-keyword">const</span> orderBind7 = makeOrder.<span class="hljs-title function_">bind</span>(uberOrder,<span class="hljs-number">7</span>);
+<span class="hljs-title function_">orderBind7</span>(<span class="hljs-string">&#x27;my apartment&#x27;</span>);<span class="hljs-comment">//output: 7 * fried chicken to my apartment</span>
+
+<span class="hljs-comment">//using with DOM</span>
+<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;.buy&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>,uberOrder.<span class="hljs-property">buyPlane</span>);<span class="hljs-comment">//output: undefined has bought a new plane for delivery; Reason: &#x27;this&#x27; keyword point to the button;</span>
+<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;.buy&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>,uberOrder.<span class="hljs-property">buyPlane</span>.<span class="hljs-title function_">bind</span>(uberOrder));<span class="hljs-comment">//output: KFC has bought a new plane for delivery</span>
+  
+<span class="hljs-comment">//partially bind</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">tax</span> = (<span class="hljs-params">rate,value</span>) =&gt; value+rate*value;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">tax</span>(<span class="hljs-number">0.1</span>,<span class="hljs-number">200</span>));<span class="hljs-comment">//220</span>
+
+<span class="hljs-keyword">const</span> fixedTax = tax.<span class="hljs-title function_">bind</span>(<span class="hljs-literal">null</span>,<span class="hljs-number">0.2</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">fixedTax</span>(<span class="hljs-number">200</span>));<span class="hljs-comment">//240</span>
+
+<span class="hljs-comment">//same result using return function</span>
+<span class="hljs-keyword">const</span> tax2 = <span class="hljs-keyword">function</span>(<span class="hljs-params">rate</span>){
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>){
+        <span class="hljs-keyword">return</span> value+value*rate;
+    }
+};
+
+<span class="hljs-keyword">const</span> fixedTax2 = <span class="hljs-title function_">tax2</span>(<span class="hljs-number">0.2</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">fixedTax2</span>(<span class="hljs-number">200</span>));<span class="hljs-comment">//240</span></code></pre></div>
+<h3 id="immediately-invoked-function-expressioniife">Immediately Invoked Function Expression(IIFE)</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="JavaScript" data-joplin-source-open="```JavaScript&#10;" data-joplin-source-close="&#10;```">(function(){
+    console.log('only run once');
+})();
+
+(()=&gt;console.log('This will only run once as well'))();</pre><pre class="hljs"><code>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;only run once&#x27;</span>);
+})();
+
+(<span class="hljs-function">()=&gt;</span><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;This will only run once as well&#x27;</span>))();</code></pre></div>
+<h3 id="closures">Closures</h3>
+<ul>
+<li>A closure is a function having access to the parent scope, even after the parent function has closed.</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="javascript" data-joplin-source-open="```javascript&#10;" data-joplin-source-close="&#10;```">const add = (function () {
+    let counter = 0;
+    return function () {counter += 1; return counter}
+  })();
+
+console.log(typeof(add));//function
+
+add();//1
+add();//2
+add();//3</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> add = (<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">let</span> counter = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {counter += <span class="hljs-number">1</span>; <span class="hljs-keyword">return</span> counter}
+  })();
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">typeof</span>(add));<span class="hljs-comment">//function</span>
+
+<span class="hljs-title function_">add</span>();<span class="hljs-comment">//1</span>
+<span class="hljs-title function_">add</span>();<span class="hljs-comment">//2</span>
+<span class="hljs-title function_">add</span>();<span class="hljs-comment">//3</span></code></pre></div>
+<h2 id="array2">Array2</h2>
+<h3 id="array-methods">Array Methods</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">//Slice
+let arr = ['a','b','c','d','e'];
+console.log(arr.slice(2));//['c', 'd', 'e'] 
+console.log(arr);//['a', 'b', 'c', 'd', 'e'] array doesn't change
+
+//Splice 
+//The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
+//To create a new array with a segment removed and/or replaced without mutating the original array, use toSpliced(). To access part of an array without modifying it, see slice().
+console.log(arr.splice(2));//['c', 'd', 'e'] 
+console.log(arr);//['a', 'b'] original array has been mutated
+//Parameter: splice(startIndex, deleteCount, item0, item1)
+
+//reverse
+const arr2 = ['j','i','h','g','f'];
+console.log(arr2.reverse());//['f', 'g', 'h', 'i', 'j']
+console.log(arr2);//['f', 'g', 'h', 'i', 'j'] original array changed as well
+
+//concat
+arr = ['a','b','c','d','e'];
+const letters = arr.concat(arr2);
+console.log(letters);// ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+console.log(arr);//  ['a', 'b', 'c', 'd', 'e']
+
+//join
+console.log(letters.join('-')); // a-b-c-d-e-f-g-h-i-j
+console.log(letters);// ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+//at
+console.log(arr[arr.length-1]);//e
+console.log(arr.at(-1));//e
+console.log(arr[-1]);//undefined
+
+//every
+const ages = [32, 33, 16, 40];
+const ages2 = [32, 33, 20, 40];
+
+const agesOlderThan18 = ages.every((age) =&gt; age &gt; 18);
+const ages2OlderThan18 = ages2.every((age) =&gt; age &gt; 18);
+
+console.log(agesOlderThan18); //false
+console.log(ages2OlderThan18); //true
+
+//some
+//The some() method tests whether at least one element in the array passes the test implemented by the provided function. 
+//It returns true if, in the array, it finds an element for which the provided function returns true; 
+//otherwise it returns false. It doesn't modify the array.
+const someArray = [1, 2, 3, 4, 5];
+const even = (element) =&gt; element % 2 === 0; //Function to check whether an element is even
+console.log(someArray.some(even)); //true
+
+//find
+//The find() method returns the first element in the provided array that satisfies the provided testing function. 
+//If no values satisfy the testing function, undefined is returned.
+const findArray = [5, 12, 8, 130, 44];
+const found = findArray.find((element) =&gt; element &gt; 10);
+console.log(found); //12
+
+//findIndex
+//The findIndex() method returns the index of the first element in an array that satisfies the provided testing function. 
+//If no elements satisfy the testing function, -1 is returned.
+const findIndexArr = [5, 12, 8, 130, 44];
+const isLarger = (element) =&gt; element &gt; 10;
+console.log(findIndexArr.findIndex(isLarger)); //1
+
+</pre><pre class="hljs"><code><span class="hljs-comment">//Slice</span>
+<span class="hljs-keyword">let</span> arr = [<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>,<span class="hljs-string">&#x27;e&#x27;</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">slice</span>(<span class="hljs-number">2</span>));<span class="hljs-comment">//[&#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;] </span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<span class="hljs-comment">//[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;] array doesn&#x27;t change</span>
+
+<span class="hljs-comment">//Splice </span>
+<span class="hljs-comment">//The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.</span>
+<span class="hljs-comment">//To create a new array with a segment removed and/or replaced without mutating the original array, use toSpliced(). To access part of an array without modifying it, see slice().</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">splice</span>(<span class="hljs-number">2</span>));<span class="hljs-comment">//[&#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;] </span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<span class="hljs-comment">//[&#x27;a&#x27;, &#x27;b&#x27;] original array has been mutated</span>
+<span class="hljs-comment">//Parameter: splice(startIndex, deleteCount, item0, item1)</span>
+
+<span class="hljs-comment">//reverse</span>
+<span class="hljs-keyword">const</span> arr2 = [<span class="hljs-string">&#x27;j&#x27;</span>,<span class="hljs-string">&#x27;i&#x27;</span>,<span class="hljs-string">&#x27;h&#x27;</span>,<span class="hljs-string">&#x27;g&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr2.<span class="hljs-title function_">reverse</span>());<span class="hljs-comment">//[&#x27;f&#x27;, &#x27;g&#x27;, &#x27;h&#x27;, &#x27;i&#x27;, &#x27;j&#x27;]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr2);<span class="hljs-comment">//[&#x27;f&#x27;, &#x27;g&#x27;, &#x27;h&#x27;, &#x27;i&#x27;, &#x27;j&#x27;] original array changed as well</span>
+
+<span class="hljs-comment">//concat</span>
+arr = [<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>,<span class="hljs-string">&#x27;e&#x27;</span>];
+<span class="hljs-keyword">const</span> letters = arr.<span class="hljs-title function_">concat</span>(arr2);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(letters);<span class="hljs-comment">// [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;, &#x27;g&#x27;, &#x27;h&#x27;, &#x27;i&#x27;, &#x27;j&#x27;]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<span class="hljs-comment">//  [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;]</span>
+
+<span class="hljs-comment">//join</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(letters.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;-&#x27;</span>)); <span class="hljs-comment">// a-b-c-d-e-f-g-h-i-j</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(letters);<span class="hljs-comment">// [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;, &#x27;g&#x27;, &#x27;h&#x27;, &#x27;i&#x27;, &#x27;j&#x27;]</span>
+
+<span class="hljs-comment">//at</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr[arr.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>]);<span class="hljs-comment">//e</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">at</span>(-<span class="hljs-number">1</span>));<span class="hljs-comment">//e</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr[-<span class="hljs-number">1</span>]);<span class="hljs-comment">//undefined</span>
+
+<span class="hljs-comment">//every</span>
+<span class="hljs-keyword">const</span> ages = [<span class="hljs-number">32</span>, <span class="hljs-number">33</span>, <span class="hljs-number">16</span>, <span class="hljs-number">40</span>];
+<span class="hljs-keyword">const</span> ages2 = [<span class="hljs-number">32</span>, <span class="hljs-number">33</span>, <span class="hljs-number">20</span>, <span class="hljs-number">40</span>];
+
+<span class="hljs-keyword">const</span> agesOlderThan18 = ages.<span class="hljs-title function_">every</span>(<span class="hljs-function">(<span class="hljs-params">age</span>) =&gt;</span> age &gt; <span class="hljs-number">18</span>);
+<span class="hljs-keyword">const</span> ages2OlderThan18 = ages2.<span class="hljs-title function_">every</span>(<span class="hljs-function">(<span class="hljs-params">age</span>) =&gt;</span> age &gt; <span class="hljs-number">18</span>);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(agesOlderThan18); <span class="hljs-comment">//false</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(ages2OlderThan18); <span class="hljs-comment">//true</span>
+
+<span class="hljs-comment">//some</span>
+<span class="hljs-comment">//The some() method tests whether at least one element in the array passes the test implemented by the provided function. </span>
+<span class="hljs-comment">//It returns true if, in the array, it finds an element for which the provided function returns true; </span>
+<span class="hljs-comment">//otherwise it returns false. It doesn&#x27;t modify the array.</span>
+<span class="hljs-keyword">const</span> someArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">even</span> = (<span class="hljs-params">element</span>) =&gt; element % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>; <span class="hljs-comment">//Function to check whether an element is even</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(someArray.<span class="hljs-title function_">some</span>(even)); <span class="hljs-comment">//true</span>
+
+<span class="hljs-comment">//find</span>
+<span class="hljs-comment">//The find() method returns the first element in the provided array that satisfies the provided testing function. </span>
+<span class="hljs-comment">//If no values satisfy the testing function, undefined is returned.</span>
+<span class="hljs-keyword">const</span> findArray = [<span class="hljs-number">5</span>, <span class="hljs-number">12</span>, <span class="hljs-number">8</span>, <span class="hljs-number">130</span>, <span class="hljs-number">44</span>];
+<span class="hljs-keyword">const</span> found = findArray.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">element</span>) =&gt;</span> element &gt; <span class="hljs-number">10</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(found); <span class="hljs-comment">//12</span>
+
+<span class="hljs-comment">//findIndex</span>
+<span class="hljs-comment">//The findIndex() method returns the index of the first element in an array that satisfies the provided testing function. </span>
+<span class="hljs-comment">//If no elements satisfy the testing function, -1 is returned.</span>
+<span class="hljs-keyword">const</span> findIndexArr = [<span class="hljs-number">5</span>, <span class="hljs-number">12</span>, <span class="hljs-number">8</span>, <span class="hljs-number">130</span>, <span class="hljs-number">44</span>];
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">isLarger</span> = (<span class="hljs-params">element</span>) =&gt; element &gt; <span class="hljs-number">10</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(findIndexArr.<span class="hljs-title function_">findIndex</span>(isLarger)); <span class="hljs-comment">//1</span>
+
+</code></pre></div>
+<h3 id="foreach-loop">foreach loop</h3>
+<ul>
+<li>break and continue doesn't work for each loop</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const movements = [200,450,-100,300,-400,800,-50,140];
+movements.forEach(function(movement){
+    movement&gt;0? console.log(`You deposit ${movement} bucks`) : console.log(`You withdraw ${Math.abs(movement)} bucks`);
+});
+
+movements.forEach(function(movement,index,array){
+    movement&gt;0? console.log(`Movement${index+1} : You deposit ${movement} bucks`) : console.log(`Movement${index+1} :You withdraw ${Math.abs(movement)} bucks`);
+    console.log(array);//[200, 450, -100, 300, -400, 800, -50, 140]
+});</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> movements = [<span class="hljs-number">200</span>,<span class="hljs-number">450</span>,-<span class="hljs-number">100</span>,<span class="hljs-number">300</span>,-<span class="hljs-number">400</span>,<span class="hljs-number">800</span>,-<span class="hljs-number">50</span>,<span class="hljs-number">140</span>];
+movements.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">movement</span>){
+    movement&gt;<span class="hljs-number">0</span>? <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`You deposit <span class="hljs-subst">${movement}</span> bucks`</span>) : <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`You withdraw <span class="hljs-subst">${<span class="hljs-built_in">Math</span>.abs(movement)}</span> bucks`</span>);
+});
+
+movements.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">movement,index,array</span>){
+    movement&gt;<span class="hljs-number">0</span>? <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Movement<span class="hljs-subst">${index+<span class="hljs-number">1</span>}</span> : You deposit <span class="hljs-subst">${movement}</span> bucks`</span>) : <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Movement<span class="hljs-subst">${index+<span class="hljs-number">1</span>}</span> :You withdraw <span class="hljs-subst">${<span class="hljs-built_in">Math</span>.abs(movement)}</span> bucks`</span>);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(array);<span class="hljs-comment">//[200, 450, -100, 300, -400, 800, -50, 140]</span>
+});</code></pre></div>
+<h3 id="arraymap-method">Array.map() method</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const eurToUsd = 1.1;
+
+const movementsUsd = movements.map(function(move){
+  return move*eurToUsd;
+});
+
+console.log(movements);//[200, 450, -100, 300, -400, 800, -50, 140] map function doesn't mutate original array;
+console.log(movementsUsd);//[220.00000000000003, 495.00000000000006, -110.00000000000001, 330, -440.00000000000006, 880.0000000000001, -55.00000000000001, 154] map function returns a new array;</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> eurToUsd = <span class="hljs-number">1.1</span>;
+
+<span class="hljs-keyword">const</span> movementsUsd = movements.<span class="hljs-title function_">map</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">move</span>){
+  <span class="hljs-keyword">return</span> move*eurToUsd;
+});
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(movements);<span class="hljs-comment">//[200, 450, -100, 300, -400, 800, -50, 140] map function doesn&#x27;t mutate original array;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(movementsUsd);<span class="hljs-comment">//[220.00000000000003, 495.00000000000006, -110.00000000000001, 330, -440.00000000000006, 880.0000000000001, -55.00000000000001, 154] map function returns a new array;</span></code></pre></div>
+<h3 id="filter">Filter</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const deposits = movements.filter(function(move){
+    return move&gt;0;
+});
+console.log(deposits);//[200, 450, 300, 800, 140]
+console.log(movements);//[200, 450, -100, 300, -400, 800, -50, 140] filter method doen't mutate the original array.</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> deposits = movements.<span class="hljs-title function_">filter</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">move</span>){
+    <span class="hljs-keyword">return</span> move&gt;<span class="hljs-number">0</span>;
+});
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(deposits);<span class="hljs-comment">//[200, 450, 300, 800, 140]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(movements);<span class="hljs-comment">//[200, 450, -100, 300, -400, 800, -50, 140] filter method doen&#x27;t mutate the original array.</span></code></pre></div>
+<h3 id="reduce-and-reduceright">reduce and reduceRight</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const myArray = [1, 2, 3, 4];
+const callbackfn = (sum, element) =&gt; (sum += element);
+let initialValue = 1;
+
+console.log(myArray.reduce(callbackfn)); //10
+console.log(myArray.reduce(callbackfn, initialValue)); //11
+
+const myString = [&quot;hello&quot;, &quot; world&quot;, &quot; !&quot;];
+const callbackfn2 = (str, subStr) =&gt; (str += subStr);
+
+console.log(myString.reduce(callbackfn2)); //hello world !
+
+//The reduceRight() method applies a function against an accumulator and each value of the array (from right-to-left) to reduce it to a single value.
+console.log(myString.reduceRight(callbackfn2)); // ! worldhello
+
+const initialValue2 = &quot;Say &quot;;
+console.log(myString.reduce(callbackfn2, initialValue2)); //Say hello world !
+console.log(myString.reduceRight(callbackfn2, initialValue2)); //Say  ! worldhello</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">callbackfn</span> = (<span class="hljs-params">sum, element</span>) =&gt; (sum += element);
+<span class="hljs-keyword">let</span> initialValue = <span class="hljs-number">1</span>;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myArray.<span class="hljs-title function_">reduce</span>(callbackfn)); <span class="hljs-comment">//10</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myArray.<span class="hljs-title function_">reduce</span>(callbackfn, initialValue)); <span class="hljs-comment">//11</span>
+
+<span class="hljs-keyword">const</span> myString = [<span class="hljs-string">&quot;hello&quot;</span>, <span class="hljs-string">&quot; world&quot;</span>, <span class="hljs-string">&quot; !&quot;</span>];
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">callbackfn2</span> = (<span class="hljs-params">str, subStr</span>) =&gt; (str += subStr);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myString.<span class="hljs-title function_">reduce</span>(callbackfn2)); <span class="hljs-comment">//hello world !</span>
+
+<span class="hljs-comment">//The reduceRight() method applies a function against an accumulator and each value of the array (from right-to-left) to reduce it to a single value.</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myString.<span class="hljs-title function_">reduceRight</span>(callbackfn2)); <span class="hljs-comment">// ! worldhello</span>
+
+<span class="hljs-keyword">const</span> initialValue2 = <span class="hljs-string">&quot;Say &quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myString.<span class="hljs-title function_">reduce</span>(callbackfn2, initialValue2)); <span class="hljs-comment">//Say hello world !</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myString.<span class="hljs-title function_">reduceRight</span>(callbackfn2, initialValue2)); <span class="hljs-comment">//Say  ! worldhello</span></code></pre></div>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">//Sorting array of Ints
+//Principle: use a function to compare a and b, if the function returns an INT&gt;0, a will be placed after b.
+//if it returns a negative INT, a will be placed before b.
+const arr1 = [3, 7, 1, 9, 6];
+const sorted1 = arr1.sort((a, b) =&gt; a - b); //Ascending sequence, if a-b returns a positive value(a&gt;b), a will be placed after b and vice versa.
+console.log(sorted1); //[1, 3, 6, 7, 9]
+console.log(arr1); //[9, 7, 6, 3, 1] The sort method mutate the original array.
+
+const sorted2 = arr1.slice().sort((a, b) =&gt; b - a); //Descending sequence, if b-a returns a positive value(b&gt;a), a will be placed after b and vice versa.
+console.log(sorted2); //[9, 7, 6, 3, 1]
+console.log(arr1); //[1, 3, 6, 7, 9] // By using .slice() to create a new array,the original array wasn't mutated
+
+//Sorting array of objects based on its String property
+array.sort((element1,element2)=&gt;element1.name.localeCompare(element2.name))
+//localeCompare() is a String method wich returns a negative INT if String1&lt;String2</pre><pre class="hljs"><code><span class="hljs-comment">//Sorting array of Ints</span>
+<span class="hljs-comment">//Principle: use a function to compare a and b, if the function returns an INT&gt;0, a will be placed after b.</span>
+<span class="hljs-comment">//if it returns a negative INT, a will be placed before b.</span>
+<span class="hljs-keyword">const</span> arr1 = [<span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">1</span>, <span class="hljs-number">9</span>, <span class="hljs-number">6</span>];
+<span class="hljs-keyword">const</span> sorted1 = arr1.<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a - b); <span class="hljs-comment">//Ascending sequence, if a-b returns a positive value(a&gt;b), a will be placed after b and vice versa.</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sorted1); <span class="hljs-comment">//[1, 3, 6, 7, 9]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr1); <span class="hljs-comment">//[9, 7, 6, 3, 1] The sort method mutate the original array.</span>
+
+<span class="hljs-keyword">const</span> sorted2 = arr1.<span class="hljs-title function_">slice</span>().<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> b - a); <span class="hljs-comment">//Descending sequence, if b-a returns a positive value(b&gt;a), a will be placed after b and vice versa.</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sorted2); <span class="hljs-comment">//[9, 7, 6, 3, 1]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr1); <span class="hljs-comment">//[1, 3, 6, 7, 9] // By using .slice() to create a new array,the original array wasn&#x27;t mutated</span>
+
+<span class="hljs-comment">//Sorting array of objects based on its String property</span>
+array.<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">element1,element2</span>)=&gt;</span>element1.<span class="hljs-property">name</span>.<span class="hljs-title function_">localeCompare</span>(element2.<span class="hljs-property">name</span>))
+<span class="hljs-comment">//localeCompare() is a String method wich returns a negative INT if String1&lt;String2</span></code></pre></div>
+<h2 id="array-methods-2">Array methods</h2>
+<table>
+<thead>
+<tr>
+<th><strong>will mutate original array</strong></th>
+<th><strong>will create a new array</strong></th>
+<th><strong>to get index of an element</strong></th>
+<th><strong>to know if array includes</strong></th>
+<th><strong>to transform to value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add to original: .push(end of array） .unshift(start of array)</td>
+<td>Computed from original array: .map</td>
+<td>To get the index of a value: .indexOf(Based on value)  .findIndex(Based on test condition)</td>
+<td>Based on value of element: .includes</td>
+<td>Based on accumulator: .reduce</td>
+</tr>
+<tr>
+<td>Remove from original: .pop(element at the end, last index) .shift(element at the start, first index) .splice(depends on the index parameters)</td>
+<td>Filtered using condition: .filter</td>
+<td></td>
+<td>Based on test condition: .some .every</td>
+<td></td>
+</tr>
+<tr>
+<td>Others: .reverse .sort .fill</td>
+<td>Portion of original： .slice</td>
+<td><strong>to get an element in array</strong></td>
+<td></td>
+<td><strong>to just loop array</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>Adding original array to other: .concat</td>
+<td>.find(Based on test condition)</td>
+<td><strong>to create a new String:</strong></td>
+<td>Based on callback: .foreach(Does not create a new array, just loops over the original)</td>
+</tr>
+<tr>
+<td></td>
+<td>Flattening the original: .flat .flatMap</td>
+<td></td>
+<td>.join(Based on separator String)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="dom-and-events">DOM and Events</h2>
+<h3 id="script-loading">Script Loading</h3>
+<ul>
+<li>Regular(put the script tag at the end of body in HTML)</li>
+<li>Async in Head:<br>
+Scripts are fetched asynchronously and executed immediately</li>
+<li><strong>Defer</strong> in Head:<br>
+Scripts are fetched asynchronously and executed after the HTML is completely parsed</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="html" data-joplin-source-open="```html&#10;" data-joplin-source-close="&#10;```"> &lt;head&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;
+  &lt;script async src=&quot;async_script.js&quot;&gt;&lt;/script&gt;
+  &lt;script defer src=&quot;defer_script.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;</pre><pre class="hljs"><code> <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">async</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;async_script.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">defer</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;defer_script.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></code></pre></div>
+<p><img src="../_resources/d90b9973335d4fd5b0151f167ed9efc8.png" alt="4f81a1c3599c0ac3b07e6451d48be822.png"><img src="../_resources/ef24e4828a334d32a2a5578b4ce06a79.png" alt="ebcf1fcf3d44fbea6dc31c8838429b5b.png"></p>
+<h3 id="dom-contents">DOM contents</h3>
+<h4 id="element-closest-method">Element: closest() method</h4>
+<ul>
+<li>The closest() method of the Element interface traverses the element and its parents (heading toward the document root) until it finds a node that matches the specified CSS selector.</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">//Find out the closest element to the e.target
+parentElement.addEventListener(&quot;click&quot;, function (e) {
+      const button = e.target.closest(&quot;.btn--inline&quot;);
+      if (!button) return;
+      const gotoPage = +button.dataset.goto;
+      handler(gotoPage);
+    });
+</pre><pre class="hljs"><code><span class="hljs-comment">//Find out the closest element to the e.target</span>
+parentElement.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) {
+      <span class="hljs-keyword">const</span> button = e.<span class="hljs-property">target</span>.<span class="hljs-title function_">closest</span>(<span class="hljs-string">&quot;.btn--inline&quot;</span>);
+      <span class="hljs-keyword">if</span> (!button) <span class="hljs-keyword">return</span>;
+      <span class="hljs-keyword">const</span> gotoPage = +button.<span class="hljs-property">dataset</span>.<span class="hljs-property">goto</span>;
+      <span class="hljs-title function_">handler</span>(gotoPage);
+    });
+</code></pre></div>
+<h4 id="dataset-property">Dataset Property</h4>
+<ul>
+<li>The dataset read-only property of the HTMLElement interface provides read/write access to custom data attributes (data-<em>) on elements. It exposes a map of strings (DOMStringMap) with an entry for each data-</em> attribute.</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="HTML" data-joplin-source-open="```HTML&#10;" data-joplin-source-close="&#10;```">&lt;button data-goto=&quot;1&quot; class=&quot;btn--inline&quot;&gt;Goto Page&lt;/button&gt; </pre><pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">data-goto</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn--inline&quot;</span>&gt;</span>Goto Page<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span> </code></pre></div>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const button = document.querySelector(&quot;.btn--inline&quot;);
+const gotoPage = +button.dataset.goto;//Convert String to number</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> button = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.btn--inline&quot;</span>);
+<span class="hljs-keyword">const</span> gotoPage = +button.<span class="hljs-property">dataset</span>.<span class="hljs-property">goto</span>;<span class="hljs-comment">//Convert String to number</span></code></pre></div>
+<h4 id="appendchild">AppendChild</h4>
+<h4 id="insertadjacenthtml">InsertAdjacentHTML</h4>
+<h4 id="innerhtml-vs">InnerHTML vs</h4>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="html" data-joplin-source-open="```html&#10;" data-joplin-source-close="&#10;```">&lt;body&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+      This element is
+      &lt;h1&gt;Headline&lt;/h1&gt;
+      &lt;em&gt;and this is some emphasized text.&lt;/em&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+      const content = document.getElementById(&quot;div1&quot;);
+      console.log(content.innerHTML); 
+        //This element is &quot;&lt;h1&gt;Headline&lt;/h1&gt; &lt;em&gt;and this is some emphasized text.&lt;/em&gt;&quot;
+      console.log(content.innerText);
+      /*This element is &quot;Headline and this is some emphasized text.&quot;*/
+      console.log(content.textContent);
+      /*This element is Headline and this is some emphasized text.*/
+    &lt;/script&gt;
+  &lt;/body&gt;</pre><pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;div1&quot;</span>&gt;</span>
+      This element is
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Headline<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>and this is some emphasized text.<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+      <span class="hljs-keyword">const</span> content = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;div1&quot;</span>);
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(content.<span class="hljs-property">innerHTML</span>); 
+        <span class="hljs-comment">//This element is &quot;&lt;h1&gt;Headline&lt;/h1&gt; &lt;em&gt;and this is some emphasized text.&lt;/em&gt;&quot;</span>
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(content.<span class="hljs-property">innerText</span>);
+      <span class="hljs-comment">/*This element is &quot;Headline and this is some emphasized text.&quot;*/</span>
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(content.<span class="hljs-property">textContent</span>);
+      <span class="hljs-comment">/*This element is Headline and this is some emphasized text.*/</span>
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre></div>
+<ol>
+<li>innerText was non-standard, textContent was standardized earlier.</li>
+<li>innerText returns the visible text contained in a node, while textContent returns the full text. For example, on the following  HTML<br>
+<code class="inline-code">&lt;span&gt;Hello &lt;span style=&quot;display: none;&quot;&gt;World&lt;/span&gt;&lt;/span&gt;</code><br>
+innerText will return 'Hello', while textContent will return 'Hello World'.<br>
+For a more complete list of differences, see the table at <a data-from-md title='http://perfectionkills.com/the-poor-misunderstood-innerText/' href='http://perfectionkills.com/the-poor-misunderstood-innerText/'>http://perfectionkills.com/the-poor-misunderstood-innerText/</a> (further reading at 'innerText' works in IE, but not in Firefox).</li>
+<li>As a result, innerText is much more performance-heavy: it requires layout information to return the result.</li>
+<li>innerText is defined only for HTMLElement objects, while textContent is defined for all Node objects.</li>
+</ol>
+<h2 id="object-oriented-programming">Object Oriented Programming</h2>
+<h3 id="4-foundamental-principles4-pillars">4 Foundamental Principles(4 pillars)</h3>
+<ul>
+<li>Abstraction: Ignoring or hiding details that don't matter, avoid messing with details that don't really matter our implementation</li>
+<li>Encapsulation: Keep properties and methods <strong>private</strong> inside the class, So they are <strong>not accessible from outside the class</strong>. Some methods can be <strong>exposed</strong> as a public interface(API blackbox).</li>
+<li>Inheritance: Making all <strong>properties and methods</strong> of a certain class available <strong>to a child class</strong>, forming a hierarchical relationship between classes. This allows us to <strong>reuse common logic</strong> and to model real-world relationships.</li>
+<li>Polymorphism: A child class can overwrite a method it inherited from a parent class.</li>
+</ul>
+<h3 id="oop-in-javascript">OOP in JavaScript</h3>
+<h4 id="in-classical-oop">In Classical OOP</h4>
+<p>Objects(instances) are <strong>instantiated from a Class</strong>, which functions like a blueprint</p>
+<h4 id="oop-in-js-prototypes">OOP in JS: Prototypes</h4>
+<ul>
+<li>Objects are <strong>linked</strong> to a prototype object</li>
+<li><strong>Prototypal inheritance</strong>: The prototype contains methods(behaviour) that are accessible to all objects linked to that prototype.</li>
+<li>Behavior is <strong>delegated</strong> to the linked prototype object.</li>
+</ul>
+<h4 id="3-ways-to-implement-prototypal-inheritance-in-javascript">3 ways to implement Prototypal Inheritance in JavaScript</h4>
+<ol>
+<li>Constructor functions:</li>
+</ol>
+<ul>
+<li>Technique to create objects from a function</li>
+<li>This is how built-in objects like Arrays,Maps or Sets are actually implemented</li>
+</ul>
+<ol start="2">
+<li>ES6 Classes</li>
+</ol>
+<ul>
+<li>Modern alternative to constructor function syntax</li>
+<li>&quot;Syntactic sugar&quot;: behind the scenes, ES6 classes work exactly like constructor functions</li>
+<li>ES6 classes do not behave like classes in &quot;classical OOP&quot;</li>
+</ul>
+<ol start="3">
+<li>Object.create()</li>
+</ol>
+<ul>
+<li>The easist and most straightforward way of linking an object to a prototype object</li>
+</ul>
+<h2 id="asynchronous">Asynchronous</h2>
+<h3 id="synchronous-vs-asynchronous">Synchronous vs Asynchronous</h3>
+<p>Line by line vs Runs in the &quot;background&quot;<br>
+Blocking the afterwards code execution vs Non blocking</p>
+<ul>
+<li>Asynchronous example:</li>
+</ul>
+<ol>
+<li>setTimeout</li>
+</ol>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const timeoutID = setTimeout(function(){
+     console.log(&quot;Hello World!&quot;)
+ },5000)//5000 = 5 seconds
+
+clearTimeout(timeoutID); // Remove the timeout</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> timeoutID = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello World!&quot;</span>)
+ },<span class="hljs-number">5000</span>)<span class="hljs-comment">//5000 = 5 seconds</span>
+
+<span class="hljs-built_in">clearTimeout</span>(timeoutID); <span class="hljs-comment">// Remove the timeout</span></code></pre></div>
+<ol start="2">
+<li>Set .src attribute and .addEventListener</li>
+</ol>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const img = document.querySelector('.pic');//Sync
+img.src='doc.jpg';//Async (Loading in background)
+
+//The handler itself is Async, waiting for the finish of loading (while addEventListener is Sync)
+img.addEventListener('load',function(){ 
+    img.classList.add('fadeIn');
+});
+p.style.width = '300px'; //Sync, execution not blocked by the 2 Async code</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> img = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;.pic&#x27;</span>);<span class="hljs-comment">//Sync</span>
+img.<span class="hljs-property">src</span>=<span class="hljs-string">&#x27;doc.jpg&#x27;</span>;<span class="hljs-comment">//Async (Loading in background)</span>
+
+<span class="hljs-comment">//The handler itself is Async, waiting for the finish of loading (while addEventListener is Sync)</span>
+img.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;load&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){ 
+    img.<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">&#x27;fadeIn&#x27;</span>);
+});
+p.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-string">&#x27;300px&#x27;</span>; <span class="hljs-comment">//Sync, execution not blocked by the 2 Async code</span></code></pre></div>
+<ol start="3">
+<li>setInterval</li>
+</ol>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```"> const intervalID = setInterval(function(){
+     console.log(&quot;Hello World!&quot;)
+ },500)//Call the function every 0.5 second
+
+clearInterval(intervalID) // Remove the interval</pre><pre class="hljs"><code> <span class="hljs-keyword">const</span> intervalID = <span class="hljs-built_in">setInterval</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello World!&quot;</span>)
+ },<span class="hljs-number">500</span>)<span class="hljs-comment">//Call the function every 0.5 second</span>
+
+<span class="hljs-built_in">clearInterval</span>(intervalID) <span class="hljs-comment">// Remove the interval</span></code></pre></div>
+<h3 id="ajax">AJAX</h3>
+<ul>
+<li>Asynchronous JavaScript And XML:<br>
+Communicate with remote web servers in an <strong>Asynchronous way</strong>. With AJAX, can <strong>request data</strong> from web servers dynamically.(without reload page).<br>
+XML is not used anymore, replaced by <strong>JSON</strong></li>
+</ul>
+<h3 id="api">API</h3>
+<ul>
+<li>Application Programming Interface:<br>
+Can be used by another piece of code/software, in order to allow <strong>applications talking with each other</strong></li>
+<li>Examples:<br>
+DOM API<br>
+Geolocation API<br>
+Own Class API</li>
+</ul>
+<h4 id="web-apionline-api">Web API(&quot;Online&quot; API)</h4>
+<ul>
+<li>Application running on a remote server, receives request for data, and sends data back as response.<br>
+Leaflet map</li>
+</ul>
+<h4 id="localstorage">localStorage</h4>
+<ul>
+<li>Can check in the browser's dev tool -&gt; Application -&gt; Local Storage</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const dataToSave = &quot;aString&quot; || JSON.stringfy(object)
+localStorage.setItem('dataIdentifier',dataToSave)
+const data = localStorage.getItem('dataIdentifier')
+localStorage.clear('dataIdentifier')</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> dataToSave = <span class="hljs-string">&quot;aString&quot;</span> || <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringfy</span>(object)
+<span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;dataIdentifier&#x27;</span>,dataToSave)
+<span class="hljs-keyword">const</span> data = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;dataIdentifier&#x27;</span>)
+<span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">clear</span>(<span class="hljs-string">&#x27;dataIdentifier&#x27;</span>)</code></pre></div>
+<h4 id="json">JSON</h4>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">JSON.stringify()
+JSON.parse()</pre><pre class="hljs"><code><span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>()
+<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>()</code></pre></div>
+<h3 id="promise">Promise</h3>
+<ul>
+<li>An object that is used as a placeholder for the future result of an asynchronous operation.<br>
+(A container for a future value )</li>
+</ul>
+<h4 id="promise-lifecycle">Promise Lifecycle</h4>
+<h4 id="consume-promise">Consume Promise</h4>
+<h4 id="chaining-promise">Chaining Promise</h4>
+<ul>
+<li>.then() method always return a promise</li>
+<li>If the Promise is fufilled, the successful value will be returned</li>
+<li>.finally()</li>
+</ul>
+<h4 id="error">Error</h4>
+<ul>
+<li>.then().catch()</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">fetch(url)
+    .then((response) =&gt; {
+      if (!response.ok) {
+        throw new Error(&quot;This is the error&quot;); //Will terminate .then() handler and error will be catched by the .catch() method
+      }
+      return response.json();
+    })
+    .then(function (json) {
+      const [data] = json;
+      return data
+    })
+    .catch((err) =&gt; {
+      //Catch all the error in the .then() chain, it also returns a promise
+      //renderError(`Something went wrong - ${err.message}. Try again!`); //If no specified error threw previously, the error essage will be Something went wrong - json is not iterable. Try again!
+      console.error(err.message); //Log the thrown error.message from previous steps
+    })
+    .finally(
+      //always happen no matter the result of the promise
+      (countriesContainer.style.opacity = 1)
+    );</pre><pre class="hljs"><code><span class="hljs-title function_">fetch</span>(url)
+    .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;This is the error&quot;</span>); <span class="hljs-comment">//Will terminate .then() handler and error will be catched by the .catch() method</span>
+      }
+      <span class="hljs-keyword">return</span> response.<span class="hljs-title function_">json</span>();
+    })
+    .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">json</span>) {
+      <span class="hljs-keyword">const</span> [data] = json;
+      <span class="hljs-keyword">return</span> data
+    })
+    .<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+      <span class="hljs-comment">//Catch all the error in the .then() chain, it also returns a promise</span>
+      <span class="hljs-comment">//renderError(`Something went wrong - ${err.message}. Try again!`); //If no specified error threw previously, the error essage will be Something went wrong - json is not iterable. Try again!</span>
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(err.<span class="hljs-property">message</span>); <span class="hljs-comment">//Log the thrown error.message from previous steps</span>
+    })
+    .<span class="hljs-title function_">finally</span>(
+      <span class="hljs-comment">//always happen no matter the result of the promise</span>
+      (countriesContainer.<span class="hljs-property">style</span>.<span class="hljs-property">opacity</span> = <span class="hljs-number">1</span>)
+    );</code></pre></div>
+<ul>
+<li>Try-Catch</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">try {
+  let y = 1;
+  const x = 2;
+  x = 3;
+} catch (error) {
+  console.log(error.message);
+}</pre><pre class="hljs"><code><span class="hljs-keyword">try</span> {
+  <span class="hljs-keyword">let</span> y = <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">const</span> x = <span class="hljs-number">2</span>;
+  x = <span class="hljs-number">3</span>;
+} <span class="hljs-keyword">catch</span> (error) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(error.<span class="hljs-property">message</span>);
+}</code></pre></div>
+<h4 id="promisify">Promisify</h4>
+<h3 id="event-loop">Event Loop</h3>
+<p><img src="../_resources/f51ad319304f4890a85af4fa540e448b.png" alt="17a7011b3028cbf220e49a66c08d6d86.png"></p>
+<h3 id="awaitasync-function">Await/Async function</h3>
+<ul>
+<li>Async functions always return a promise</li>
+<li>Comparision to Promise.resolve()</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const p = new Promise((res, rej) =&gt; {
+  res(() =&gt; console.log(&quot;hello world!&quot;));
+});
+
+function basicReturn() {
+  return Promise.resolve(p);
+}
+
+async function asyncReturn() {
+  return p;
+}
+
+console.log(p); // Returns a fulfilled Promise
+console.log(basicReturn()); // Returns a fulfilled Promise
+console.log(asyncReturn()); // Returns a pending Promise
+
+console.log(p === basicReturn()); // true, since &quot;basicReturn&quot; returns a new promise that is resolved with the same value as p
+console.log(p === asyncReturn()); // false, because asyncReturn returns the promise p directly, without creating a new promise
+
+Promise.resolve(p).then((f) =&gt; f()); //hello world!
+Promise.reject(new Error(&quot;Problem!&quot;)).catch((err) =&gt; console.error(err.message)); //Problem!</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">res, rej</span>) =&gt;</span> {
+  <span class="hljs-title function_">res</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;hello world!&quot;</span>));
+});
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">basicReturn</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(p);
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">asyncReturn</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> p;
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(p); <span class="hljs-comment">// Returns a fulfilled Promise</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">basicReturn</span>()); <span class="hljs-comment">// Returns a fulfilled Promise</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">asyncReturn</span>()); <span class="hljs-comment">// Returns a pending Promise</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(p === <span class="hljs-title function_">basicReturn</span>()); <span class="hljs-comment">// true, since &quot;basicReturn&quot; returns a new promise that is resolved with the same value as p</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(p === <span class="hljs-title function_">asyncReturn</span>()); <span class="hljs-comment">// false, because asyncReturn returns the promise p directly, without creating a new promise</span>
+
+<span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(p).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">f</span>) =&gt;</span> <span class="hljs-title function_">f</span>()); <span class="hljs-comment">//hello world!</span>
+<span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;Problem!&quot;</span>)).<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(err.<span class="hljs-property">message</span>)); <span class="hljs-comment">//Problem!</span></code></pre></div>
+<h4 id="immediately-invoked-function-expression-iife">Immediately Invoked Function Expression (IIFE)</h4>
+<ul>
+<li>A function that runs the moment it is invoked or called in the JavaScript event loop</li>
+</ul>
+<h3 id="running-promises-in-parallel">Running Promises in Parallel</h3>
+<ul>
+<li>Promise.all</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const promise1 = fetchJSON(countryUrl + `/name/${c1}`);
+const promise2 = fetchJSON(countryUrl + `/name/${c2}`);
+const promise3 = fetchJSON(countryUrl + `/name/${c3}`);
+
+const promiseArr = await Promise.all([promise1, promise2, promise3]); 
+//If one promise rejected, all promises get rejected</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> promise1 = <span class="hljs-title function_">fetchJSON</span>(countryUrl + <span class="hljs-string">`/name/<span class="hljs-subst">${c1}</span>`</span>);
+<span class="hljs-keyword">const</span> promise2 = <span class="hljs-title function_">fetchJSON</span>(countryUrl + <span class="hljs-string">`/name/<span class="hljs-subst">${c2}</span>`</span>);
+<span class="hljs-keyword">const</span> promise3 = <span class="hljs-title function_">fetchJSON</span>(countryUrl + <span class="hljs-string">`/name/<span class="hljs-subst">${c3}</span>`</span>);
+
+<span class="hljs-keyword">const</span> promiseArr = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>([promise1, promise2, promise3]); 
+<span class="hljs-comment">//If one promise rejected, all promises get rejected</span></code></pre></div>
+<ul>
+<li>Promise.race:<br>
+Shortcircuit when enver the first promise get settled(no matter fufilled or rejected)</li>
+<li>Promise.allSettled:<br>
+Return all promises whether the promise resolved or rejected</li>
+<li>Promise.any:<br>
+return first sucessful/resolved promise(ignore rejected promise) then shortcircuited</li>
+</ul>
+<h2 id="modules">Modules</h2>
+<ul>
+<li>Why modules?</li>
+</ul>
+<ol>
+<li>Compose software:<br>
+modules are small building blocks to build complex applications</li>
+<li>Isolate components:<br>
+modules can be implemented in isolation without thinking the entire codebase</li>
+<li>Abstract code:<br>
+implement low-level code in modules and import these abstractions into other modules</li>
+<li>Orgnized code</li>
+<li>Reuse code:<br>
+easy to reuse the same code, even across multiple projects</li>
+</ol>
+<h3 id="es6-modules">ES6 Modules</h3>
+<ul>
+<li>Modules stored in files, exactly 1 module per file.</li>
+<li>ES6 Module vs Script:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ES6 Module</th>
+<th>Script</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top-level variables</td>
+<td>Scoped to module</td>
+<td>Global</td>
+</tr>
+<tr>
+<td>Default mode</td>
+<td>Strict mode</td>
+<td>&quot;Sloppy&quot; mode</td>
+</tr>
+<tr>
+<td>Top-level &quot;this&quot;</td>
+<td>undefined</td>
+<td>window</td>
+</tr>
+<tr>
+<td>Imports and Exports</td>
+<td>Support (Need to happen at top-level, Imports are hoisted)</td>
+<td>Not support</td>
+</tr>
+</tbody>
+</table>
+<h3 id="export-and-import">Export and Import</h3>
+<h3 id="default-export-vs-named-export">Default export vs Named export</h3>
+<ul>
+<li>Default export in the export module</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">export default function(){}
+//or
+export default variable</pre><pre class="hljs"><code><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){}
+<span class="hljs-comment">//or</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> variable</code></pre></div>
+<ul>
+<li>To import a Default export module</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">import yourDefineName from './PathToExportModule.js'</pre><pre class="hljs"><code><span class="hljs-keyword">import</span> yourDefineName <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./PathToExportModule.js&#x27;</span></code></pre></div>
+<ul>
+<li>Named export in export module</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">export {variable1,variable2 as yourDefinedName};
+export const functionToExport = function(){};</pre><pre class="hljs"><code><span class="hljs-keyword">export</span> {variable1,variable2 <span class="hljs-keyword">as</span> yourDefinedName};
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> functionToExport = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){};</code></pre></div>
+<ul>
+<li>To import a Named export module</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">//Import specific part
+import {nameOfTheVariable,nameOfTheFunction as yourDefinedName} from './PathToExportModule.js' 
+
+//Import the whole module as an Object
+import * as YourDefinedModuleName from './PathToExportModule.js' </pre><pre class="hljs"><code><span class="hljs-comment">//Import specific part</span>
+<span class="hljs-keyword">import</span> {nameOfTheVariable,nameOfTheFunction <span class="hljs-keyword">as</span> yourDefinedName} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./PathToExportModule.js&#x27;</span> 
+
+<span class="hljs-comment">//Import the whole module as an Object</span>
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> <span class="hljs-title class_">YourDefinedModuleName</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./PathToExportModule.js&#x27;</span> </code></pre></div>
+<h3 id="top-level-await-in-modules">Top-level await in modules</h3>
+<ul>
+<li>From ES2022</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="html" data-joplin-source-open="```html&#10;" data-joplin-source-close="&#10;```">    &lt;script type=&quot;module&quot; defer src=&quot;script.js&quot;&gt;&lt;/script&gt;// Only works when the .js file linked as a module</pre><pre class="hljs"><code>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span> <span class="hljs-attr">defer</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;script.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>// Only works when the .js file linked as a module</code></pre></div>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">//NO need to be in an Async function in this case
+const res = await fetch('https://jsonplaceholder.typicode.com/posts'); //This will block the afterwards code
+const data = await res.json();
+console.log(data);</pre><pre class="hljs"><code><span class="hljs-comment">//NO need to be in an Async function in this case</span>
+<span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;https://jsonplaceholder.typicode.com/posts&#x27;</span>); <span class="hljs-comment">//This will block the afterwards code</span>
+<span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> res.<span class="hljs-title function_">json</span>();
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);</code></pre></div>
+<ul>
+<li>The blocking code ( await ) in a exporting module, Will also influence the importing module using this exporting module</li>
+</ul>
+<h3 id="the-module-pattern-old">The Module Pattern (Old)</h3>
+<ul>
+<li>closures of IIFE</li>
+</ul>
+<h3 id="common-js-for-nodejs">Common JS ( for NodeJS )</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">//Export
+export.myFunction = function(){}
+
+//Import
+const {myFunction} = require('./PathToExportModule.js')</pre><pre class="hljs"><code><span class="hljs-comment">//Export</span>
+<span class="hljs-keyword">export</span>.<span class="hljs-property">myFunction</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){}
+
+<span class="hljs-comment">//Import</span>
+<span class="hljs-keyword">const</span> {myFunction} = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./PathToExportModule.js&#x27;</span>)</code></pre></div>
+<h3 id="npm">NPM</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="bash" data-joplin-source-open="```bash&#10;" data-joplin-source-close="&#10;```">npm -v #9.6.6
+npm init #Initialize package.json
+npm install lodash-es #Install ES Module based Lodash
+npm install parcel --save-dev #Install parcel only as development dependency
+npm start #same to npm run start
+npm run build #parcel/webpack build
+
+npm install #Will install all the package dependencies written in package.json
+
+sudo npm uninstall npm -g #Uninstall npm</pre><pre class="hljs"><code>npm -v <span class="hljs-comment">#9.6.6</span>
+npm init <span class="hljs-comment">#Initialize package.json</span>
+npm install lodash-es <span class="hljs-comment">#Install ES Module based Lodash</span>
+npm install parcel --save-dev <span class="hljs-comment">#Install parcel only as development dependency</span>
+npm start <span class="hljs-comment">#same to npm run start</span>
+npm run build <span class="hljs-comment">#parcel/webpack build</span>
+
+npm install <span class="hljs-comment">#Will install all the package dependencies written in package.json</span>
+
+sudo npm uninstall npm -g <span class="hljs-comment">#Uninstall npm</span></code></pre></div>
+<p>Don't include the node_modules folder when copy or upload(which will be huge)</p>
+<h4 id="packagejson">Package.json</h4>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="json" data-joplin-source-open="```json&#10;" data-joplin-source-close="&#10;```">{
+  &quot;name&quot;: &quot;forkify&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;Recipe App&quot;,
+    &quot;main&quot;: &quot;index.js&quot;,//The main field is a module ID that is the primary entry point to your program. That is, if your package is named foo, and a user installs it, and then does require(&quot;foo&quot;), then your main module's exports object will be returned.This should be a module relative to the root of your package folder.For most modules, it makes the most sense to have a main script and often not much else.
+//If main is not set, it defaults to index.js in the package's root folder.
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;parcel index.html&quot;,
+    &quot;build&quot;: &quot;parcel build index.html --dist-dir ./dist&quot;,
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;Ken&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;@parcel/transformer-sass&quot;: &quot;^2.9.3&quot;,
+    &quot;parcel&quot;: &quot;^2.9.3&quot;,
+    &quot;process&quot;: &quot;^0.11.10&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;core-js&quot;: &quot;^3.31.0&quot;,
+    &quot;fractional&quot;: &quot;^1.0.0&quot;,
+    &quot;regenerator-runtime&quot;: &quot;^0.13.11&quot;
+  }
+}</pre><pre class="hljs"><code><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;forkify&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.0.0&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Recipe App&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;main&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;index.js&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-comment">//The main field is a module ID that is the primary entry point to your program. That is, if your package is named foo, and a user installs it, and then does require(&quot;foo&quot;), then your main module&#x27;s exports object will be returned.This should be a module relative to the root of your package folder.For most modules, it makes the most sense to have a main script and often not much else.</span>
+<span class="hljs-comment">//If main is not set, it defaults to index.js in the package&#x27;s root folder.</span>
+  <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;start&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;parcel index.html&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;build&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;parcel build index.html --dist-dir ./dist&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;test&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;author&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Ken&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;license&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ISC&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;devDependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;@parcel/transformer-sass&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^2.9.3&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;parcel&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^2.9.3&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;process&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^0.11.10&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;core-js&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^3.31.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;fractional&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^1.0.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;regenerator-runtime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^0.13.11&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span></code></pre></div>
+<h4 id="lodash">Lodash</h4>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">//deepClone
+import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+
+const state = {
+  cart: [
+    { product: 'bread', quantity: 5 },
+    { product: 'pizza', quantity: 3 },
+  ],
+  user: { loggedIn: true },
+};
+
+const stateClone = Object.assign({}, state);
+const stateDeepClone = cloneDeep(state);
+state.user.loggedIn = false;
+console.log(stateClone.user.loggedIn); //Also changed to false
+console.log(stateDeepClone.user.loggedIn); //Remained to be true</pre><pre class="hljs"><code><span class="hljs-comment">//deepClone</span>
+<span class="hljs-keyword">import</span> cloneDeep <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./node_modules/lodash-es/cloneDeep.js&#x27;</span>;
+
+<span class="hljs-keyword">const</span> state = {
+  <span class="hljs-attr">cart</span>: [
+    { <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;bread&#x27;</span>, <span class="hljs-attr">quantity</span>: <span class="hljs-number">5</span> },
+    { <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;pizza&#x27;</span>, <span class="hljs-attr">quantity</span>: <span class="hljs-number">3</span> },
+  ],
+  <span class="hljs-attr">user</span>: { <span class="hljs-attr">loggedIn</span>: <span class="hljs-literal">true</span> },
+};
+
+<span class="hljs-keyword">const</span> stateClone = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>({}, state);
+<span class="hljs-keyword">const</span> stateDeepClone = <span class="hljs-title function_">cloneDeep</span>(state);
+state.<span class="hljs-property">user</span>.<span class="hljs-property">loggedIn</span> = <span class="hljs-literal">false</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(stateClone.<span class="hljs-property">user</span>.<span class="hljs-property">loggedIn</span>); <span class="hljs-comment">//Also changed to false</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(stateDeepClone.<span class="hljs-property">user</span>.<span class="hljs-property">loggedIn</span>); <span class="hljs-comment">//Remained to be true</span></code></pre></div>
+<h2 id="architecture">Architecture</h2>
+<ul>
+<li>Model,View,Controller(MVC Architecture)<br>
+<img src="../_resources/cfedd35022df4fe391405a7443b1dea3.png" alt="bd222cc765bceee4a8599b566e31ab8d.png"></li>
+<li>Components of any architecture<br>
+<img src="../_resources/541a62787bc946f1ab8f3c4794977cdd.png" alt="5a39596ad60be21044a59335ec90275c.png"></li>
+</ul>
+<h3 id="event-handling-in-mvc-publisher-subscriber-pattern">Event Handling in MVC: Publisher-Subscriber Pattern</h3>
+<ul>
+<li>Events should be handled in the controller(otherwise we would have application logic in the view)</li>
+<li>Events should be listened for in the view(otherwise we would need DOM elements in the controller)</li>
+</ul>
+<h2 id="debug">Debug</h2>
+<h2 id="javascript-built-in-objects">Javascript built-in Objects</h2>
+<h3 id="date">Date</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const today = new Date();
+console.log(today); //Mon Jul 17 2023 19:10:58 GMT-0400 (Eastern Daylight Time)
+const year = today.getFullYear();
+const month = today.getMonth();
+const date = today.getDate();
+const day = today.getDay();
+console.log(year, month, date, day); //2023 6 17 1
+console.log(today.toDateString()); //Mon Jul 17 2023
+
+let count = 1;
+const tomorrow = new Date();
+tomorrow.setDate(today.getDate() + count);
+console.log(tomorrow.toDateString()); //Tue Jul 18 2023
+
+count = -1;
+const yesterday = new Date();
+yesterday.setDate(today.getDate() + count);
+console.log(yesterday.toDateString()); //Sun Jul 16 2023</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> today = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(today); <span class="hljs-comment">//Mon Jul 17 2023 19:10:58 GMT-0400 (Eastern Daylight Time)</span>
+<span class="hljs-keyword">const</span> year = today.<span class="hljs-title function_">getFullYear</span>();
+<span class="hljs-keyword">const</span> month = today.<span class="hljs-title function_">getMonth</span>();
+<span class="hljs-keyword">const</span> date = today.<span class="hljs-title function_">getDate</span>();
+<span class="hljs-keyword">const</span> day = today.<span class="hljs-title function_">getDay</span>();
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(year, month, date, day); <span class="hljs-comment">//2023 6 17 1</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(today.<span class="hljs-title function_">toDateString</span>()); <span class="hljs-comment">//Mon Jul 17 2023</span>
+
+<span class="hljs-keyword">let</span> count = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">const</span> tomorrow = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();
+tomorrow.<span class="hljs-title function_">setDate</span>(today.<span class="hljs-title function_">getDate</span>() + count);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(tomorrow.<span class="hljs-title function_">toDateString</span>()); <span class="hljs-comment">//Tue Jul 18 2023</span>
+
+count = -<span class="hljs-number">1</span>;
+<span class="hljs-keyword">const</span> yesterday = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();
+yesterday.<span class="hljs-title function_">setDate</span>(today.<span class="hljs-title function_">getDate</span>() + count);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(yesterday.<span class="hljs-title function_">toDateString</span>()); <span class="hljs-comment">//Sun Jul 16 2023</span></code></pre></div>
+<h3 id="math">Math</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">Math.floor()
+Math.round()
+Math.abs()
+Math.min(arr)
+Math.max(arr)</pre><pre class="hljs"><code><span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>()
+<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>()
+<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">abs</span>()
+<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(arr)
+<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(arr)</code></pre></div>
+<h3 id="string-2">String</h3>
+<ul>
+<li>String.prototype.localeCompare()</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">//The localeCompare() method returns a number indicating whether a reference string comes before, or after, or is the same as the given string in sort order.
+// Returns negative INT if a &lt; b in a.localeCompare(b)
+
+console.log(&quot;a&quot;.localeCompare(&quot;c&quot;)); //-1
+console.log(&quot;check&quot;.localeCompare(&quot;against&quot;)); //1
+console.log(&quot;a&quot;.localeCompare(&quot;a&quot;)); //0
+</pre><pre class="hljs"><code><span class="hljs-comment">//The localeCompare() method returns a number indicating whether a reference string comes before, or after, or is the same as the given string in sort order.</span>
+<span class="hljs-comment">// Returns negative INT if a &lt; b in a.localeCompare(b)</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;a&quot;</span>.<span class="hljs-title function_">localeCompare</span>(<span class="hljs-string">&quot;c&quot;</span>)); <span class="hljs-comment">//-1</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;check&quot;</span>.<span class="hljs-title function_">localeCompare</span>(<span class="hljs-string">&quot;against&quot;</span>)); <span class="hljs-comment">//1</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;a&quot;</span>.<span class="hljs-title function_">localeCompare</span>(<span class="hljs-string">&quot;a&quot;</span>)); <span class="hljs-comment">//0</span>
+</code></pre></div>
+<h3 id="array-2">Array</h3>
+<ul>
+<li>Array.from<br>
+Creates an array from an iterable object.</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="jsx" data-joplin-source-open="```jsx&#10;" data-joplin-source-close="&#10;```">Array.from([1, 2, 3], x =&gt; x + x)
+// Expected output: Array [2, 4, 6]
+
+Array.from({ length: 5 }, (_, i) =&gt; (&lt;span&gt;Number{i + 1}&lt;/span&gt;))
+// Expected output: Array [Number1,Number2,...Number5]</pre><pre class="hljs"><code><span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x + x)
+<span class="hljs-comment">// Expected output: Array [2, 4, 6]</span>
+
+<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>({ <span class="hljs-attr">length</span>: <span class="hljs-number">5</span> }, <span class="hljs-function">(<span class="hljs-params">_, i</span>) =&gt;</span> (<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Number{i + 1}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>))
+<span class="hljs-comment">// Expected output: Array [Number1,Number2,...Number5]</span></code></pre></div>
+</div></div>
+					</body>
+				</html>
+			

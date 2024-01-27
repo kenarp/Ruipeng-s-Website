@@ -1,0 +1,1180 @@
+
+				<!DOCTYPE html>
+				<html>
+					<head>
+						<meta charset="UTF-8">
+						<meta name="viewport" content="width=device-width, initial-scale=1" />
+						<link rel="stylesheet" href="pluginAssets/katex/katex.css"><script type="application/javascript" src="pluginAssets/mermaid/mermaid.min.js"></script><script type="application/javascript" src="pluginAssets/mermaid/mermaid_render.js"></script><link rel="stylesheet" href="pluginAssets/highlight.js/atom-one-light.css">
+						<title>React</title>
+					</head>
+					<body>
+						<div class="exported-note"><div class="exported-note-title">React</div>
+
+<style>
+		/* https://necolas.github.io/normalize.css/ */
+		html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
+		article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}
+		pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}
+		b,strong{font-weight:bolder}small{font-size:80%}img{border-style:none}
+
+		body {
+			font-size: 15px;
+			color: #32373F;
+			word-wrap: break-word;
+			line-height: 1.6em;
+			background-color: #ffffff;
+			font-family: 'Avenir', 'Arial', sans-serif;
+			padding-bottom: 0px;
+			padding-top: 0px;
+		}
+		kbd {
+			border: 1px solid rgb(220, 220, 220);
+			box-shadow: inset 0 -1px 0 rgb(220, 220, 220);
+			padding: 2px 4px;
+			border-radius: 3px;
+			background-color: rgb(243, 243, 243);
+		}
+		::-webkit-scrollbar {
+			width: 7px;
+			height: 7px;
+		}
+		::-webkit-scrollbar-corner {
+			background: none;
+		}
+		::-webkit-scrollbar-track {
+			border: none;
+		}
+		::-webkit-scrollbar-thumb {
+			background: rgba(100, 100, 100, 0.3); 
+			border-radius: 5px;
+		}
+		::-webkit-scrollbar-track:hover {
+			background: rgba(0, 0, 0, 0.1); 
+		}
+		::-webkit-scrollbar-thumb:hover {
+			background: rgba(100, 100, 100, 0.7); 
+		}
+
+		
+
+		/* Remove top padding and margin from first child so that top of rendered text is aligned to top of text editor text */
+
+		#rendered-md > h1:first-child,
+		#rendered-md > h2:first-child,
+		#rendered-md > h3:first-child,
+		#rendered-md > h4:first-child,
+		#rendered-md > ul:first-child,
+		#rendered-md > ol:first-child,
+		#rendered-md > table:first-child,
+		#rendered-md > blockquote:first-child,
+		#rendered-md > img:first-child,
+		#rendered-md > p:first-child {
+			margin-top: 0;
+			padding-top: 0;
+		}
+		
+		p, h1, h2, h3, h4, h5, h6, ul, table {
+			margin-top: .6em;
+			margin-bottom: 1.35em;
+
+			/*
+				Adds support for RTL text in the note body. It automatically detects the direction using the content.
+				Issue: https://github.com/laurent22/joplin/issues/3991
+			*/
+			unicode-bidi: plaintext;
+		}
+
+		h1, h2, h3, h4, h5, h6, ul, table {
+			margin-bottom: 0.65em;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			line-height: 1.5em;
+		}
+		h1 {
+			font-size: 1.5em;
+			font-weight: bold;
+			border-bottom: 1px solid #dddddd;
+			padding-bottom: .3em;
+		}
+		h2 {
+			font-size: 1.3em;
+			font-weight: bold;
+			padding-bottom: .1em; */
+		}
+		h3 {
+			font-size: 1.1em;
+			font-weight: bold;
+		}
+		h4, h5, h6 {
+			font-size: 1em;
+			font-weight: bold;
+		}
+
+		.exported-note-title {
+			font-size: 2em;
+			font-weight: bold;
+			margin-bottom: 0.8em;
+			line-height: 1.5em;
+			padding-bottom: .35em;
+			border-bottom: 1px solid #dddddd;
+		}
+
+		a {
+			color: #155BDA;
+		}
+		ul, ol {
+			padding-left: 0;
+			margin-left: 1.7em;
+		}
+		li {
+			margin-bottom: .4em;
+		}
+		li p {
+			margin-top: 0.2em;
+			margin-bottom: 0;
+		}
+
+		.resource-icon {
+			display: inline-block;
+			position: relative;
+			top: 0.3em;
+			text-decoration: none;
+			width: 1.2em;
+			height: 1.4em;
+			margin-right: 0.4em;
+			background-color:  #155BDA;
+		}
+    /* These icons are obtained from the wonderful ForkAwesome project by copying the src svgs 
+     * into the css classes below.
+     * svgs are obtained from https://github.com/ForkAwesome/Fork-Awesome/tree/master/src/icons/svg
+     * instead of the svg width, height property you must use a viewbox here, 0 0 1536 1792 is typically the actual size of the icon
+     * each line begins with the pre-amble -webkit-mask: url("data:image/svg+xml;utf8,
+     * and of course finishes with ");
+     * to precvent artifacts it is also necessary to include -webkit-mask-repeat: no-repeat;
+     * on the following line
+     * */
+		.fa-joplin {
+			/* Awesome Font file */
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M373.834 128C168.227 128 0 296.223 0 501.834v788.336C0 1495.778 168.227 1664 373.834 1664h788.336c205.608 0 373.83-168.222 373.83-373.83V501.834C1536 296.224 1367.778 128 1162.17 128zm397.222 205.431h417.424a7.132 7.132 0 0 1 7.132 7.133v132.552c0 4.461-3.619 8.073-8.077 8.073h-57.23c-24.168 0-43.768 19.338-44.284 43.374v2.377h-.017v136.191h-.053l-.466 509.375c-5.02 77.667-39.222 149.056-96.324 201.046-60.28 54.834-141.948 85.017-229.962 85.017-12.45 0-25.208-.61-37.907-1.785-92.157-8.682-181.494-48.601-251.662-112.438-71.99-65.517-117.147-150.03-127.164-238-11.226-98.763 23.42-192.783 95.045-257.937 81.99-74.637 198.185-101.768 316.613-75.704 5.574 1.227 9.55 6.282 9.55 11.997v199.52c-.199 2.625-1.481 6.599-8.183 2.896-.663-.365-1.194-.511-1.653-.531-21.987-10.587-45.159-17.57-68.559-19.916-.38-.04-.757-.124-1.138-.163-.537-.048-1.034-.033-1.556-.075-4.13-.354-8.183-.517-12.203-.58-.87-.011-1.771-.127-2.641-.127-.486 0-.951.05-1.437.057-1.464.011-2.886.115-4.33.163-2.76.102-5.497.211-8.182.448-.273.024-.547.07-.835.097-25.509 2.4-47.864 11.104-65.012 25.47-.954.802-1.974 1.53-2.9 2.36a1.34 1.34 0 0 1-.168.146c-23.96 21.8-34.881 53.872-30.726 90.316 4.62 40.737 26.94 81.156 62.841 113.823 35.908 32.67 80.335 52.977 125.113 57.186 35.118 3.36 66.547-3.919 89.899-20.461a97.255 97.255 0 0 0 9.365-7.501c2.925-2.661 5.569-5.5 8.086-8.416.3-.348.672-.673.975-1.024 8.253-9.864 14.222-21.067 17.996-33.148.639-2.034 1.051-4.148 1.564-6.227.381-1.563.81-3.106 1.112-4.693.555-2.784.923-5.632 1.253-8.49.086-.709.183-1.414.237-2.128.492-4.893.693-9.858.55-14.91h.013V521.623c-2.01-22.626-20.78-40.434-43.928-40.434h-57.23a8.071 8.071 0 0 1-8.077-8.073V340.564a7.132 7.132 0 0 1 7.136-7.133z'/></svg>");
+		}
+		.fa-file-image {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zm-128-448v320H256v-192l192-192 128 128 384-384zm-832-192c-106 0-192-86-192-192s86-192 192-192 192 86 192 192-86 192-192 192z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-pdf {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zm-514-593c25 20 53 38 84 56 42-5 81-7 117-7 67 0 152 8 177 49 7 10 13 28 2 52-1 1-2 3-3 4v1c-3 18-18 38-71 38-64 0-161-29-245-73-139 15-285 46-392 83-103 176-182 262-242 262-10 0-19-2-28-7l-24-12c-3-1-4-3-6-5-5-5-9-16-6-36 10-46 64-123 188-188 8-5 18-2 23 6 1 1 2 3 2 4 31-51 67-116 107-197 45-90 80-178 104-262-32-109-42-221-24-287 7-25 22-40 42-40h22c15 0 27 5 35 15 12 14 15 36 9 68-1 3-2 6-4 8 1 3 1 5 1 8v30c-1 63-2 123-14 192 35 105 87 190 146 238zm-576 411c30-14 73-57 137-158-75 58-122 124-137 158zm398-920c-10 28-10 76-2 132 3-16 5-31 7-44 2-17 5-31 7-43 1-3 2-5 4-8-1-1-1-3-2-5-1-18-7-29-13-36 0 2-1 3-1 4zm-124 661c88-35 186-63 284-81-10-8-20-15-29-23-49-43-93-103-127-176-19 61-47 126-83 197-15 28-30 56-45 83zm646-16c-5-5-31-24-140-24 49 18 94 28 124 28 9 0 14 0 18-1 0-1-1-2-2-3z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-word {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zM233 768v107h70l164 661h159l128-485c5-15 8-30 10-46 1-8 2-16 2-24h4l3 24c3 14 4 30 9 46l128 485h159l164-661h70V768h-300v107h90l-99 438c-4 16-6 33-7 46l-2 21h-4c0-6-2-14-3-21-3-13-5-30-9-46L825 768H711l-144 545c-4 16-5 33-8 46l-4 21h-4l-2-21c-1-13-3-30-7-46l-99-438h90V768H233z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-powerpoint {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zm-992-234v106h327v-106h-93v-167h137c43 0 82-2 118-15 90-31 146-124 146-233s-54-193-137-228c-38-15-84-19-130-19H416v107h92v555h-92zm353-280H650V882h120c35 0 62 6 83 18 36 21 56 62 56 115 0 56-20 99-62 120-21 10-47 15-78 15z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-excel {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zm-979-234v106h281v-106h-75l103-161c12-19 18-34 21-34h2c1 4 3 7 5 10 4 8 10 14 17 24l107 161h-76v106h291v-106h-68l-192-273 195-282h67V768H828v107h74l-103 159c-12 19-21 34-21 33h-2c-1-4-3-7-5-10-4-7-9-14-17-23L648 875h76V768H434v107h68l189 272-194 283h-68z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-audio {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zM620 850c12 5 20 17 20 30v544c0 13-8 25-20 30-4 1-8 2-12 2-8 0-16-3-23-9l-166-167H288c-18 0-32-14-32-32v-192c0-18 14-32 32-32h131l166-167c10-9 23-12 35-7zm417 689c19 0 37-8 50-24 83-102 129-231 129-363s-46-261-129-363c-22-28-63-32-90-10-28 23-32 63-9 91 65 80 100 178 100 282s-35 202-100 282c-23 28-19 68 9 90 12 10 26 15 40 15zm-211-148c17 0 34-7 47-20 56-60 87-137 87-219s-31-159-87-219c-24-26-65-27-91-3-25 24-27 65-2 91 33 36 52 82 52 131s-19 95-52 131c-25 26-23 67 2 91 13 11 29 17 44 17z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-video {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zM768 768c70 0 128 58 128 128v384c0 70-58 128-128 128H384c-70 0-128-58-128-128V896c0-70 58-128 128-128h384zm492 2c12 5 20 17 20 30v576c0 13-8 25-20 30-4 1-8 2-12 2-8 0-17-3-23-9l-265-266v-90l265-266c6-6 15-9 23-9 4 0 8 1 12 2z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-archive {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M640 384V256H512v128h128zm128 128V384H640v128h128zM640 640V512H512v128h128zm128 128V640H640v128h128zm700-388c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H768v128H640V128H128v1536h1280zM781 943c85 287 107 349 107 349 5 17 8 34 8 52 0 111-108 192-256 192s-256-81-256-192c0-18 3-35 8-52 0 0 21-62 120-396V768h128v128h79c29 0 54 19 62 47zm-141 465c71 0 128-29 128-64s-57-64-128-64-128 29-128 64 57 64 128 64z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-code {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zM480 768c11-14 31-17 45-6l51 38c14 11 17 31 6 45l-182 243 182 243c11 14 8 34-6 45l-51 38c-14 11-34 8-45-6l-226-301c-8-11-8-27 0-38zm802 301c8 11 8 27 0 38l-226 301c-11 14-31 17-45 6l-51-38c-14-11-17-31-6-45l182-243-182-243c-11-14-8-34 6-45l51-38c14-11 34-8 45 6zm-620 461c-18-3-29-20-26-37l138-831c3-18 20-29 37-26l63 10c18 3 29 20 26 37l-138 831c-3 18-20 29-37 26z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file-alt, .fa-file-csv {
+      /* fork-awesome doesn't have csv so we use the text icon */
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280zM384 800c0-18 14-32 32-32h704c18 0 32 14 32 32v64c0 18-14 32-32 32H416c-18 0-32-14-32-32v-64zm736 224c18 0 32 14 32 32v64c0 18-14 32-32 32H416c-18 0-32-14-32-32v-64c0-18 14-32 32-32h704zm0 256c18 0 32 14 32 32v64c0 18-14 32-32 32H416c-18 0-32-14-32-32v-64c0-18 14-32 32-32h704z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		.fa-file {
+			-webkit-mask: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'><path d='M1468 380c37 37 68 111 68 164v1152c0 53-43 96-96 96H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h896c53 0 127 31 164 68zm-444-244v376h376c-6-17-15-34-22-41l-313-313c-7-7-24-16-41-22zm384 1528V640H992c-53 0-96-43-96-96V128H128v1536h1280z'/></svg>");
+      -webkit-mask-repeat: no-repeat;
+		}
+		blockquote {
+			border-left: 4px solid rgb(220, 220, 220);
+			padding-left: 1.2em;
+			margin-left: 0;
+			opacity: 0.7;
+		}
+
+		.jop-tinymce table,
+		table {
+			text-align: left;
+			border-collapse: collapse;
+			border: 1px solid rgb(220, 220, 220);
+			background-color: #ffffff;
+		}
+
+		.jop-tinymce table td, .jop-tinymce table th,
+		table td, th {
+			text-align: left;
+			padding: .5em 1em .5em 1em;
+			font-size: 15;
+			color: #32373F;
+			font-family: 'Avenir', 'Arial', sans-serif;
+		}
+
+		.jop-tinymce table td,
+		table td {
+			border: 1px solid rgb(220, 220, 220);
+		}
+
+		.jop-tinymce table th,
+		table th {
+			border: 1px solid rgb(220, 220, 220);
+			border-bottom: 2px solid rgb(220, 220, 220);
+			background-color: rgb(247, 247, 247);
+		}
+
+		.jop-tinymce table tr:nth-child(even),
+		table tr:nth-child(even) {
+			background-color: rgb(247, 247, 247);
+		}
+
+		.jop-tinymce table tr:hover,
+		table tr:hover {
+			background-color: #e5e5e5;
+		}
+
+		hr {
+			border: none;
+			border-bottom: 2px solid #dddddd;
+		}
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+		
+		.inline-code,
+		.mce-content-body code {
+			border: 1px solid rgb(220, 220, 220);
+			background-color: rgb(243, 243, 243);
+			padding-right: .2em;
+			padding-left: .2em;
+			border-radius: .25em;
+			color: rgb(0,0,0);
+			font-size: .9em;
+		}
+
+		.highlighted-keyword {
+			background-color: #F3B717;
+			color: black;
+		}
+
+		.not-loaded-resource img {
+			width: 1.15em;
+			height: 1.15em;
+			background: white;
+			padding: 2px !important;
+			border-radius: 2px;
+			box-shadow: 0 1px 3px #000000aa;
+		}
+
+		a.not-loaded-resource img {
+			margin-right: .2em;
+		}
+
+		a.not-loaded-resource {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		.md-checkbox input[type=checkbox]:checked {
+			opacity: 0.7;
+		}
+
+		.jop-tinymce ul.joplin-checklist .checked,
+		.md-checkbox .checkbox-label-checked {
+			opacity: 0.5;
+		}
+
+		.exported-note {
+			padding: 1em;
+		}
+
+		.joplin-editable .joplin-source {
+			display: none;
+		}
+
+		mark {
+			background: #F7D26E;
+			color: black;
+		}
+
+		/* =============================================== */
+		/* For TinyMCE */
+		/* =============================================== */
+
+		.mce-content-body {
+			/* Note: we give a bit more padding at the bottom, to allow scrolling past the end of the document */
+			padding: 5px 10px 10em 0;
+		}
+
+		/*
+		.mce-content-body code {
+			background-color: transparent;
+		}
+		*/
+
+		.mce-content-body [data-mce-selected=inline-boundary] {
+			background-color: transparent;
+		}
+
+		.mce-content-body .joplin-editable {
+			cursor: pointer !important;
+		}
+
+		.mce-content-body.mce-content-readonly {
+			opacity: 0.5;
+		}
+
+		/* We need that to make sure click events have the A has a target */
+		.katex a span {
+			pointer-events: none;
+		}
+
+		.media-player {
+			width: 100%;
+			margin-top: 10px;
+		}
+
+		.media-player.media-pdf {
+			min-height: 35rem;
+			width: 100%;
+			max-width: 1000px;
+			margin: 0;
+			border: 0;
+			display: block;
+		}
+
+		/* Clear the CODE style if the element is within a joplin-editable block */
+		.mce-content-body .joplin-editable code {
+			border: none;
+			background: none;
+			padding: 0;
+			color: inherit;
+			font-size: inherit;
+		}
+
+		/* To make code blocks horizontally scrollable */
+		/* https://github.com/laurent22/joplin/issues/5740 */
+		pre.hljs {
+			overflow-x: auto;
+		}
+
+		/* =============================================== */
+		/* For TinyMCE */
+		/* =============================================== */
+
+		@media print {
+			body {
+				height: auto !important;
+			}
+
+			pre {
+				white-space: pre-wrap;
+			}
+
+			.code, .inline-code {
+				border: 1px solid #CBCBCB;
+			}
+
+			#joplin-container-content {
+				/* The height of the content is set dynamically by JavaScript (in updateBodyHeight) to go
+				   around various issues related to scrolling. However when printing we don't want this
+				   fixed size as that would crop the content. So we set it to auto here. "important" is
+				   needed to override the style set by JavaScript at the element-level. */
+				height: auto !important;
+			}
+		}
+	
+
+				/*
+					FOR THE MARKDOWN EDITOR
+				*/
+
+				/* Remove the indentation from the checkboxes at the root of the document
+				   (otherwise they are too far right), but keep it for their children to allow
+				   nested lists. Make sure this value matches the UL margin. */
+
+				li.md-checkbox {
+					list-style-type: none;
+				}
+
+				li.md-checkbox input[type=checkbox] {
+					margin-left: -1.71em;
+					margin-right: 0.7em;
+				}
+				
+				ul.joplin-checklist {
+					list-style:none;
+				}
+
+				/*
+					FOR THE RICH TEXT EDITOR
+				*/
+
+				ul.joplin-checklist li::before {
+					content:"\f14a";
+					font-family:"Font Awesome 5 Free";
+					background-size: 16px 16px;
+					pointer-events: all;
+					cursor: pointer;
+					width: 1em;
+					height: 1em;
+					margin-left: -1.3em;
+					position: absolute;
+					color: #32373F;
+				}
+
+				.joplin-checklist li:not(.checked)::before {
+					content:"\f0c8";
+				}
+.mermaid { background-color: white; width: 640px; }
+.mermaid-export-graph { visibility: hidden; } 
+				.joplin-editable:hover .mermaid-export-graph { visibility: visible; }
+				.mermaid-export-graph:hover { background-color: #CBDAF1 !important; }</style><div id="rendered-md"><ul>
+<li>
+<p>What is React:<br>
+EXTREMELY POPULAR,</p>
+<ul>
+<li><strong>DECLARATIVE</strong>,</li>
+<li><strong>COMPONENT BASED</strong>,</li>
+<li><strong>STATE DRIVEN JAVASCRIPT</strong></li>
+</ul>
+<p>LIBRARY FOR BUILDING USER INTERFACES,<br>
+CREATED BY FACEBOOK</p>
+</li>
+<li>
+<p>Complete Frameworks based on React:</p>
+<ul>
+<li>NEXT.js</li>
+<li>Remix</li>
+</ul>
+</li>
+<li>
+<p>Options for SETTING UP A RECT PROJECT:<br>
+Start from Create-React-App as beginners, move to a more modern build tool - VITE, for real-world apps at the end</p>
+</li>
+<li>
+<p>Setting up a project with Create-React-App</p>
+</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="bash" data-joplin-source-open="```bash&#10;" data-joplin-source-close="&#10;```">npx create-react-app@5 project-name #Using create-react version 5</pre><pre class="hljs"><code>npx create-react-app@5 project-name <span class="hljs-comment">#Using create-react version 5</span></code></pre></div>
+<h2 id="component">Component</h2>
+<ul>
+<li>Strict mode</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="react" data-joplin-source-open="```react&#10;" data-joplin-source-close="&#10;```">import React from &quot;react&quot;;
+import ReactDOM from &quot;react-dom/client&quot;;
+
+function App() {
+  return &lt;h1&gt;Hello React!&lt;/h1&gt;;
+}
+
+const root = ReactDOM.createRoot(document.getElementById(&quot;root&quot;));
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/React.StrictMode&gt;
+);</pre><pre class="hljs"><code><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">ReactDOM</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-dom/client&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello React!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+}
+
+<span class="hljs-keyword">const</span> root = <span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">createRoot</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;root&quot;</span>));
+root.<span class="hljs-title function_">render</span>(
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">React.StrictMode</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">React.StrictMode</span>&gt;</span></span>
+);</code></pre></div>
+<ul>
+<li>Component Tree<br>
+<img src="../_resources/1c4dbf8ff3054b52b822414481d7a478.png" alt="39fae196c1c76fc1c0c0a34ce30d7a5e.png"></li>
+</ul>
+<h3 id="jsx">JSX</h3>
+<ul>
+<li>Declarative syntax to describe what components look like and how they work</li>
+<li>Components must return a block of JSX</li>
+<li>Extension of JavaScript that allows us to embed JavaScript, CSS and React components into HTML</li>
+<li>Babel convert <strong>each JSX</strong> to a JavaScript(React.creatElement() call)</li>
+<li>Possible to use React without JSX, but that makes code hard to implement and read.</li>
+</ul>
+<h3 id="props">Props</h3>
+<ul>
+<li>Pass data(values, arrays, objects, funcitons...) from <strong>Parent</strong> component to <strong>Child</strong> component</li>
+<li>Props is data coming from the outside, and can only be updated by the parent component</li>
+<li>While State is internal data that can be updated by the component's logic</li>
+</ul>
+<h3 id="one-way-data-flow">One-Way Data Flow</h3>
+<p>Never from Down to Top of the component tree</p>
+<h3 id="react-fragments">React Fragments</h3>
+<p>Make it possible to group elements without adding extra wrapping tag like <code class="inline-code">&lt;div&gt;&lt;/div&gt;</code></p>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="React" data-joplin-source-open="```React&#10;" data-joplin-source-close="&#10;```">//Baisc React fragment
+&lt;&gt;
+&lt;/&gt; 
+//Or when need a key for the element
+&lt;React.Fragment key={}&gt;
+&lt;/React.Fragment&gt;</pre><pre class="hljs"><code><span class="hljs-comment">//Baisc React fragment</span>
+&lt;&gt;
+&lt;/&gt; 
+<span class="hljs-comment">//Or when need a key for the element</span>
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">React.Fragment</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{}</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">React.Fragment</span>&gt;</span></span></code></pre></div>
+<h3 id="children-prop">Children prop</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="" data-joplin-source-open="```&#10;" data-joplin-source-close="&#10;```">// In parent component:
+function parent(){
+return(
+&lt;ChildComponent&gt; children&lt;/ChildComponent&gt;
+)
+}
+
+//In the child component 
+funcion ChildComponent(props){
+const childrenData = props.children
+}
+</pre><pre class="hljs"><code><span class="hljs-comment">// In parent component:</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">parent</span>(<span class="hljs-params"></span>){
+<span class="hljs-keyword">return</span>(
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ChildComponent</span>&gt;</span> children<span class="hljs-tag">&lt;/<span class="hljs-name">ChildComponent</span>&gt;</span></span>
+)
+}
+
+<span class="hljs-comment">//In the child component </span>
+funcion <span class="hljs-title class_">ChildComponent</span>(props){
+<span class="hljs-keyword">const</span> childrenData = props.<span class="hljs-property">children</span>
+}
+</code></pre></div>
+<ul>
+<li>The children prop allow us to pass JSX into an element (besides regular props)</li>
+<li>Essential tool to make reusable and configurable components (especially component content)</li>
+<li>Really useful for generic components that don’t know their content before being used (e.g. modal)</li>
+</ul>
+<h2 id="react-state-event">React State &amp; Event</h2>
+<h3 id="event-handling">Event Handling</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="" data-joplin-source-open="```&#10;" data-joplin-source-close="&#10;```">onClick={}
+onMouseEnter={}</pre><pre class="hljs"><code><span class="hljs-attribute">onClick</span><span class="hljs-operator">=</span>{}
+<span class="hljs-attribute">onMouseEnter</span><span class="hljs-operator">=</span>{}</code></pre></div>
+<h3 id="state">State</h3>
+<ul>
+<li>Memory of a Component</li>
+<li>&quot;state variable&quot;/&quot;piece of state&quot;: A single variable in a component state</li>
+<li>Updating component state trigger React to re-render the component</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">const [state,setStateFunction] = useState()</pre><pre class="hljs"><code><span class="hljs-keyword">const</span> [state,setStateFunction] = <span class="hljs-title function_">useState</span>()</code></pre></div>
+<ul>
+<li>useState is one of the React hooks</li>
+<li>Hooks can be only called in the top level of a function</li>
+<li>State should be a constant variable and not to be set manually<br>
+<img src="../_resources/7da0b9896c15464f934e582d26dc2768.png" alt="30af058309e665bf0357369fb05fdf32.png"></li>
+</ul>
+<h4 id="updating-state-based-on-current-state">Updating State based on Current State</h4>
+<ul>
+<li>When setting a change of state, which depends on the current state, include it in the setState function</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="React" data-joplin-source-open="```React&#10;" data-joplin-source-close="&#10;```">onClick={()=&gt;setState(prevState=&gt;!prevState)} //Alter the state</pre><pre class="hljs"><code><span class="hljs-keyword">on</span>Click={()=&gt;setState(prevState=&gt;!prevState)} //Alter the <span class="hljs-keyword">state</span></code></pre></div>
+<h3 id="controlled-element">Controlled Element</h3>
+<ul>
+<li>Initialize a piece of state for an element want to control<br>
+<code class="inline-code">const [state,setState] = useState()</code></li>
+<li>invoke setState() function when input changes<br>
+<code class="inline-code">onChange={(event)=&gt;setState(event.targe.value)}</code></li>
+<li>Keep the element value same to the value of state(e.g. clear the input after a submission)<br>
+<code class="inline-code">value={state}</code></li>
+</ul>
+<h3 id="when-to-use-state">When to use State</h3>
+<p><img src="../_resources/325b4bc8dcb141ab9f6980e549309ab3.png" alt="433f89132379c1dfe047bd89b8b288bf.png"></p>
+<h4 id="deriving-state">Deriving State</h4>
+<ul>
+<li>Derived state: state that is computed from an existing piece of state or from props</li>
+<li>Works because re-rendering component will automatically re-calculate derived state</li>
+</ul>
+<h3 id="component-categories">Component Categories</h3>
+<ul>
+<li>Stateless/Presentational Component</li>
+<li>Stateful Component</li>
+<li>Structural Component</li>
+</ul>
+<h4 id="component-composition">Component Composition</h4>
+<ul>
+<li>Combining different components using the {children} prop(or explicitly defined props)</li>
+<li>Make components reusable</li>
+<li>Solution to props drilling</li>
+</ul>
+<p><img src="../_resources/d3c9a94d2c9b4940978f25bb126528d7.png" alt="9ec86c33a91612fa1236fdb31873c24e.png"></p>
+<h2 id="how-react-works">How React works</h2>
+<h3 id="component-vs-instance-vs-element">COMPONENT VS. INSTANCE VS. ELEMENT</h3>
+<ul>
+<li>A component is a function that returns React elements (element tree), which usually written as JSX</li>
+<li>Instances are created when we “use” components
+<ul>
+<li>Actual “physical” manifestation of a component</li>
+<li>Has its own state and props</li>
+<li>Has a lifecycle (can “be born”, “live”, and “die”)</li>
+</ul>
+</li>
+<li>JSX is converted to React.createElement() function calls
+<ul>
+<li>A React element is the result of these function calls</li>
+<li>Information necessary to create DOM elements</li>
+</ul>
+</li>
+</ul>
+<p><img src="../_resources/b5be7fd674634cb589ab51a3898a805c.png" alt="8a3b224140fa626413db575b6bd2b476.png"><br>
+<img src="../_resources/0b432731e6104456828fc82e2142de8b.png" alt="b5c9d425bd72cf4aa3a717ba04958592.png"></p>
+<h3 id="how-components-are-displayed-on-the-screen">HOW COMPONENTS ARE DISPLAYED ON THE SCREEN</h3>
+<ul>
+<li>In React, rendering is NOT updating the DOM or displaying elements on the screen.
+<ul>
+<li>Rendering only happens internally inside React, it does not produce visual changes.<br>
+<img src="../_resources/5eb4fe1136a04ee5b9163e7d24e18d6f.png" alt="4e81e9fbcacee16dd5f9397890c1d2cc.png"></li>
+</ul>
+</li>
+</ul>
+<h3 id="how-renders-are-triggered">HOW RENDERS ARE TRIGGERED</h3>
+<ul>
+<li>THE TWO SITUATIONS THAT TRIGGER RENDERS
+<ol>
+<li>Initial render of the application</li>
+<li>State is updated in one or more component instances (re-render)</li>
+</ol>
+</li>
+<li>The render process is triggered for the entire application</li>
+<li>In practice, it looks like React only re-renders the component where the state update happens, but that’s not how it works behind the scenes</li>
+<li>Renders are not triggered immediately, but scheduled for when the JS engine has some “free time”. There is also batching of multiple setState calls in event handlers</li>
+</ul>
+<h3 id="the-render-phase">The Render Phase</h3>
+<h4 id="virtual-dom">Virtual DOM:</h4>
+<ul>
+<li>Tree of all React elements created from all instances in the component tree</li>
+<li>Cheap and fast to create multiple trees</li>
+<li>Nothing to do with “shadow DOM”(a concept in Browser)</li>
+<li>Rendering a component will cause all of its child components to be rendered as well (no matter if props changed or not)<br>
+<img src="../_resources/5a589510abaf46cf9a22c500d0074c92.png" alt="5d61810d14aff040de3730213cec25e1.png"></li>
+</ul>
+<h4 id="the-reconciler-of-react-fiber">The RECONCILER of React - Fiber</h4>
+<ul>
+<li>Why not update the entire DOM whenever state changes somewhere in the app?
+<ul>
+<li>Writing to the DOM is (relatively) slow.</li>
+<li>Usually only a small part of the DOM needs to be updated</li>
+</ul>
+</li>
+<li>So, React reuses as much of the existing DOM as possible, where Reconciliation takes part in.</li>
+<li>Reconciliation: Deciding which DOM elements actually need to be inserted, deleted, or updated, in order to reflect the latest state changes.</li>
+<li><strong>Fiber</strong> is the <strong>Reconciler</strong> of React</li>
+<li>Fiber tree: internal tree that has a “fiber” for each component instance and DOM element<br>
+<img src="../_resources/3a502f0f23e8454abae508bc6dd8f28c.png" alt="35f543c2c70cc51b969bff76aeab911e.png"></li>
+<li>Fibers are NOT re-created on every render</li>
+<li>Work can be done asynchronously
+<ul>
+<li>Rendering process can be split into chunks, tasks can be prioritized, and work can be paused, reused, or thrown away</li>
+<li>Enables concurrent features like Suspense or transitions</li>
+<li>Long renders won’t block JS engine<br>
+<img src="../_resources/3f2b5481cd1f4b61b84694052f1042f1.png" alt="50c9f4746a8d5c5d2a451cbba4ec608e.png"></li>
+</ul>
+</li>
+</ul>
+<h5 id="how-diffing-works">HOW DIFFING WORKS</h5>
+<ul>
+<li>Comparing elements step-by-step, based on their position in the tree</li>
+<li>Diffing uses 2 fundamental rules:
+<ol>
+<li>Two elements of different types will produce different trees:
+<ul>
+<li>Case1: SAME Position in the DOM,  <strong>DIFFERENT</strong>  Element
+<ul>
+<li>React assumes entire sub-tree is no longer valid</li>
+<li>Old components are destroyed and removed from DOM, including state</li>
+<li>Tree might be rebuilt even if children stayed the same (state is reset)</li>
+</ul>
+</li>
+<li>Case2: SAME Position, SAME Element
+<ul>
+<li>Element will be kept (as well as child elements), including state</li>
+<li>New props / attributes are passed (if they changed between renders)</li>
+<li>Sometimes this is not what we want... Then we can use the <strong>key prop</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Elements with a stable key prop stay the same across renders<br>
+<img src="../_resources/7fe5ed674dd549e19e28bef268e29dc1.png" alt="c63389be05191d6797f3d62fe10cbb70.png"></li>
+</ol>
+</li>
+</ul>
+<h3 id="the-key-prop">The Key prop</h3>
+<ul>
+<li>Special prop that we use to tell the diffing algorithm that an element is unique</li>
+<li>Allows React to distinguish between multiple instances of the same component type</li>
+<li>When a key stays the same across renders, the element will be kept in the DOM, even if the position in the tree changes.(Diffing fundamental rules 2):
+<ul>
+<li>Usage 1 of Key prop: Using keys for items <strong>in list</strong></li>
+</ul>
+</li>
+<li>When a key changes between renders, the element will be destroyed and a new one will be created (even if the position in the tree is the same as before)
+<ul>
+<li>Usage 2 of Key prop: Using keys to <strong>reset State</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="usage-1-using-keys-in-lists">Usage 1: Using keys in lists</h4>
+<p><img src="../_resources/eaaffcfffb864dacb351ed9590027bb9.png" alt="ec18c88e3b55e7816a6aea0790771ecb.png"></p>
+<h4 id="usage-2-using-keys-to-reset-state-of-content-at-fixed-position">Usage 2: Using keys to reset State of content at fixed position</h4>
+<ul>
+<li>Without key, the State of a component instance and its DOM element won't update:<br>
+<img src="../_resources/ac0ae394ded5473b83d7db4d63834c46.png" alt="811eb5980e6ec8b3dcc69ff3d2dcb9a3.png"></li>
+<li>With using key, the State and DOM element will get updated by updating the Key prop<br>
+<img src="../_resources/6b4f6f94e71f4e9996449ac8f083bfd9.png" alt="f806c0230f9846811238192e0cdbcd7d.png"></li>
+</ul>
+<h3 id="the-commit-phase-and-browser-paint">THE COMMIT PHASE AND BROWSER PAINT</h3>
+<ul>
+<li>React writes to the DOM insertions, deletions, and updates (list of DOM updates are “flushed” to the DOM)</li>
+<li>Committing is synchronous: DOM is updated in one go, it can’t be interrupted. This is necessary so that the DOM never shows partial results, ensuring a consistent UI (in sync with state at all times)</li>
+<li>After the commit phase completes, the workInProgress fiber tree becomes the current tree for the next render cycle<br>
+<img src="../_resources/7e470b22ebc744bda2fbcd8e447e7cde.png" alt="c86997e80a0642c644f663a5b7eb3580.png"></li>
+<li>The commit phase is performed by ReactDOM rather than React itself. There are other &quot;renderers&quot; for the commit phase, targeting different platforms besides the DOM/Webpage.<br>
+<img src="../_resources/92c5c1d1813b401dbd466d1e2cdd7d23.png" alt="5f80add5354aa1f9d9494e610ec79aba.png"></li>
+</ul>
+<h3 id="the-overview-of-the-react-handeling-process">The overview of the React handeling process</h3>
+<p><img src="../_resources/3c32a6f4702447ebace19d0fc5a76019.png" alt="2f7acbd07bd0aee26671a90da06ad4c9.png"></p>
+<h3 id="the-two-types-of-logic-in-react-components">THE TWO TYPES OF LOGIC IN REACT COMPONENTS</h3>
+<ol>
+<li>RENDER LOGIC
+<ul>
+<li>Code that lives at the top level of the component function</li>
+<li>Participates in describing how the component view looks like</li>
+<li>Executed every time the component renders</li>
+</ul>
+</li>
+<li>EVENT HANDLER FUNCTIONS
+<ul>
+<li>Executed as a consequence of the event that the handler is listening for (change event in this example)</li>
+<li>Code that actually does things: update state, perform an HTTP request, read an input field, navigate to another page, etc.</li>
+</ul>
+</li>
+</ol>
+<h4 id="side-effect-vs-pure-function">Side Effect vs Pure Function</h4>
+<ul>
+<li>
+<p>Side effect: dependency on or modification of any data outside the function scope. “Interaction with the outside world”. Examples: mutating external variables, HTTP requests, writing to DOM.</p>
+<ul>
+<li>Side effects are not bad! A program can only be useful if it has some interaction with the outside world</li>
+</ul>
+</li>
+<li>
+<p>Pure function: a function that has no side effects.</p>
+<ul>
+<li>Does not change any variables outside its scope</li>
+<li>Given the same input, a pure function always returns the same output</li>
+</ul>
+</li>
+</ul>
+<h4 id="rules-for-render-logic">RULES FOR RENDER LOGIC</h4>
+<ul>
+<li>Components must be pure when it comes to render logic: given the same props(input), a component instance should always return the same JSX (output)</li>
+<li>Render logic must produce no side effects: no interaction with the “outside<br>
+world” is allowed. So, in render logic:
+<ul>
+<li>Do NOT perform network requests API calls)</li>
+<li>Do NOT start timers</li>
+<li>This is why we can’t mutate props!</li>
+<li>Do NOT directly use the DOM API</li>
+<li>Do NOT mutate objects or variables outside of the function scope</li>
+<li>Do NOT update state (or refs): this will create an infinite loop!</li>
+</ul>
+</li>
+<li>Side effects are allowed (and encouraged) in <strong>event handler functions</strong>!<br>
+There is also a special hook to register side effects (<strong>useEffect</strong>)</li>
+</ul>
+<h3 id="state-update-and-batched">State update and batched</h3>
+<ul>
+<li>
+<p>Updated State variables are not immediately available after setState call, but only after the re-render (This also applies when only one state variable is updated)</p>
+</li>
+<li>
+<p>If we need to update state based on previous update, we use setState with callback <code class="inline-code">setState(currentState =&gt; newState)</code></p>
+</li>
+<li>
+<p>Multiple state updates inside an event handler function are batched, so they happen all at once, causing only one re-render.<br>
+<img src="../_resources/29e166fece1f494cb5e78cb95d9f26ef.png" alt="21991d34c8bae0944477fcbe7b31901a.png"></p>
+</li>
+<li>
+<p>Since React 18, Automatic Batching also happens in timeouts,promises, and native event handlers.<br>
+<img src="../_resources/b4b5a9f877014ac292fbbf66f35df494.png" alt="9c8d5a2a421cc4a8891efbf760f4a626.png"></p>
+</li>
+</ul>
+<h3 id="events-in-react">Events in React</h3>
+<h4 id="how-react-handles-events">HOW REACT HANDLES EVENTS</h4>
+<p><img src="../_resources/c7dd18f3c1004666a504eeb0c0c36cad.png" alt="51ddbc4c46308a06d5b90e39d8a25e53.png"></p>
+<ul>
+<li>EVENT DELEGATION
+<ul>
+<li>Handling events for multiple elements centrally in one single parent element</li>
+<li>Better for performance and memory, as it needs only one handler function</li>
+</ul>
+</li>
+</ul>
+<h4 id="synthetic-events">SYNTHETIC EVENTS</h4>
+<p><img src="../_resources/de0486f9a8554883b7e329e827b9a8a8.png" alt="5e7cad28a17b0a98669e681c85e40957.png"></p>
+<ul>
+<li>React use Synthetic Events, which <strong>Wrapper</strong> around the DOM’s native event object
+<ul>
+<li>Has same interface as native event objects, like stopPropagation() and preventDefault()</li>
+<li>Fixes browser inconsistencies, so that events work in the exact same way in all browsers</li>
+<li>Most synthetic events bubble (including focus,blur, and change), except for scroll</li>
+<li>React Event Handlers different from in JS:
+<ul>
+<li>Attributes for event handlers are named using camelCase (onClick instead of onclick or click)</li>
+<li>Default behavior can not be prevented by returning false (only by using <code class="inline-code">preventDefault()</code>)</li>
+<li>Attach “Capture” if you need to handle during capture phase (example: onClickCapture)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="libaries-vs-frameworks">Libaries vs Frameworks</h3>
+<p><img src="../_resources/1118e4456914440e8c2e6bcb826f4d97.png" alt="be29dfacaad4e393bd4f85b3d7b4a1f1.png"><br>
+<img src="../_resources/7adbb05d725e40d2b3ace7f4141116fa.png" alt="f291c93a27e7fb2d1f8bd3f3a43cd786.png"><br>
+<img src="../_resources/df7da525e25846168f02a2b577f0cdc1.png" alt="23db1ddd4e6b43624fb8e5657f9f73f2.png"><br>
+<img src="../_resources/98931e33b3884197a2afc2e8ceb7d6a5.png" alt="22e8035646321e4599e88b4726a140a7.png"></p>
+<h2 id="debugging">Debugging</h2>
+<ul>
+<li>React Developer tools for browser console</li>
+</ul>
+<h2 id="fragments-portals-refs">Fragments, Portals &amp; refs</h2>
+<h2 id="effect">Effect</h2>
+<h3 id="component-instance-lifecycle">Component (instance) Lifecycle</h3>
+<p><img src="../_resources/bc402f6286e94458a03c6db09173ea33.png" alt="446f5e2478ad02410f772693dee7f68e.png"></p>
+<h3 id="side-effects-in-react">Side effects in React</h3>
+<ul>
+<li>In React, a side effect is basically any “<strong>Interaction between</strong> a React <strong>component and</strong> the world <strong>outside the component</strong>”.</li>
+<li>We can also think of a side as “code that actually does something”.
+<ul>
+<li>Examples: Data fetching, setting up subscriptions, setting up timers, manually accessing the DOM, store data in browser storage, Send HTTP requests to backend servers, etc.</li>
+</ul>
+</li>
+<li>Other tasks besides rendering UI and react to user input</li>
+<li>Side Effect <strong>can</strong> be made in<br>
+<img src="../_resources/534f06cd135d4a9ca1c6809c63503aea.png" alt="8a2e473f6184b419181dc235bdda2b15.png"></li>
+<li>Event Handler vs useEffect</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Event Handlers</th>
+<th>useEffect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Executed when the corresponding event happens</td>
+<td>Executed after the component mounts (initial), and after subsequent re-renders</td>
+</tr>
+<tr>
+<td>Used to react to an event</td>
+<td>Used to keep a component synchronized with some external system (e.g., with data from an API)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="useeffect-hook">useEffect() Hook</h3>
+<ul>
+<li>Runs when dependencies change</li>
+<li>When no dependencies defined, it runs everytime the component being rendered</li>
+</ul>
+<h4 id="the-useeffect-dependency-array">The UseEffect Dependency Array</h4>
+<ul>
+<li>By default, effects run after every render. We can prevent that by passing a dependency array</li>
+<li>Without the dependency array, React doesn’t know when to run the effect</li>
+<li>Each time one of the dependencies changes, the effect will be executed again</li>
+<li>Every state variable and prop used inside the effect <strong>MUST be included</strong> in the dependency array
+<ul>
+<li>Otherwise, we get a “stale closure”.</li>
+</ul>
+</li>
+<li>Usage:</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">useEffect(()=&gt;{
+    console.log(&quot;This runs every time after the state updated(e.g. user input or component being rendered)&quot;)
+})
+
+useEffect(()=&gt;{
+    console.log(&quot;This runs only at the first time the component rendered, e.g. refresh the webpage&quot;)
+},[])
+
+useEffect(()=&gt;{
+    console.log(&quot;This runs every time when anyone of the dependencies reevaluated&quot;)
+},[denpendency1,dependency2,dependency3...])</pre><pre class="hljs"><code><span class="hljs-title function_">useEffect</span>(<span class="hljs-function">()=&gt;</span>{
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;This runs every time after the state updated(e.g. user input or component being rendered)&quot;</span>)
+})
+
+<span class="hljs-title function_">useEffect</span>(<span class="hljs-function">()=&gt;</span>{
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;This runs only at the first time the component rendered, e.g. refresh the webpage&quot;</span>)
+},[])
+
+<span class="hljs-title function_">useEffect</span>(<span class="hljs-function">()=&gt;</span>{
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;This runs every time when anyone of the dependencies reevaluated&quot;</span>)
+},[denpendency1,dependency2,dependency3...])</code></pre></div>
+<h4 id="synchronization-lifecycle-of-useeffect">SYNCHRONIZATION &amp; LIFECYCLE of useEffect</h4>
+<ul>
+<li>useEffect is like an event listener that is listening for one dependency to change. Whenever a dependency changes, it will execute the effect again</li>
+<li>Effects react to updates to state and props used inside the effect (the dependencies). So effects are “reactive” (like state updates re-rendering the UI)<br>
+<img src="../_resources/02c655a1646a42519fd3125f28d82ef3.png" alt="ce20484a65c58d821389c1ee0fc1f2f2.png"><br>
+<img src="../_resources/f617ca98827c45438befbec750b8afbb.png" alt="e5fbf0e29e50127d3b3f48603698d96a.png"></li>
+</ul>
+<h4 id="useeffect-cleanup">useEffect Cleanup</h4>
+<ul>
+<li>
+<p>Cleanup Function: Function that we can return from an effect</p>
+</li>
+<li>
+<p>When and Why to use cleanup funciton:</p>
+<ul>
+<li>Runs on two different occasions:
+<ol>
+<li>Before the effect 1 is executed again</li>
+<li>After a component has unmounted</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>Necessary whenever the side effect keeps happening after the component has been re-rendered or unmounted</p>
+</li>
+<li>
+<p>Each effect should do only one thing! Use one useEffect hook for each side effect. This makes effects easier to clean up</p>
+</li>
+<li>
+<p>Examples:<br>
+<img src="../_resources/a40cd5f51bff49a580a58f609ddaf249.png" alt="d7767e3506c1d36a58ae6a6c017ee507.png"></p>
+</li>
+<li>
+<p>Usage:</p>
+</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```"> useEffect(() =&gt; {
+    const identifier = setTimeout(() =&gt; {
+      console.log(&quot;Checking form validity&quot;);
+      setFormIsValid(
+        enteredEmail.includes(&quot;@&quot;) &amp;&amp; enteredPassword.trim().length &gt; 6
+      );
+    }, 500);
+    return () =&gt; {
+      console.log(&quot;CleanUp!&quot;);
+      clearTimeout(identifier); //Clear the timer every time before the identifier function runs
+    };
+  }, [enteredEmail, enteredPassword]);</pre><pre class="hljs"><code> <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> identifier = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Checking form validity&quot;</span>);
+      <span class="hljs-title function_">setFormIsValid</span>(
+        enteredEmail.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&quot;@&quot;</span>) &amp;&amp; enteredPassword.<span class="hljs-title function_">trim</span>().<span class="hljs-property">length</span> &gt; <span class="hljs-number">6</span>
+      );
+    }, <span class="hljs-number">500</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;CleanUp!&quot;</span>);
+      <span class="hljs-built_in">clearTimeout</span>(identifier); <span class="hljs-comment">//Clear the timer every time before the identifier function runs</span>
+    };
+  }, [enteredEmail, enteredPassword]);</code></pre></div>
+<p>Doesn't run for the very first time of the side effect function execution, but runs before every next time the callback function execution</p>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="js" data-joplin-source-open="```js&#10;" data-joplin-source-close="&#10;```">useEffect(()=&gt;{
+    console.log('Effect Running');
+    
+    return()=&gt;{
+  console.log('Effect CleanUp');// This cleanup function runs only when the component being removed, as there are no dependencies
+    }
+    
+},[])//No dependencies</pre><pre class="hljs"><code><span class="hljs-title function_">useEffect</span>(<span class="hljs-function">()=&gt;</span>{
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Effect Running&#x27;</span>);
+    
+    <span class="hljs-keyword">return</span><span class="hljs-function">()=&gt;</span>{
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Effect CleanUp&#x27;</span>);<span class="hljs-comment">// This cleanup function runs only when the component being removed, as there are no dependencies</span>
+    }
+    
+},[])<span class="hljs-comment">//No dependencies</span></code></pre></div>
+<ul>
+<li>Closure in JavaScript
+<ul>
+<li>A closure is a function having access to the parent scope, even after the parent function has closed.</li>
+</ul>
+</li>
+<li>Abort Controller in Browser API to avoid multiple redundant fetch requests during user type in</li>
+</ul>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="jsx" data-joplin-source-open="```jsx&#10;" data-joplin-source-close="&#10;```">useEffect(
+  function () {
+    const controller = new AbortController();
+    async function fetchSomeData() {
+      try {
+        const res = await fetch(URL, { signal: controller.signal });
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+    fetchSomeData();
+    return function () {
+      controller.abort(); //Cleaning up function of Aborting redundant fetch
+    };
+  },
+  [dependency]
+);
+</pre><pre class="hljs"><code><span class="hljs-title function_">useEffect</span>(
+  <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> controller = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AbortController</span>();
+    <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchSomeData</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-variable constant_">URL</span>, { <span class="hljs-attr">signal</span>: controller.<span class="hljs-property">signal</span> });
+      } <span class="hljs-keyword">catch</span> (error) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(error.<span class="hljs-property">message</span>);
+      }
+    }
+    <span class="hljs-title function_">fetchSomeData</span>();
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      controller.<span class="hljs-title function_">abort</span>(); <span class="hljs-comment">//Cleaning up function of Aborting redundant fetch</span>
+    };
+  },
+  [dependency]
+);
+</code></pre></div>
+<h2 id="react-hooks-and-their-rules">REACT HOOKS AND THEIR RULES</h2>
+<h3 id="refs-useref">REFS &amp; useRef</h3>
+<p><img src="../_resources/41b45be52d5b4fc89d8b087779468947.png" alt="ee35ca1bed7884400e1cb826056c3257.png"></p>
+<ul>
+<li>“Box” (object) with a mutable .current property that is persisted across renders(“normal” variables are always reset)</li>
+<li>Two big use cases:
+<ol>
+<li>Creating a variable that stays the same between renders (e.g. previous state, setTimeout id, etc.)</li>
+<li>Selecting and storing DOM elements</li>
+</ol>
+</li>
+<li>Refs are for data that is NOT rendered: usually only appear in event handlers or effects, not in JSX (otherwise use state)</li>
+<li>Do NOT read write or read .current in render logic (like state)</li>
+</ul>
+<h3 id="ref-vs-state">Ref vs State</h3>
+<p><img src="../_resources/0873c6ebed4d42de81a431d5dfa93ed1.png" alt="ea5ee9e50318f6e0ccb2535adaeb6930.png"></p>
+<h2 id="use-reducer">Use Reducer</h2>
+<h2 id="styling-component">Styling component</h2>
+<h3 id="styling-options-in-react">Styling Options in React</h3>
+<p><img src="../_resources/d8a7e5d4fa124c37bc503776c3a04479.png" alt="26ef72206e91356f181cc0569aec9a99.png"></p>
+<h3 id="css-modules">CSS modules</h3>
+<p>Always use class name for CSS<br>
+- or the selector will select all the elements from the entire project<br>
+<code class="inline-code">.ClassName :global</code> to select all elements with the classname in the entire project</p>
+<p>import styles from the CSS file</p>
+<h2 id="react-router">React Router</h2>
+<ul>
+<li>With routing, we match different URLs to different UI views React components): routes</li>
+<li>This enables users to navigate between different applications screens, using the browser URL</li>
+<li>Keeps the UI in sync with the current browser URL</li>
+<li>Allows us to build Single-Page Applications</li>
+</ul>
+<h3 id="single-page-applications-spa">Single Page Applications (SPA)</h3>
+<ul>
+<li>Application that is executed entirely on the client (browsers)</li>
+<li>Routes: different URLs correspond to different views (components)</li>
+<li>JavaScript React) is used to update the page DOM</li>
+<li>The page is never reloaded</li>
+<li>Feels like a native app</li>
+<li>Additional data might be loaded from a web API<br>
+<img src="../_resources/fdc35e4425a0446ab4b5857e42d49514.png" alt="5683d788dde43f3ab0de893f5d013e9d.png"></li>
+</ul>
+<h3 id="router">Router</h3>
+<p><code class="inline-code">npm install react-router-dom</code></p>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="jsx" data-joplin-source-open="```jsx&#10;" data-joplin-source-close="&#10;```">import {BrowserRouter, Routes, Route} from &quot;react-router-dom&quot;;
+
+&lt;/BrowserRouter&gt;
+    &lt;/Routes&gt;
+        &lt;Route path=&quot;*&quot; element={&lt;Page/&gt;} /&gt;
+    &lt;/Routes&gt;
+&lt;/BrowserRouter&gt;</pre><pre class="hljs"><code><span class="hljs-keyword">import</span> {<span class="hljs-title class_">BrowserRouter</span>, <span class="hljs-title class_">Routes</span>, <span class="hljs-title class_">Route</span>} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;
+
+&lt;/<span class="hljs-title class_">BrowserRouter</span>&gt;
+    &lt;/<span class="hljs-title class_">Routes</span>&gt;
+        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">&quot;*&quot;</span> <span class="hljs-attr">element</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">Page</span>/&gt;</span>} /&gt;</span>
+    &lt;/<span class="hljs-title class_">Routes</span>&gt;
+&lt;/<span class="hljs-title class_">BrowserRouter</span>&gt;</code></pre></div>
+<h4 id="index-route">Index Route</h4>
+<p>Default<br>
+<code class="inline-code">&lt;Route index element={&lt;Homepage /&gt;} /&gt;</code></p>
+<h3 id="link-and-navlink">Link and NavLink</h3>
+<p><code class="inline-code">&lt;Link to='/pricing'&gt;&lt;/Link&gt;</code><br>
+<code class="inline-code">&lt;NavLink to='/pricing'&gt;&lt;/Link&gt;</code> NavLink makes it active when it's on the page</p>
+<h3 id="outlet">Outlet</h3>
+<p>similar to {children}</p>
+<h2 id="context-api">Context API</h2>
+<ul>
+<li>System to pass data throughout the app <strong>without manually passing props down</strong> the tree</li>
+<li>Allows us to <strong>“broadcast” global state</strong> to the entire app</li>
+</ul>
+<ol>
+<li>Provider: gives all child components access to value</li>
+<li>Value: data that we want to make available (usually state and functions)</li>
+<li>Consumers: all components that read the provided context value<br>
+<img src="../_resources/bf55fc1414b043da99c724574fe66aea.png" alt="3980b621b44f14f64116c0855a5da1e2.png"></li>
+</ol>
+<h3 id="usage">Usage</h3>
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="jsx" data-joplin-source-open="```jsx&#10;" data-joplin-source-close="&#10;```">import {useContext, createContext} from &quot;react&quot;;
+
+const PostContext = createContext(); //1. Create a new context
+function PostProvider({ children }) {
+return (
+    //2. Provide Value to Child Components
+    &lt;PostContext.Provider
+      value={{
+        posts: searchedPosts,
+        onAddPost: handleAddPost,
+        onClearPosts: handleClearPosts,
+        searchQuery,
+        setSearchQuery,
+      }}
+    &gt;
+      {children}
+    &lt;/PostContext.Provider&gt;
+  );
+}
+
+//3. Consume the context
+const {onAddPost} = useContext(PostContext);
+</pre><pre class="hljs"><code><span class="hljs-keyword">import</span> {useContext, createContext} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">PostContext</span> = <span class="hljs-title function_">createContext</span>(); <span class="hljs-comment">//1. Create a new context</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">PostProvider</span>(<span class="hljs-params">{ children }</span>) {
+<span class="hljs-keyword">return</span> (
+    <span class="hljs-comment">//2. Provide Value to Child Components</span>
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">PostContext.Provider</span>
+      <span class="hljs-attr">value</span>=<span class="hljs-string">{{</span>
+        <span class="hljs-attr">posts:</span> <span class="hljs-attr">searchedPosts</span>,
+        <span class="hljs-attr">onAddPost:</span> <span class="hljs-attr">handleAddPost</span>,
+        <span class="hljs-attr">onClearPosts:</span> <span class="hljs-attr">handleClearPosts</span>,
+        <span class="hljs-attr">searchQuery</span>,
+        <span class="hljs-attr">setSearchQuery</span>,
+      }}
+    &gt;</span>
+      {children}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">PostContext.Provider</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-comment">//3. Consume the context</span>
+<span class="hljs-keyword">const</span> {onAddPost} = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">PostContext</span>);
+</code></pre></div>
+<h2 id="performance-optimizationmemousecallback">Performance Optimization(Memo,useCallback)</h2>
+<h3 id="memo">Memo</h3>
+</div></div>
+					</body>
+				</html>
+			
