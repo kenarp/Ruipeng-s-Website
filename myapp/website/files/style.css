@@ -490,7 +490,7 @@ strong {
   }
 }
 
-@media (max-aspect-ratio: 1) or (max-device-aspect-ratio: 1) {
+@media (max-aspect-ratio: 1) or (max-width: 975px) {
   .about-me {
     margin: 60px auto;
     width: 90vw;
