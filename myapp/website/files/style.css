@@ -490,12 +490,12 @@ strong {
   }
 }
 
-@media (max-aspect-ratio: 1) {
+@media (max-aspect-ratio: 1) or (max-device-aspect-ratio: 1) {
   .about-me {
     margin: 60px auto;
     width: 90vw;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 3fr 2fr;
+    grid-template-rows: 2fr 1fr;
     column-gap: 1vw;
   }
 
