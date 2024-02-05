@@ -91,15 +91,33 @@ nav {
   justify-content: space-between;
 }
 
-.nav-page {
-  /* font-weight: 550; */
+.nav-page-container {
   flex: 1 1 auto;
-  /* margin-bottom: 2vh; */
   padding: 12px 0 16px;
   text-align: center;
+  position: relative;
+}
+
+.nav-page {
+  /* font-weight: 550; */
+  /* flex: 1 1 auto; */
+  /* margin-bottom: 2vh; */
   /* border-right: rgb(199, 241, 254, 0.4) solid 0.75px; */
   /* border-left: rgb(199, 241, 254, 0.4) solid 0.75px; */
   /* border-bottom: rgb(199, 241, 254, 0.4) solid 0.75px; */
+  /* position: relative; */
+}
+
+.nav-page-container:nth-child(-n + 3)::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  /* width: 50%; */
+  height: 50%;
+  border-right: 2px solid rgba(199, 241, 254, 0.6);
 }
 
 nav a:link,
@@ -114,8 +132,7 @@ nav a:hover {
   color: #0e5cad;
 }
 
-.nav-page:has(a:hover),
-.nav-dropdown:hover {
+.nav-page-container:has(a:hover) {
   background-color: rgb(255, 255, 255, 0.6);
   /* background-color: rgb(209, 214, 220, 0.5); */
 }
@@ -129,7 +146,6 @@ nav a:hover {
   border: solid #fff;
   border-width: 0 2px 2px 0;
   display: inline-block;
-  /* padding: 3px; */
   padding: 3px;
   -webkit-transform: rotate(45deg) translateY(-6px);
   transform: rotate(45deg) translateY(-6px);
@@ -191,11 +207,6 @@ nav a:hover {
   /* height: auto; */
 }
 
-article #JAVA {
-  width: 50vw;
-  margin-left: 25vw;
-}
-
 iframe#fridgeApp,
 iframe#lostfoundApp {
   margin-left: auto;
@@ -234,12 +245,6 @@ input.likeButton {
   text-decoration: underline;
   cursor: pointer;
 } */
-
-span#span0,
-span#span1,
-span#span2 {
-  display: none;
-}
 
 footer {
   width: 85vw;
@@ -330,7 +335,7 @@ button.backToTop:hover {
   background-color: rgb(255, 255, 255, 0.6);
 }
 
-.nav-dropdown:hover .nav-portfolio {
+.nav-dropdown-container:hover .nav-portfolio {
   display: block;
   visibility: visible;
 }
@@ -345,7 +350,7 @@ button.backToTop:hover {
 .gallery {
   display: grid;
   /* grid-auto-flow: row; */
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr 1fr;
   align-items: center;
   justify-items: center;
@@ -457,7 +462,7 @@ strong {
   height: 20px;
 }
 
-.plus-sign #windmill {
+.plus-sign .windmill {
   animation-name: spin;
   animation-duration: 2000ms;
   animation-timing-function: linear;
@@ -467,7 +472,7 @@ strong {
   animation-play-state: paused;
 }
 
-.skill-container:hover #windmill {
+.skill-container:hover .windmill {
   animation-play-state: running;
 }
 

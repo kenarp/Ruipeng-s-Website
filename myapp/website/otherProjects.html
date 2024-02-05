@@ -113,9 +113,13 @@
     </header>
 
     <nav>
-      <span class="nav-page"><a href="/resume">Resume</a></span>
-      <span class="nav-dropdown nav-page">
-        <a href="#" onclick="return false;">Portfolio</a>
+      <div class="nav-page-container">
+        <span class="nav-page"><a href="/resume">Resume</a></span>
+      </div>
+      <div class="nav-page-container nav-dropdown-container">
+        <span class="nav-page">
+          <a href="#" onclick="return false;">Portfolio</a></span
+        ><span class="nav-dropdown"></span>
         <div class="nav-portfolio">
           <div class="portfolio-project">
             <a href="/portfolio/echarts"> Data Visualization </a>
@@ -127,9 +131,13 @@
             <a href="/portfolio/otherProjects"> Other Projects </a>
           </div>
         </div>
-      </span>
-      <span class="nav-page"><a href="/blog"> Blog</a></span>
-      <span class="nav-page"><a href="/links">Links</a></span>
+      </div>
+      <div class="nav-page-container">
+        <span class="nav-page"><a href="/blog"> Blog</a></span>
+      </div>
+      <div class="nav-page-container">
+        <span class="nav-page"><a href="/links">Links</a></span>
+      </div>
     </nav>
 
     <section class="portfolio">

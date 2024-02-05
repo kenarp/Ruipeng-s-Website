@@ -113,9 +113,13 @@
     </header>
 
     <nav>
-      <span class="nav-page"><a href="/resume">Resume</a></span>
-      <span class="nav-dropdown nav-page">
-        <a href="#" onclick="return false;">Portfolio</a>
+      <div class="nav-page-container">
+        <span class="nav-page"><a href="/resume">Resume</a></span>
+      </div>
+      <div class="nav-page-container nav-dropdown-container">
+        <span class="nav-page">
+          <a href="#" onclick="return false;">Portfolio</a></span
+        ><span class="nav-dropdown"></span>
         <div class="nav-portfolio">
           <div class="portfolio-project">
             <a href="/portfolio/echarts"> Data Visualization </a>
@@ -127,197 +131,14 @@
             <a href="/portfolio/otherProjects"> Other Projects </a>
           </div>
         </div>
-      </span>
-      <span class="nav-page"><a href="/blog"> Blog</a></span>
-      <span class="nav-page"><a href="/links">Links</a></span>
+      </div>
+      <div class="nav-page-container">
+        <span class="nav-page"><a href="/blog"> Blog</a></span>
+      </div>
+      <div class="nav-page-container">
+        <span class="nav-page"><a href="/links">Links</a></span>
+      </div>
     </nav>
-
-    <!-- <article id="JAVA">
-      <ul>
-        <li>
-          <a href="https://www.kuangstudy.com/course?cid=1"
-            >KuangStudy-JAVA全栈</a
-          >
-        </li>
-        <li>
-          <a href="https://www.liaoxuefeng.com/wiki/1252599548343744"
-            >廖雪峰JAVA教程</a
-          >
-        </li>
-        <li>
-          <a href="https://people.cs.pitt.edu/~hoffmant/"
-            >JAVA Courses-Tim Hoffman@Upitt</a
-          >
-        </li>
-        <li>
-          <a href="https://www.codecademy.com/learn/learn-java">Codecademy</a>
-          <h2 id="-java">关于JAVA</h2>
-          JAVA SE 桌面标准版<br />JAVA EE 企业（enterprise）（服务器端开发）
-          JDK: JAVA Development Kit JRE: JAVA Runtime Environment JVM: JAVA
-          Virtual Machine - Write onece, run anywhere
-          <h3 id="-">运行机制</h3>
-          编译器+解释器
-        </li>
-        <li>编译型 use javac to Compile .java(源代码) get .class（字节码）</li>
-        <li>
-          解释型 JVM 解释 .class文件
-          <h3 id="-">注释</h3>
-        </li>
-        <li>// 单行注释</li>
-        <li>
-          段落注释 /<em> 开始 </em>/结束
-          <h2 id="-">基础</h2>
-        </li>
-        <li>
-          标识符 可以以A a <em> $ 为开头 例如： String A, Int b, Char </em>,
-          Float $
-          <h2 id="-">数据类型</h2>
-          <h3 id="-primitive-type-8-">基本数据类型(Primitive Type) 共8个</h3>
-          <h4 id="-">数值类型：</h4>
-        </li>
-        <li>
-          整数类型：
-          <ol>
-            <li>byte占一个字节（1byte=1bit比特）：-128 - 127</li>
-            <li>short占两个字节：-32768-32767</li>
-            <li>int占4个字节：负21亿 - 21亿</li>
-            <li>long占8个字节</li>
-          </ol>
-        </li>
-        <li>
-          <p>
-            浮点类型：最好完全避免使用浮点数进行比较，因为浮点数有限，是离散的，存在舍入误差，接近但不等于
-          </p>
-          <ol>
-            <li>float占4个字节</li>
-            <li>double占8个字节</li>
-          </ol>
-        </li>
-        <li>
-          <p>字符类型：</p>
-          <ol>
-            <li>
-              char占2个字节
-              <h4 id="boolean-">boolean（布尔）类型</h4>
-            </li>
-            <li>占1位，值只有true和false</li>
-          </ol>
-        </li>
-      </ul>
-      <p>
-        <em
-          >JAVA是强类型语言，所有变量先定义后才能使用，运算中不同数据类型间需要转换为同一类型</em
-        >
-        低 -------------------------------------------&gt; 高容量
-        byte,short,char -&gt; int -&gt; long -&gt; float -&gt; double
-      </p>
-      <ul>
-        <li>
-          数据类型转换：
-          (不能转换boolean类型，不能把对象转换为不相干的类型，转换时可能存在内存溢出或精度问题)
-        </li>
-        <li>
-          强制转换 char to int: 所有的字符本质还是数字(Unicode编码表
-          2字节，最多可以表示65536个字符)
-          <blockquote>
-            <p>
-              (类型)变量名
-              把高容量数据类型的变量转换到低数据类型的变量需要强制转换
-            </p>
-          </blockquote>
-        </li>
-        <li>自动转换 低-&gt;高</li>
-      </ul>
-      <p>int to string：(String不是基本数据类型，是类)</p>
-      <blockquote>
-        <p>.toString();</p>
-      </blockquote>
-      <h3 id="-reference-type-">引用数据类型(Reference Type)</h3>
-      <p>类: String BigDecimal 数学工具类用来比较大小 接口 数组</p>
-      <h2 id="-">变量</h2>
-      <h3 id="-">变量作用域</h3>
-      <ul>
-        <li><p>类变量：关键字static</p></li>
-        <li>
-          <p>
-            实例变量：
-            从属于对象（类）；如果不自行初始化，则输出默认值(0,0.0,null,false;除了基本类型外，其余的默认值都是null)
-          </p>
-        </li>
-        <li>
-          局部变量： 存在于方法中，使用前必须声明并初始化值
-          <h3 id="-">常量 一种特殊的变量</h3>
-          关键字final initialize 后不允许再被改变
-          <h3 id="-">变量命名规范</h3>
-        </li>
-        <li>除第一个单词外，后面的单词首字母大写（驼峰原则）</li>
-        <li>
-          常量： 全部大写字母，中间用_
-          <blockquote>
-            <p>final int MAX_VALUE</p>
-          </blockquote>
-        </li>
-        <li>类名： 每个单词的首字母大写</li>
-        <li>方法名： 首字母小写</li>
-      </ul>
-      <h2 id="-operator">运算符 operator</h2>
-      <p>
-        算数运算符：+,-,*,/,%,++,-- 赋值运算符 =
-        关系运算符：&gt;,&lt;,&gt;=,&lt;=,==,!=, instanceof
-        逻辑运算符：&amp;&amp;(与), ||(或), !(非) 一元运算符：++自增，--自减
-      </p>
-      <blockquote>
-        <p>b = ++a</p>
-      </blockquote>
-      <p>等同于</p>
-      <blockquote>
-        <p>b = a; a = a+1 // 先给b赋值，再自增</p>
-      </blockquote>
-      <p>c = a++</p>
-      <p>等同于</p>
-      <blockquote>
-        <p>a = a+1 c = a; // 先自增,再给c赋值</p>
-      </blockquote>
-      <ul>
-        <li>
-          很多运算会使用一些工具类操作，比如幂运算:Math.pow()
-          <h2 id="-">输入输出</h2>
-        </li>
-      </ul>
-      <p>writer.write()</p>
-      <h2 id="-">符号</h2>
-      <p>修饰符不存在先后顺序</p>
-      <ul>
-        <li>
-          换行符：&quot;\n&quot;
-          <blockquote>
-            <p>
-              System.out.println(&quot;A&quot;+&quot;\n&quot;+&quot;B&quot;);
-            </p>
-          </blockquote>
-        </li>
-      </ul>
-      <h2 id="time-complexity">Time complexity</h2>
-      <p>
-        By definition, time complexity is the amount of time taken by an
-        algorithm to run, as a function of the length of the input. Here, the
-        length of input indicates the number of operations to be performed by
-        the algorithm. This gives a clear indication of what exactly Time
-        complexity tells us. It is not going to examine the total execution time
-        of an algorithm. Rather, it is going to give information about the
-        variation (increase or decrease) in execution time when the number of
-        operations (increase or decrease) in an algorithm. Yes, as the
-        definition says, the amount of time taken is a function of the length of
-        input only.
-      </p>
-      <p>
-        To elaborate, Time complexity measures the time taken to execute each
-        statement of code in an algorithm. If a statement is set to execute
-        repeatedly then the number of times that statement gets executed is
-        equal to N multiplied by the time required to run that function each
-        time.
-      </p>
-    </article> -->
 
     <p class="blog-intro">
       This is a place to show part of my Tech Blog and notes. The HTML wepages
